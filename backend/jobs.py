@@ -561,8 +561,8 @@ EXT = {"image/svg+xml": "svg", "image/png": "png", "image/x-icon": "ico", "image
        "image/jpeg": "jpg", "image/webp": "webp", "image/gif": "gif"}
 
 
-def icon_candidates(page):
-    out = []
+def icon_candidates(page, preferred=None):
+    out = [preferred] if preferred else []
     try:
         soup = BeautifulSoup(get(page).text, "html.parser")
         for l in soup.find_all("link", rel=True):
@@ -579,7 +579,7 @@ def icons_job():
         ICONS.mkdir(exist_ok=True)
         n = 0
         for pid, p in CFG["providers"].items():
-            for u in icon_candidates(p["url"]):
+            for u in icon_candidates(p["url"], p.get("icon_url")):
                 try:
                     r = requests.get(u, headers={"User-Agent": UA}, timeout=20)
                     ext = EXT.get(r.headers.get("content-type", "").split(";")[0].strip().lower())

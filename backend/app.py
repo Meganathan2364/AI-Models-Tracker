@@ -309,6 +309,29 @@ def health() -> JSONResponse:
     )
 
 
+@app.get("/api/refresh-status")
+def public_refresh_status() -> JSONResponse:
+    if not _admin_enabled():
+        return JSONResponse(
+            content={"scheduled": False, "next_run_at": None, "running": False},
+            headers={"Cache-Control": "no-store"},
+        )
+    try:
+        settings = _get_settings()
+    except RuntimeError as error:
+        raise HTTPException(status_code=503, detail=str(error)) from error
+    with _refresh_state_lock:
+        running = _refresh_state["running"]
+    return JSONResponse(
+        content={
+            "scheduled": True,
+            "next_run_at": datetime.fromtimestamp(settings["next_run_at"], timezone.utc).isoformat(),
+            "running": running,
+        },
+        headers={"Cache-Control": "no-store"},
+    )
+
+
 @app.post("/api/admin/login")
 def admin_login(credentials: LoginRequest, request: Request, response: Response) -> dict:
     _require_admin_configuration()

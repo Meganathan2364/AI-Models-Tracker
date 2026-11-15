@@ -41,6 +41,14 @@ def test_qwen_catalog_parser_uses_the_source_page_and_ignores_other_providers():
     assert model["image_url"] == "https://example.com/assets/qwen.svg"
 
 
+def test_provider_icon_prefers_explicit_official_icon_url():
+    preferred = "https://www.gstatic.com/google.svg"
+    with patch("backend.jobs.get", side_effect=RuntimeError("offline")):
+        candidates = jobs.icon_candidates("https://deepmind.google", preferred)
+
+    assert candidates == [preferred, "https://deepmind.google/favicon.ico"]
+
+
 def test_qwen_capability_parser_reads_model_table_without_inventing_entries():
     html = """
     <table><thead><tr><th>Model ID</th><th>Capability</th></tr></thead>

@@ -33,6 +33,30 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue(response.json()["catalog_ready"])
 
+    async def test_public_refresh_status_shows_next_run_when_scheduler_is_enabled(self):
+        admin_env = {
+            "ADMIN_USERNAME": "atlas-admin",
+            "ADMIN_PASSWORD": "safe-test-password",
+            "ADMIN_SESSION_SECRET": "test-secret-value-that-is-at-least-32-bytes",
+        }
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(os.environ, admin_env, clear=True):
+            with patch("backend.app.DATA_DIR", Path(temp_dir)):
+                response = await self.client.get("/api/refresh-status")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.json()["scheduled"])
+        self.assertIsNotNone(response.json()["next_run_at"])
+        self.assertFalse(response.json()["running"])
+        self.assertEqual(response.headers["cache-control"], "no-store")
+
+    async def test_public_refresh_status_has_no_next_run_when_scheduler_is_disabled(self):
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(os.environ, {}, clear=True):
+            with patch("backend.app.DATA_DIR", Path(temp_dir)):
+                response = await self.client.get("/api/refresh-status")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {"scheduled": False, "next_run_at": None, "running": False})
+
     async def test_catalog_endpoint_returns_models(self):
         with tempfile.TemporaryDirectory() as temp_dir:
             Path(temp_dir, "catalog.json").write_text(

@@ -15,7 +15,7 @@ qwen_details_url: https://www.alibabacloud.com/help/en/model-studio/token-plan-p
 providers:
   anthropic: {name: Anthropic, url: "https://www.anthropic.com", docs: "https://docs.claude.com", aliases: [anthropic]}
   openai:    {name: OpenAI, url: "https://openai.com", docs: "https://platform.openai.com/docs", aliases: [openai]}
-  google:    {name: Google, url: "https://deepmind.google", docs: "https://ai.google.dev", aliases: [google]}
+  google:    {name: Google, url: "https://deepmind.google", docs: "https://ai.google.dev", icon_url: "https://www.gstatic.com/images/branding/googleg_gradient/svg/googleg_gradient_standard_48px.svg", aliases: [google]}
   meta:      {name: Meta, url: "https://www.llama.com", docs: "https://www.llama.com/docs", aliases: [meta-llama, meta]}
   xai:       {name: xAI, url: "https://x.ai", docs: "https://docs.x.ai", aliases: [x-ai, xai]}
   cohere:    {name: Cohere, url: "https://cohere.com", docs: "https://docs.cohere.com", aliases: [cohere]}

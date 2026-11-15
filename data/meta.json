@@ -116,7 +116,7 @@
   "alibaba": "data/icons/alibaba.png",
   "anthropic": "data/icons/anthropic.ico",
   "cohere": "data/icons/cohere.png",
-  "google": "data/icons/google.png",
+  "google": "data/icons/google.svg",
   "mistral": "data/icons/mistral.ico",
   "moonshot": "data/icons/moonshot.ico",
   "nvidia": "data/icons/nvidia.ico",

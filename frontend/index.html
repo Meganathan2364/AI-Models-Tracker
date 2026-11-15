@@ -181,7 +181,7 @@ pre{background:var(--surface);border-radius:9px;padding:14px}
 .source-links a{display:inline-flex;align-items:center;padding:7px 10px;border:1px solid var(--line);border-radius:7px;background:var(--surface-raised);font-size:13px;text-decoration:none}
 .source-links a:hover{border-color:#a8c7ae}
 @media(max-width:860px){.grid{grid-template-columns:1fr}}
-@media(max-width:620px){header{padding:14px 16px;min-height:72px;flex-wrap:wrap;gap:10px}.header-actions{gap:8px;margin-left:auto}nav{padding:10px 12px}main{padding:25px 15px 60px}.fresh{font-size:0}.fresh:before{margin-right:0}.stats{gap:7px}.stat{padding:12px}.stat strong{font-size:19px}.model-card{grid-template-columns:48px minmax(0,1fr);padding:14px;position:relative}.model-visual{grid-column:1;grid-row:1}.model-cover{width:42px;height:42px;padding:5px}.model-info{grid-column:2}.model-actions{position:absolute;right:13px;top:15px}.model-info .model-title{padding-right:28px}.model-prices{text-align:left;justify-content:flex-start}.model-meta span+span{padding-left:8px}.filter-heading,.date-range-heading{align-items:flex-start;flex-direction:column;gap:4px}.filter-help{line-height:1.4}}
+@media(max-width:620px){header{padding:14px 16px;min-height:72px;flex-wrap:wrap;gap:10px}.header-actions{gap:8px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end;max-width:100%}nav{padding:10px 12px}main{padding:25px 15px 60px}.fresh{flex-basis:100%;max-width:100%;font-size:11px;line-height:1.35;text-align:right;white-space:normal}.fresh:before{margin-right:6px}.stats{gap:7px}.stat{padding:12px}.stat strong{font-size:19px}.model-card{grid-template-columns:48px minmax(0,1fr);padding:14px;position:relative}.model-visual{grid-column:1;grid-row:1}.model-cover{width:42px;height:42px;padding:5px}.model-info{grid-column:2}.model-actions{position:absolute;right:13px;top:15px}.model-info .model-title{padding-right:28px}.model-prices{text-align:left;justify-content:flex-start}.model-meta span+span{padding-left:8px}.filter-heading,.date-range-heading{align-items:flex-start;flex-direction:column;gap:4px}.filter-help{line-height:1.4}}
 :root[data-theme="dark"]{color-scheme:dark;--bg:#111714;--surface:#19211d;--surface-raised:#202b25;--ink:#e7eee8;--muted:#a2b1a7;--line:#334139;--accent:#7fd2a8;--accent-ink:#0c1a12;--accent-soft:#24392e;--highlight:#f1ad6b;--cool-accent:#aebef0;--warn:#f2c56b;--bad:#f08d82;--ok:#8dd5a8}
 header{background:var(--surface)}
 .brand-mark{background:var(--accent-soft);border-color:var(--line)}
@@ -269,7 +269,43 @@ const byKey = k => models().find(m => m.key === k);
 const days = d => Math.ceil((Date.parse(d + "T00:00:00Z") - Date.now()) / 864e5);
 const money = p => p == null ? "–" : p === 0 ? "free" : "$" + (p < 1 ? p.toFixed(3) : p.toFixed(2));
 const ctx = n => !n ? "–" : n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M" : Math.round(n / 1e3) + "K";
-const ago = iso => { if (!iso) return "never"; const h = (Date.now() - Date.parse(iso)) / 36e5; return h < 1 ? "just now" : h < 48 ? Math.round(h) + "h ago" : Math.round(h / 24) + "d ago"; };
+const ago = iso => {
+  if (!iso) return "never";
+  const age = Date.now() - Date.parse(iso);
+  if (!Number.isFinite(age)) return "unknown";
+  const minutes = Math.max(0, Math.floor(age / 60000));
+  if (minutes < 1) return "just now";
+  if (minutes < 60) return `${minutes}m ago`;
+  const hours = Math.floor(minutes / 60);
+  return hours < 48 ? `${hours}h ago` : `${Math.floor(hours / 24)}d ago`;
+};
+const countdown = iso => {
+  const remaining = Date.parse(iso) - Date.now();
+  if (!Number.isFinite(remaining)) return "unknown";
+  if (remaining <= 0) return "due now";
+  const minutes = Math.ceil(remaining / 60000);
+  if (minutes < 60) return `in ${minutes}m`;
+  const hours = Math.floor(minutes / 60);
+  const remainder = minutes % 60;
+  return hours < 24 ? `in ${hours}h${remainder ? ` ${remainder}m` : ""}` : `in ${Math.floor(hours / 24)}d ${hours % 24}h`;
+};
+let refreshStatus = null, refreshStatusUnavailable = false;
+function renderFreshness() {
+  const updated = D.catalog?.updated;
+  let text = updated ? `Catalog refreshed ${ago(updated)}` : "No data fetched yet";
+  if (refreshStatus?.scheduled) {
+    if (refreshStatus.running) text += " · Refresh running";
+    text += refreshStatus.next_run_at
+      ? ` · Next refresh ${countdown(refreshStatus.next_run_at)}`
+      : " · Next refresh time unavailable";
+  } else if (refreshStatusUnavailable) {
+    text += " · Refresh schedule unavailable";
+  }
+  $("#fresh").textContent = text;
+  $("#fresh").title = refreshStatus?.next_run_at
+    ? `Next refresh at ${new Date(refreshStatus.next_run_at).toLocaleString()}`
+    : "";
+}
 const icon = (pid, px = 20) => { const src = D.meta?.icons?.[pid], l = esc((prov(pid).name || pid)[0] || "?").toUpperCase(); return src ? `<img class="ico" src="${esc(src)}" alt="" width="${px}" height="${px}" loading="lazy" data-l="${l}">` : `<span class="ico badge" style="width:${px}px;height:${px}px">${l}</span>`; };
 const modelImage = (m, px = 50) => {
   const modelImage = /^https:\/\//i.test(m.image_url || "") ? m.image_url : "";
@@ -355,9 +391,22 @@ async function boot() {
       console.error(`Could not load ${f} from the AI Models Tracker API.`, error);
     }
   }));
-  $("#fresh").textContent = D.catalog?.updated ? `Catalog refreshed ${ago(D.catalog.updated)}` : "No data fetched yet";
+  await updateRefreshStatus();
+  renderFreshness();
   addEventListener("hashchange", route); route();
   if (failures.length) $("#view").insertAdjacentHTML("afterbegin", `<div class="panel empty bad" role="alert">Some data could not be loaded: ${esc(failures.join(", "))}. Check the backend service and try again.</div>`);
+}
+async function updateRefreshStatus() {
+  try {
+    const response = await fetch("/api/refresh-status", {cache: "no-store"});
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+    refreshStatus = await response.json();
+    refreshStatusUnavailable = false;
+  } catch (error) {
+    refreshStatusUnavailable = true;
+    console.error("Could not load the refresh schedule.", error);
+  }
+  renderFreshness();
 }
 function route() {
   const [id, arg] = (location.hash.slice(2) || "models").split("/"), tab = id === "model" ? "models" : id;
@@ -666,6 +715,8 @@ function newsView() {
 }
 
 boot();
+setInterval(renderFreshness, 30000);
+setInterval(updateRefreshStatus, 30000);
 </script>
 </body>
 </html>
