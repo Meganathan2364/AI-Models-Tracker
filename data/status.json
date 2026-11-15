@@ -1,0 +1,63 @@
+{
+ "prices": {
+  "ok": true,
+  "last_ok": "2026-11-15T08:14:44+00:00",
+  "rows": 2746,
+  "error": null
+ },
+ "deprecations:anthropic": {
+  "ok": true,
+  "last_ok": "2026-11-15T08:14:45+00:00",
+  "rows": 46,
+  "error": null
+ },
+ "deprecations:openai": {
+  "ok": true,
+  "last_ok": "2026-11-15T08:14:45+00:00",
+  "rows": 158,
+  "error": null
+ },
+ "deprecations:google": {
+  "ok": true,
+  "last_ok": "2026-11-15T08:14:48+00:00",
+  "rows": 0,
+  "error": null,
+  "warning": "0 rows found - the source layout may have changed"
+ },
+ "deprecations:azure": {
+  "ok": true,
+  "last_ok": "2026-11-15T08:14:49+00:00",
+  "rows": 179,
+  "error": null
+ },
+ "news": {
+  "ok": true,
+  "last_ok": "2026-11-15T08:14:52+00:00",
+  "rows": 137,
+  "error": null
+ },
+ "icons": {
+  "ok": true,
+  "last_ok": "2026-11-15T08:15:18+00:00",
+  "rows": 11,
+  "error": null
+ },
+ "qwen_model_studio": {
+  "ok": true,
+  "last_ok": "2026-11-15T08:14:42+00:00",
+  "rows": 18,
+  "error": null
+ },
+ "deprecations:alibaba": {
+  "ok": true,
+  "last_ok": "2026-11-15T08:14:50+00:00",
+  "rows": 1,
+  "error": null
+ },
+ "qwen_model_studio_details": {
+  "ok": true,
+  "last_ok": "2026-11-15T08:14:44+00:00",
+  "rows": 10,
+  "error": null
+ }
+}

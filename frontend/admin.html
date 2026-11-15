@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin — AI Models Tracker</title>
+<style>
+:root{font:15px/1.5 system-ui,sans-serif;color:#1d2923;background:#f4f6f2;--muted:#66736b;--line:#dce4dc;--accent:#176b57;--bad:#a33;--ok:#28784d}
+*{box-sizing:border-box}
+body{margin:0}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;padding:18px clamp(16px,4vw,36px);background:#fff;border-bottom:1px solid var(--line)}
+h1{font-size:20px;margin:0}
+a{color:var(--accent)}
+main{max-width:900px;margin:30px auto;padding:0 20px 60px}
+section{padding:20px;margin:18px 0;background:#fff;border:1px solid var(--line);border-radius:10px}
+h2{font-size:17px;margin:0 0 4px}
+.sub,.muted{color:var(--muted)}
+.sub{margin:0 0 18px}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+select,button{padding:9px 12px;border:1px solid #cbd6cc;border-radius:7px;background:#fff;color:inherit;font:inherit}
+button{cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button:disabled{opacity:.6;cursor:wait}
+#message{min-height:24px;margin-top:12px}
+.bad{color:var(--bad)}.ok{color:var(--ok)}
+.table-wrap{max-width:100%;overflow-x:auto}
+table{width:100%;min-width:520px;border-collapse:collapse}
+td{padding:9px 6px;border-bottom:1px solid var(--line);text-align:left}
+tr:last-child td{border-bottom:0}
+td:last-child{text-align:right}
+@media(max-width:520px){header{align-items:flex-start}header .controls{width:100%;justify-content:space-between}main{margin:20px auto;padding:0 14px 48px}section{padding:16px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>AI Models Tracker admin</h1>
+  <div class="controls"><a href="/">View catalog</a><button id="logout" type="button">Sign out</button></div>
+</header>
+<main>
+  <section>
+    <h2>Data refresh</h2>
+    <p class="sub">Choose how often to fetch models, prices, deprecations, and news. Icons are checked at most once per day.</p>
+    <div class="controls">
+      <label for="interval">Refresh every</label>
+      <select id="interval">
+        <option value="1">1 hour</option>
+        <option value="2">2 hours</option>
+        <option value="3">3 hours</option>
+        <option value="4">4 hours</option>
+        <option value="5">5 hours</option>
+        <option value="6" selected>6 hours (default)</option>
+        <option value="7">7 hours</option>
+        <option value="8">8 hours</option>
+        <option value="9">9 hours</option>
+        <option value="10">10 hours</option>
+        <option value="11">11 hours</option>
+        <option value="12">12 hours</option>
+        <option value="13">13 hours</option>
+        <option value="14">14 hours</option>
+        <option value="15">15 hours</option>
+        <option value="16">16 hours</option>
+        <option value="17">17 hours</option>
+        <option value="18">18 hours</option>
+        <option value="19">19 hours</option>
+        <option value="20">20 hours</option>
+        <option value="21">21 hours</option>
+        <option value="22">22 hours</option>
+        <option value="23">23 hours</option>
+        <option value="24">24 hours</option>
+      </select>
+      <button id="save" type="button">Save interval</button>
+      <button id="refresh" class="primary" type="button">Refresh now</button>
+    </div>
+    <div id="message" role="status" aria-live="polite"></div>
+    <div id="summary" class="muted"></div>
+  </section>
+  <section>
+    <h2>Source health</h2>
+    <p class="sub">A failed source keeps its last successful data. Check errors here after a refresh.</p>
+    <div class="table-wrap"><table><tbody id="sources"><tr><td class="muted">Loading…</td></tr></tbody></table></div>
+  </section>
+</main>
+<script>
+const $ = selector => document.querySelector(selector);
+const message = $("#message");
+const formatTime = value => value ? new Date(value).toLocaleString() : "Not yet";
+
+async function api(url, options = {}) {
+  const response = await fetch(url, {cache: "no-store", ...options});
+  if (response.status === 401) {
+    location.replace("/admin/login");
+    throw new Error("Please sign in again.");
+  }
+  const result = await response.json();
+  if (!response.ok) throw new Error(result.detail || "Request failed.");
+  return result;
+}
+
+function showSources(sources) {
+  const rows = Object.entries(sources);
+  $("#sources").replaceChildren();
+  if (!rows.length) {
+    const row = document.createElement("tr"), cell = document.createElement("td");
+    cell.className = "muted";
+    cell.textContent = "No fetches recorded yet.";
+    row.append(cell);
+    $("#sources").append(row);
+    return;
+  }
+  for (const [name, source] of rows) {
+    const row = document.createElement("tr"), label = document.createElement("td"), result = document.createElement("td");
+    label.textContent = name;
+    result.textContent = source.ok ? `${source.rows} rows · ${formatTime(source.last_ok)}` : `Failed · ${source.error || "see collector logs"}`;
+    result.className = source.ok ? "ok" : "bad";
+    row.append(label, result);
+    $("#sources").append(row);
+  }
+}
+
+async function refreshStatus() {
+  const status = await api("/api/admin/status");
+  const refresh = status.refresh;
+  $("#interval").value = String(refresh.interval_hours);
+  $("#summary").textContent = refresh.running
+    ? `Refresh in progress. Started ${formatTime(refresh.last_started_at)}.`
+    : `Next refresh: ${formatTime(refresh.next_run_at)} · Last finished: ${formatTime(refresh.last_finished_at)}${refresh.last_error ? ` · Error: ${refresh.last_error}` : ""}`;
+  $("#refresh").disabled = refresh.running;
+  $("#refresh").textContent = refresh.running ? "Refresh running…" : "Refresh now";
+  showSources(status.sources);
+}
+
+$("#save").addEventListener("click", async () => {
+  message.className = "";
+  message.textContent = "";
+  try {
+    await api("/api/admin/settings", {
+      method: "PUT",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({interval_hours: Number($("#interval").value)})
+    });
+    message.className = "ok";
+    message.textContent = "Refresh interval saved.";
+    await refreshStatus();
+  } catch (error) {
+    message.className = "bad";
+    message.textContent = error.message;
+  }
+});
+
+$("#refresh").addEventListener("click", async () => {
+  message.className = "";
+  message.textContent = "";
+  try {
+    await api("/api/admin/refresh", {method: "POST"});
+    message.className = "ok";
+    message.textContent = "Refresh started.";
+    await refreshStatus();
+  } catch (error) {
+    message.className = "bad";
+    message.textContent = error.message;
+  }
+});
+
+$("#logout").addEventListener("click", async () => {
+  try {
+    await api("/api/admin/logout", {method: "POST"});
+  } finally {
+    location.replace("/admin/login");
+  }
+});
+
+refreshStatus().catch(error => {
+  message.className = "bad";
+  message.textContent = error.message;
+});
+setInterval(() => refreshStatus().catch(error => {
+  message.className = "bad";
+  message.textContent = error.message || "Could not refresh admin status.";
+}), 15000);
+</script>
+</body>
+</html>

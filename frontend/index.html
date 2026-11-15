@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Models Tracker — AI model intelligence</title>
+<meta name="theme-color" content="#f5f7f3">
+<meta name="description" content="Explore AI models, compare capabilities and pricing, and track provider news and retirements.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23e4f1e7'/%3E%3Cpath d='M13 18h16v13H13zM35 18h16v28H35zM13 37h16v9H13z' fill='%23166b57'/%3E%3Cpath d='M18 23h6v3h-6zM40 23h6v3h-6zM18 40h6v3h-6z' fill='%23e4f1e7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+try {
+  const savedTheme = localStorage.getItem("ai-models-tracker-theme") || localStorage.getItem("model-tracker-theme") || localStorage.getItem("model-atlas-theme");
+  if (savedTheme === "light" || savedTheme === "dark") document.documentElement.dataset.theme = savedTheme;
+  else if (matchMedia("(prefers-color-scheme: dark)").matches) document.documentElement.dataset.theme = "dark";
+} catch (error) {
+  console.warn("Could not read the saved color theme.", error);
+}
+</script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Schibsted Grotesk",system-ui,sans-serif;font-variant-numeric:tabular-nums}
+a{color:var(--accent)}
+header{padding:20px clamp(16px,4vw,40px) 0;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline;justify-content:space-between}
+h1{font-size:22px;margin:0;letter-spacing:-.01em}
+.fresh{color:var(--muted);font-size:13px}
+nav{display:flex;gap:4px;overflow-x:auto;padding:12px clamp(16px,4vw,40px);border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:2}
+nav a{padding:6px 12px;border-radius:6px;text-decoration:none;color:var(--muted);white-space:nowrap;font-weight:500}
+nav a[aria-current=page]{background:var(--accent);color:var(--accent-ink)}
+nav a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main{padding:20px clamp(16px,4vw,40px) 60px;max-width:1200px}
+h2{font-size:18px;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 16px;max-width:70ch}
+.grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:32px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:500;color:var(--muted);font-size:13px;white-space:nowrap}
+th[data-s]{cursor:pointer}
+td.n,th.n{text-align:right}
+tr:last-child td{border-bottom:0}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;align-items:center}
+input[type=search],select{padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font:inherit}
+button{font:inherit;padding:7px 12px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.muted{color:var(--muted)}.bad{color:var(--bad)}.warn{color:var(--warn)}.ok{color:var(--ok)}
+.tag{font-size:12px;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-right:4px;color:var(--muted)}
+.feed{list-style:none;margin:0;padding:0}
+.feed li{padding:10px 14px;border-bottom:1px solid var(--line)}
+.feed li:last-child{border-bottom:0}
+.runway{list-style:none;margin:0;padding:0}
+.runway li{padding:10px 14px;border-bottom:1px solid var(--line)}
+.runway li:last-child{border-bottom:0}
+.bar{height:6px;border-radius:3px;background:var(--line);margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok)}
+.bar i.warn{background:var(--warn)}.bar i.bad{background:var(--bad)}
+.rows{display:flex;justify-content:space-between;gap:12px}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+code{background:var(--line);padding:1px 5px;border-radius:4px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:16px}
+.cards .panel{padding:14px}
+.ico{width:20px;height:20px;border-radius:4px;vertical-align:-5px;margin-right:7px;object-fit:contain}
+.ico.badge{display:inline-flex;align-items:center;justify-content:center;background:var(--line);color:var(--muted);font-weight:700;font-size:11px}
+.mhead{display:flex;gap:14px;align-items:center;margin-bottom:8px}
+.mhead .ico{margin:0}
+.stat{padding:12px 14px}.stat strong{display:block;font-size:17px;margin-top:2px;word-break:break-word}
+.sec{margin-top:28px}
+#chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+#chips button{padding:4px 10px;font-size:13px}
+.dayrow td{background:var(--bg);padding-top:14px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px}
+.two h2{margin-bottom:8px}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;overflow:auto;font-size:12px;max-height:420px}
+:root{color-scheme:light;--bg:#f4f6f2;--surface:#fff;--surface-raised:#eef3ed;--ink:#1d2923;--muted:#66736b;--line:#dce4dc;--accent:#176b57;--accent-ink:#fff;--accent-soft:#e4f1e7;--highlight:#d98642;--cool-accent:#7386bb;--warn:#99600a;--bad:#b34f45;--ok:#28784d}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Schibsted Grotesk",Inter,system-ui,sans-serif;background:var(--bg);line-height:1.55}
+a{color:inherit;text-decoration-color:#a9b5aa;text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+header{min-height:84px;padding:16px max(24px,calc((100vw - 1320px)/2));display:flex;gap:18px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:#fff}
+h1{font-size:19px;line-height:1.1;margin:0;font-weight:650;letter-spacing:-.035em}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark{width:38px;height:38px;border:1px solid #d5e5d7;border-radius:11px;background:#e4f1e7;display:grid;place-items:center;color:var(--accent)}
+.brand-mark svg{width:23px;height:23px}
+.brand-caption{display:block;margin-top:5px;color:var(--muted);font-size:11px;letter-spacing:.11em;text-transform:uppercase}
+.header-actions{display:flex;align-items:center;gap:14px}
+.admin-link{padding:7px 12px;border:1px solid var(--line);border-radius:7px;text-decoration:none;font-size:13px;font-weight:600;white-space:nowrap}
+.fresh{font-size:12px;white-space:nowrap}
+.fresh:before{content:"";display:inline-block;width:7px;height:7px;margin:0 8px 1px 0;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px #28784d1a}
+nav{gap:6px;padding:10px max(24px,calc((100vw - 1320px)/2));background:#fffffff0;backdrop-filter:blur(14px)}
+nav a{padding:7px 13px;border:1px solid transparent;border-radius:7px;font-size:13px}
+nav a:hover{color:var(--ink);background:var(--surface)}
+nav a[aria-current=page]{background:var(--accent-soft);color:var(--accent);border-color:#cfe2d2}
+main{padding:34px 24px 80px;max-width:1320px;margin:0 auto}
+h2{font-size:21px;letter-spacing:-.025em;margin:0 0 6px}
+.sub{max-width:78ch;font-size:14px;margin-bottom:20px}
+.grid{grid-template-columns:minmax(0,1.35fr) minmax(340px,.9fr);gap:34px}
+.panel{background:var(--surface);border-radius:11px}
+th,td{padding:11px 14px}
+th{font-size:12px}
+.controls{gap:9px;margin-bottom:13px}
+input[type=search],input[type=date],input[type=number],select{padding:9px 11px;border-color:#d0dacf;border-radius:7px;background:var(--surface);color:var(--ink);font:inherit}
+input[type=search]{min-width:min(280px,100%)}
+input::placeholder{color:#8c978e}
+button{font-size:13px;padding:8px 12px;border-color:#d0dacf;border-radius:7px}
+button:hover{border-color:#8ba994;background:#f8faf7}
+button[aria-pressed=true]{background:var(--accent-soft);color:var(--accent);border-color:#abcdb2}
+.tag{font-size:11px;border-color:#dce4dc;border-radius:5px;padding:2px 7px;color:#5a685f;background:#f2f6f1}
+.feed li,.runway li{padding:13px 15px}
+.empty{padding:30px}
+code{background:#edf2ed;padding:2px 6px;color:#425147}
+.cards{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:16px}
+.cards .panel{padding:16px}
+.ico{border-radius:5px}
+.ico.badge{background:#e8eee8;color:#425147}
+.stat{padding:17px 18px}.stat strong{font-size:23px;letter-spacing:-.03em}
+.sec{margin-top:32px}
+#chips{gap:6px;margin-bottom:14px}
+#chips button{padding:6px 10px;font-size:12px}
+.dayrow td{background:#f0f5ef;padding-top:13px;color:var(--accent)}
+.two{gap:20px}
+pre{background:var(--surface);border-radius:9px;padding:14px}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.intro{padding:9px 0 27px}
+.intro h2{font-size:30px;letter-spacing:-.045em;margin:7px 0}
+.intro p{max-width:66ch;color:var(--muted);margin:0}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 30px}
+.stat:first-child{border-top:2px solid var(--accent)}
+.stat:nth-child(2){border-top:2px solid var(--highlight)}
+.stat:nth-child(3){border-top:2px solid var(--cool-accent)}
+.model-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,500px),1fr));gap:13px}
+.model-filters{padding:16px;margin:18px 0}
+.filter-heading,.date-range-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.filter-heading{margin-bottom:12px}
+.filter-heading strong,.date-range-heading strong{font-size:14px}
+.filter-help,.date-range-heading span{font-size:12px;color:var(--muted)}
+.model-filters input[type=search]{min-width:min(100%,240px);flex:1}
+.model-filters .controls{margin-bottom:10px}
+.date-range-section{border-top:1px solid var(--line);margin-top:4px;padding-top:12px}
+.date-range-heading{margin-bottom:8px}
+.date-range-section>.filter-help{margin:0 0 8px}
+#chips{margin:0 0 8px}
+#chips button{display:inline-flex;align-items:center;gap:8px;padding:6px 11px;font-size:13px}
+.model-filters select{max-width:100%}
+.range-count{font-size:11px;opacity:.8;padding-left:7px;border-left:1px solid currentColor}
+.custom-range summary{color:var(--accent);cursor:pointer;font-size:13px;font-weight:600}
+.custom-range-fields{display:flex;align-items:end;flex-wrap:wrap;gap:12px;margin-top:12px}
+.custom-range-fields label{display:grid;gap:4px;color:var(--muted);font-size:12px}
+.custom-range-fields input[type=date]{padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font:inherit}
+.model-card{display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:8px 14px;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:10px;transition:border-color .15s,background .15s}
+.model-card{box-shadow:0 1px 2px #20352208}
+.model-card:hover{border-color:#a8c7ae;background:#fcfefb;box-shadow:0 5px 16px #20352212}
+.model-title{display:flex;align-items:center;gap:8px;min-width:0;font-size:16px;font-weight:600;letter-spacing:-.015em}
+.model-title .ico{flex:none}
+.model-title a{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-decoration:none}
+.model-visual{grid-column:1;grid-row:1}
+.model-cover{width:50px;height:50px;border-radius:11px;object-fit:contain;background:var(--surface-raised);padding:7px;border:1px solid var(--line)}
+.model-info{grid-column:2;min-width:0}
+.model-info .model-title{padding-right:4px}
+.model-summary{margin-top:8px;color:var(--muted);font-size:13px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.model-meta{display:flex;flex-wrap:wrap;align-items:center;gap:7px 12px;color:var(--muted);font-size:12px}
+.model-meta span+span{border-left:1px solid #dce4dc;padding-left:12px}
+.model-prices{display:flex;gap:18px;align-items:center;text-align:left;margin-top:10px}
+.model-prices strong{display:block;color:var(--ink);font-size:13px;font-weight:550}
+.model-prices small{display:block;color:var(--muted);font-size:10px}
+.model-actions{grid-column:3;grid-row:1;display:flex;align-items:center;gap:10px}
+.model-actions input{accent-color:var(--accent)}
+.model-profile-link{display:inline-block;margin-top:10px;color:var(--accent);font-size:12px;font-weight:600;text-decoration:none}
+.model-profile-link:hover{text-decoration:underline}
+.model-group{margin:22px 0 9px;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.profile-hero{padding:24px;margin:12px 0 24px}
+.profile-hero .mhead{align-items:flex-start;margin-bottom:16px}
+.profile-hero .mhead .ico{margin-top:5px}
+.profile-name{font-size:30px!important;letter-spacing:-.04em!important}
+.profile-description{max-width:90ch;font-size:16px;line-height:1.75;margin:10px 0 16px}
+.source-links{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.source-links a{display:inline-flex;align-items:center;padding:7px 10px;border:1px solid var(--line);border-radius:7px;background:var(--surface-raised);font-size:13px;text-decoration:none}
+.source-links a:hover{border-color:#a8c7ae}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+@media(max-width:620px){header{padding:14px 16px;min-height:72px;flex-wrap:wrap;gap:10px}.header-actions{gap:8px;margin-left:auto}nav{padding:10px 12px}main{padding:25px 15px 60px}.fresh{font-size:0}.fresh:before{margin-right:0}.stats{gap:7px}.stat{padding:12px}.stat strong{font-size:19px}.model-card{grid-template-columns:48px minmax(0,1fr);padding:14px;position:relative}.model-visual{grid-column:1;grid-row:1}.model-cover{width:42px;height:42px;padding:5px}.model-info{grid-column:2}.model-actions{position:absolute;right:13px;top:15px}.model-info .model-title{padding-right:28px}.model-prices{text-align:left;justify-content:flex-start}.model-meta span+span{padding-left:8px}.filter-heading,.date-range-heading{align-items:flex-start;flex-direction:column;gap:4px}.filter-help{line-height:1.4}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#111714;--surface:#19211d;--surface-raised:#202b25;--ink:#e7eee8;--muted:#a2b1a7;--line:#334139;--accent:#7fd2a8;--accent-ink:#0c1a12;--accent-soft:#24392e;--highlight:#f1ad6b;--cool-accent:#aebef0;--warn:#f2c56b;--bad:#f08d82;--ok:#8dd5a8}
+header{background:var(--surface)}
+.brand-mark{background:var(--accent-soft);border-color:var(--line)}
+nav{background:var(--surface)}
+input[type=search],input[type=date],input[type=number],select{border-color:var(--line)}
+button{border-color:var(--line)}
+button:hover{border-color:var(--accent);background:var(--surface-raised)}
+.tag{border-color:var(--line);color:var(--muted);background:var(--surface-raised)}
+code{background:var(--surface-raised);color:var(--ink)}
+.dayrow td{background:var(--surface-raised)}
+.model-card:hover{border-color:var(--accent);background:var(--surface-raised)}
+.model-meta span+span{border-color:var(--line)}
+.header-actions{display:flex;align-items:center;gap:18px}
+.news-controls{justify-content:space-between}
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:16px}
+.news-card{overflow:hidden;display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:11px;background:var(--surface);transition:transform .15s,border-color .15s}
+.news-card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.news-copy{display:flex;flex:1;flex-direction:column;padding:15px}
+.news-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;color:var(--muted);font-size:12px}
+.news-title{margin:9px 0;font-size:17px;line-height:1.35;letter-spacing:-.02em}
+.news-title a{text-decoration:none}
+.news-description{margin:0 0 14px;color:var(--muted);font-size:13px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.news-read{margin-top:auto;color:var(--accent);font-size:13px;font-weight:600;text-decoration:none}
+.compare-toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
+.compare-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.compare-grid{display:grid;grid-template-columns:minmax(150px,1fr) repeat(var(--columns),minmax(160px,1fr));min-width:790px}
+.compare-grid>*{padding:12px;border-bottom:1px solid var(--line)}
+.compare-model-head{position:sticky;top:0;background:var(--surface-raised);z-index:1}
+.compare-model-head strong,.compare-model-head small{display:block}
+.compare-model-head small{margin-top:4px;color:var(--muted);font-size:12px}
+.compare-row-label{color:var(--muted);font-size:13px}
+.compare-value{display:flex;align-items:center;gap:8px}
+.compare-track{height:7px;flex:1;min-width:22px;overflow:hidden;border-radius:8px;background:var(--surface-raised)}
+.compare-track i{display:block;height:100%;border-radius:inherit;background:var(--cool-accent)}
+.compare-value.best .compare-track i{background:var(--ok)}
+.compare-value span{min-width:48px;text-align:right;font-size:12px;font-weight:600}
+.compare-group{grid-column:1/-1;background:var(--surface-raised);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.feature-value{font-size:13px}
+.feature-value.yes{color:var(--ok);font-weight:600}
+.feature-value.no,.feature-value.unknown{color:var(--muted)}
+.compare-note{margin-top:10px;color:var(--muted);font-size:12px}
+@media(max-width:620px){.header-actions{gap:8px}.news-grid{grid-template-columns:1fr}.compare-grid{grid-template-columns:minmax(120px,1fr) repeat(var(--columns),minmax(145px,1fr));min-width:700px}.compare-grid>*{padding:10px}}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="#/models" aria-label="AI Models Tracker home">
+    <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 5h7v6h-7zM13.5 5h7v14h-7zM3.5 14h7v5h-7z" fill="currentColor"/><path d="M5.5 7h3v2h-3zM15.5 7h3v2h-3zM5.5 16h3v1h-3z" fill="var(--accent-ink)"/></svg></span>
+    <span><h1>AI Models Tracker</h1><span class="brand-caption">Explore · Compare · Track</span></span>
+  </a>
+  <div class="header-actions"><a class="admin-link" href="/admin" aria-label="Admin sign in">Admin</a><button id="theme-toggle" type="button" aria-pressed="false"></button><span class="fresh" id="fresh"></span></div>
+</header>
+<nav id="nav" aria-label="Sections"></nav>
+<main id="view"></main>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const plain = s => String(s ?? "").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[`*_~]/g, "").replace(/\s+/g, " ").trim();
+const href = u => /^https?:\/\//.test(u || "") ? esc(u) : "#";
+const D = {}, picked = new Set();
+const FILES = ["catalog","best","deprecations","news","changes","meta"];
+const TABS = [["models","Models"],["overview","Overview"],["best","Best for"],["compare","Compare"],["deprecations","Deprecations"],["news","News"]];
+function applyTheme(theme, save = true) {
+  document.documentElement.dataset.theme = theme;
+  const dark = theme === "dark", toggle = $("#theme-toggle");
+  toggle.textContent = dark ? "☀ Light mode" : "☾ Dark mode";
+  toggle.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+  toggle.setAttribute("aria-pressed", String(dark));
+  document.querySelector('meta[name="theme-color"]').content = dark ? "#111714" : "#f5f7f3";
+  if (save) {
+    try {
+      localStorage.setItem("ai-models-tracker-theme", theme);
+    } catch (error) {
+      console.warn("Could not save the color theme.", error);
+    }
+  }
+}
+applyTheme(document.documentElement.dataset.theme || "light", false);
+$("#theme-toggle").addEventListener("click", () => {
+  applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+});
+const prov = id => D.meta?.providers?.[id] || {name: id, url: "", docs: ""};
+const models = () => D.catalog?.models || [];
+const byKey = k => models().find(m => m.key === k);
+const days = d => Math.ceil((Date.parse(d + "T00:00:00Z") - Date.now()) / 864e5);
+const money = p => p == null ? "–" : p === 0 ? "free" : "$" + (p < 1 ? p.toFixed(3) : p.toFixed(2));
+const ctx = n => !n ? "–" : n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M" : Math.round(n / 1e3) + "K";
+const ago = iso => { if (!iso) return "never"; const h = (Date.now() - Date.parse(iso)) / 36e5; return h < 1 ? "just now" : h < 48 ? Math.round(h) + "h ago" : Math.round(h / 24) + "d ago"; };
+const icon = (pid, px = 20) => { const src = D.meta?.icons?.[pid], l = esc((prov(pid).name || pid)[0] || "?").toUpperCase(); return src ? `<img class="ico" src="${esc(src)}" alt="" width="${px}" height="${px}" loading="lazy" data-l="${l}">` : `<span class="ico badge" style="width:${px}px;height:${px}px">${l}</span>`; };
+const modelImage = (m, px = 50) => {
+  const modelImage = /^https:\/\//i.test(m.image_url || "") ? m.image_url : "";
+  const providerImage = D.meta?.icons?.[m.provider] || "";
+  const src = modelImage || providerImage;
+  if (!src) return icon(m.provider, px);
+  const l = esc((prov(m.provider).name || m.provider)[0] || "?").toUpperCase();
+  const alt = modelImage ? `${m.name} logo` : `${prov(m.provider).name} logo`;
+  const fallback = modelImage && providerImage && modelImage !== providerImage ? `data-fallback="${esc(providerImage)}"` : "";
+  return `<img class="ico model-cover" src="${esc(src)}" alt="${esc(alt)}" width="${px}" height="${px}" loading="lazy" data-l="${l}" ${fallback}>`;
+};
+addEventListener("error", e => {
+  const t = e.target;
+  if (t.classList?.contains("ico")) {
+    const fallback = t.dataset.fallback;
+    if (fallback && t.getAttribute("src") !== fallback) {
+      t.setAttribute("src", fallback);
+      t.removeAttribute("data-fallback");
+      return;
+    }
+    const s = document.createElement("span");
+    s.className = "ico badge";
+    s.style.cssText = `width:${t.width}px;height:${t.height}px`;
+    s.textContent = t.dataset.l;
+    t.replaceWith(s);
+  }
+}, true);
+const mlink = m => `<a href="#/model/${encodeURIComponent(m.key)}">${esc(m.name)}</a>`;
+const normalizedName = s => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+const productName = (s, provider) => {
+  let name = normalizedName(s);
+  const prefix = normalizedName(prov(provider).name);
+  if (prefix && name.startsWith(prefix)) name = name.slice(prefix.length);
+  return name.replace(/(free|batch|preview|latest)$/, "");
+};
+const modelDeprecations = m => {
+  const names = [m.name, String(m.id || "").split("/").pop(), m.key].map(s => productName(s, m.provider)).filter(s => s.length >= 6);
+  return (D.deprecations?.rows || []).filter(r => {
+    if (r.provider !== m.provider) return false;
+    const name = productName(r.model, m.provider);
+    return name.length >= 6 && names.includes(name);
+  });
+};
+const retirementInfo = m => {
+  const today = new Date().toISOString().slice(0, 10);
+  const apiDate = String(m.expiration_date || "").slice(0, 10);
+  const dates = modelDeprecations(m).filter(r => r.listed !== false).map(r => r.retire_guess).filter(Boolean);
+  dates.sort();
+  const date = dates.find(d => d >= today) || (apiDate >= today ? apiDate : null) || [apiDate, ...dates].filter(Boolean).at(-1);
+  return date ? {date, passed: date < today} : null;
+};
+const modelSummary = m => {
+  if (m.official_description?.trim()) {
+    const capabilities = m.official_capabilities?.length ? ` Official capabilities: ${m.official_capabilities.join(", ")}.` : "";
+    return plain(m.official_description) + capabilities;
+  }
+  if (m.description?.trim()) return plain(m.description);
+  const facts = [];
+  if (m.modalities?.length) facts.push(`accepts ${m.modalities.join(", ")} input`);
+  if (m.outputs?.length) facts.push(`returns ${m.outputs.join(", ")}`);
+  if (m.context) facts.push(`a ${ctx(m.context)}-token context window`);
+  if (m.max_output) facts.push(`up to ${fmtN(m.max_output)} output tokens`);
+  if (m.family) facts.push(`belongs to the ${m.family} family`);
+  if (m.reasoning === true) facts.push("reasoning support");
+  if (m.tool_call === true) facts.push("tool calling");
+  if (m.open_weights === true) facts.push("open weights");
+  return facts.length
+    ? `Tracked catalog data for ${m.name} reports ${facts.join(", ")}. No narrative description was provided by the available sources.`
+    : `The available sources do not provide a narrative description or capability details for ${m.name}.`;
+};
+const empty = what => `<div class="panel empty">No ${what} available in the current data.</div>`;
+
+async function boot() {
+  const failures = [];
+  await Promise.all(FILES.map(async f => {
+    try {
+      const r = await fetch(`/api/data/${f}`, {cache: "no-cache"});
+      if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+      D[f] = await r.json();
+    } catch (error) {
+      D[f] = null;
+      failures.push(f);
+      console.error(`Could not load ${f} from the AI Models Tracker API.`, error);
+    }
+  }));
+  $("#fresh").textContent = D.catalog?.updated ? `Catalog refreshed ${ago(D.catalog.updated)}` : "No data fetched yet";
+  addEventListener("hashchange", route); route();
+  if (failures.length) $("#view").insertAdjacentHTML("afterbegin", `<div class="panel empty bad" role="alert">Some data could not be loaded: ${esc(failures.join(", "))}. Check the backend service and try again.</div>`);
+}
+function route() {
+  const [id, arg] = (location.hash.slice(2) || "models").split("/"), tab = id === "model" ? "models" : id;
+  document.title = "AI Models Tracker — AI model intelligence";
+  $("#nav").innerHTML = TABS.map(([k, l]) => `<a href="#/${k}" ${k === tab ? 'aria-current="page"' : ""}>${l}</a>`).join("");
+  if (id === "model") modelPage(decodeURIComponent(arg || ""));
+  else ({overview, models: modelsView, best: bestView, compare, deprecations: depView, news: newsView}[id] || overview)();
+  scrollTo(0, 0);
+}
+const show = html => $("#view").innerHTML = html;
+
+/* ---------- overview ---------- */
+function overview() {
+  const ch = D.changes || [], label = {new_model: "New model", price_change: "Price change", removed: "No longer listed", relisted: "Listed again", deprecation: "Deprecation notice"};
+  const liveModels = models().filter(m => m.listed !== false).length, providerCount = new Set(models().map(m => m.provider)).size;
+  const feed = ch.length ? `<ul class="feed panel">${ch.slice(0, 40).map(c => `<li><div class="rows"><span><span class="tag">${label[c.type] || esc(c.type)}</span>${c.link ? `<a href="${href(c.link)}">${esc(c.name)}</a>` : c.key && byKey(c.key) ? mlink(byKey(c.key)) : esc(c.name)}</span><span class="muted">${ago(c.ts)}</span></div><div class="muted">${icon(c.provider, 16)}${esc(prov(c.provider).name)}${c.type === "price_change" ? ` · in/out ${c.from.map(money).join(" / ")} → ${c.to.map(money).join(" / ")} per M tokens` : ""}</div></li>`).join("")}</ul>`
+    : `<div class="panel empty">No changes recorded yet. Changes appear from the second fetch onward, when there is something to compare.</div>`;
+  const soon = upcoming().slice(0, 5);
+  show(`<section class="intro"><span class="eyebrow">The model landscape, made clear</span><h2>Find the right model for the work.</h2><p>Compare the details that matter — capability, context, cost, and what is changing — across the companies building AI.</p></section>
+  <div class="stats"><div class="panel stat"><span class="muted">Models tracked</span><strong>${liveModels.toLocaleString("en-US")}</strong></div><div class="panel stat"><span class="muted">Providers covered</span><strong>${providerCount.toLocaleString("en-US")}</strong></div><div class="panel stat"><span class="muted">Upcoming retirements</span><strong>${upcoming().length.toLocaleString("en-US")}</strong></div></div>
+  <div class="grid"><section><h2>What changed</h2><p class="sub">New models, price changes and deprecation notices found since the previous fetch.</p>${feed}</section>
+  <section><h2>Retiring soonest</h2><p class="sub">Upcoming shutdown dates from official pages and APIs.</p>${soon.length ? `<ul class="runway panel">${soon.map(runwayItem).join("")}</ul>` : empty("deprecation dates")}</section></div>`);
+}
+const upcoming = () => (D.deprecations?.rows || []).filter(r => r.listed !== false).map(r => ({...r, left: days(r.retire_guess)})).filter(r => r.left >= 0).sort((a, b) => a.left - b.left);
+function runwayItem(r, showSourceNote = false) {
+  const pct = Math.max(3, Math.min(100, r.left / 365 * 100)), cls = r.left < 0 ? "bad" : r.left <= 90 ? "warn" : "";
+  const urgency = r.left === 0 ? "Due today" : r.left === 1 ? "Tomorrow" : `In ${r.left} days`;
+  return `<li><div class="rows"><span><a href="${href(r.source_url)}">${esc(r.model)}</a> <span class="tag">${esc(prov(r.provider).name || r.provider)}</span></span><strong class="${cls}">${urgency}</strong></div><div class="muted">Retires ${esc(r.retire_guess)}${r.dates.length > 1 ? ` · other dates in row: ${esc(r.dates.filter(d => d !== r.retire_guess).join(", "))}` : ""} · ${esc(r.origin)}</div><div class="bar"><i class="${cls}" style="width:${pct}%"></i></div>${showSourceNote && r.cells?.length ? `<details><summary>Official source details</summary><p>${esc(r.cells.join(" · "))}</p></details>` : ""}</li>`;
+}
+
+/* ---------- model page ---------- */
+const fmtN = n => n == null ? null : Number(n).toLocaleString("en-US");
+const NR = '<span class="muted">Not reported</span>';
+const tri = v => v === true ? '<span class="ok">Yes</span>' : v === false ? '<span class="muted">No</span>' : NR;
+const val = (v, f = esc) => v == null || v === "" ? NR : f(v);
+const priceCell = p => p == null ? NR : p === 0 ? "Free" : `$${p < 1 ? p.toFixed(4) : p.toFixed(2)} <span class="muted">per 1M tokens</span>`;
+function modelPage(key) {
+  const m = byKey(key);
+  if (!m) return show(`<h2>Model not found</h2><div class="panel empty">No model <code>${esc(key)}</code> in the catalog. <a href="#/models">Back to all models</a></div>`);
+  const p = prov(m.provider);
+  const dep = modelDeprecations(m).map(r => ({...r, left: days(r.retire_guess)})).sort((a, b) => a.left - b.left);
+  const ch = (D.changes || []).filter(c => c.key === key).slice(0, 10);
+  const sim = models().filter(x => x.provider === m.provider && x.key !== key).slice(0, 6);
+  const has = (list, x) => Array.isArray(list) ? list.includes(x) : null;
+  const row = (l, v) => `<tr><td class="muted" style="width:44%">${l}</td><td>${v}</td></tr>`;
+  const tbl = rows => `<div class="panel tablewrap"><table><tbody>${rows.join("")}</tbody></table></div>`;
+  const attach = m.attachment ?? has(m.modalities, "file");
+  const knownPricing = ["input_price", "output_price", "cache_read_price", "cache_write_price", "reasoning_price", "request_price"].some(field => m[field] != null);
+  const badge = m.status ? `<span class="tag">${esc(m.status)}</span>` : "";
+  const pathId = id => String(id).split("/").map(encodeURIComponent).join("/");
+  const externalLink = (label, url) => `<a href="${href(url)}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`;
+  const sourceLinks = [];
+  if (p.url) sourceLinks.push(externalLink(`${p.name} website`, p.url));
+  if (p.docs) sourceLinks.push(externalLink(`${p.name} developer docs`, p.docs));
+  if (m.official_url) sourceLinks.push(externalLink("Official model listing", m.official_url));
+  if (m.catalog_url) sourceLinks.push(externalLink("Official model catalog", m.catalog_url));
+  if (m.openrouter_id) sourceLinks.push(externalLink("OpenRouter model record", `https://openrouter.ai/${pathId(m.openrouter_id)}`));
+  if (m.hugging_face_id) sourceLinks.push(externalLink("Hugging Face model weights", `https://huggingface.co/${pathId(m.hugging_face_id)}`));
+  if (m.source?.includes("models.dev")) sourceLinks.push(externalLink("models.dev catalog", "https://models.dev/"));
+  const descriptions = [
+    m.official_description?.trim() ? `<div class="muted">Official Alibaba Cloud model description</div><p class="profile-description">${esc(plain(m.official_description))}</p>` : "",
+    m.description?.trim() ? `<div class="muted">Description from OpenRouter</div><p class="profile-description">${esc(plain(m.description))}</p>` : "",
+  ].filter(Boolean);
+  if (!descriptions.length) descriptions.push(`<div class="muted">Summary based on reported catalog metadata</div><p class="profile-description">${esc(modelSummary(m))}</p>`);
+  document.title = `${m.name} — AI Models Tracker`;
+  show(`<p><a href="#/models">&larr; All models</a></p>
+  <section class="profile-hero panel">
+   <div class="mhead">${modelImage(m, 54)}<div><h2 class="profile-name">${esc(m.name)} ${badge}</h2><div class="muted">${esc(p.name)}${m.family ? " · " + esc(m.family) : ""} · <code>${esc(m.id)}</code></div></div></div>
+   ${m.listed === false ? `<div class="panel empty bad" style="margin-bottom:12px">No longer listed by the sources since ${esc(m.missing_since || "an earlier fetch")}. Last seen ${esc(m.last_seen || "–")}. Data kept for history.</div>` : ""}
+   ${descriptions.join("")}
+   <h2>Available links and sources</h2><div class="source-links">${sourceLinks.length ? sourceLinks.join("") : '<span class="muted">No external links were provided by the tracked sources.</span>'}</div>
+   <button id="cmp"></button>
+  </section>
+  <div class="two">
+   <section><h2>Tokens and limits</h2>${tbl([
+     row("Context window (max input tokens)", val(m.context, v => esc(fmtN(v)) + " tokens")),
+     row("Max output tokens", val(m.max_output, v => esc(fmtN(v)) + " tokens")),
+     row("Knowledge cutoff", val(m.knowledge)), row("Tokenizer", val(m.tokenizer)),
+     row("Official model aliases", val((m.aliases || []).join(", "))),
+     row("Released", val(m.release_date)), row("Last updated by provider", val(m.last_updated)),
+     row("Last price or context change we saw", m.context != null || knownPricing ? val(m.updated_at) : NR)])}</section>
+   <section><h2>Pricing</h2>${tbl([
+     row("Input", priceCell(m.input_price)), row("Output", priceCell(m.output_price)),
+     row("Cached input (read)", priceCell(m.cache_read_price)), row("Cached input (write)", priceCell(m.cache_write_price)),
+     row("Reasoning tokens", priceCell(m.reasoning_price)),
+     row("Per request fee", m.request_price ? "$" + esc(m.request_price) : NR)])}
+     ${m.input_price != null && m.output_price != null ? `<div class="panel" style="margin-top:10px;padding:12px 14px"><strong>Cost estimate</strong><div class="controls" style="margin:8px 0 0"><label>Input tokens <input type="number" id="ti" min="0" value="100000" style="width:9em"></label><label>Output tokens <input type="number" id="to" min="0" value="10000" style="width:9em"></label><strong id="cost"></strong></div></div>` : ""}</section>
+   <section><h2>Capabilities</h2>${tbl([
+     row("Text input", tri(has(m.modalities, "text"))), row("Image input", tri(has(m.modalities, "image"))),
+     row("Audio input", tri(has(m.modalities, "audio"))), row("Video input", tri(has(m.modalities, "video"))),
+     row("File or PDF input", tri(attach)), row("Text output", tri(has(m.outputs, "text"))),
+     row("Image output", tri(has(m.outputs, "image"))), row("Audio output", tri(has(m.outputs, "audio"))),
+     row("Official provider capabilities", val((m.official_capabilities || []).join(", "))),
+     row("Tool / function calling", tri(m.tool_call)), row("Reasoning", tri(m.reasoning)),
+     row("Structured outputs", tri(m.structured_output)), row("JSON mode", tri(m.json_mode)),
+     row("Web search", tri(m.web_search)), row("Temperature control", tri(m.temperature)),
+     row("Open weights", tri(m.open_weights))])}</section>
+   <section><h2>Modalities and parameters</h2>${tbl([
+     row("Inputs", val((m.modalities || []).join(", "))), row("Outputs", val((m.outputs || []).join(", "))),
+     row("Moderated", tri(m.moderated)),
+     row("Supported parameters", (m.supported_parameters || []).length ? m.supported_parameters.map(x => `<span class="tag">${esc(x)}</span>`).join(" ") : NR)])}</section>
+  </div>
+  ${(m.price_history || []).length ? `<section class="sec"><h2>Price history</h2><div class="panel tablewrap"><table><thead><tr><th>Date</th><th class="n">Input $/M</th><th class="n">Output $/M</th></tr></thead><tbody>${m.price_history.slice().reverse().map(x => `<tr><td>${esc(x.date)}</td><td class="n">${money(x.input)}</td><td class="n">${money(x.output)}</td></tr>`).join("")}</tbody></table></div></section>` : ""}
+  <section class="sec"><h2>Retirement</h2><p class="sub">Matched by model name from the tracked deprecation pages. Confirm on the source page.</p>${dep.length ? `<ul class="runway panel">${dep.map(r => r.left >= 0 && r.listed !== false ? runwayItem(r, true) : `<li><div class="rows"><a href="${href(r.source_url)}">${esc(r.model)}</a><span class="bad">${r.listed === false ? "no longer on source page, date " : "retired "}${esc(r.retire_guess)}</span>${r.cells?.length ? `<details><summary>Official source details</summary><p>${esc(r.cells.join(" · "))}</p></details>` : ""}</div></li>`).join("")}</ul>` : `<div class="panel empty">No retirement date found for this model.</div>`}</section>
+  <section class="sec"><h2>Recent changes</h2>${ch.length ? `<ul class="feed panel">${ch.map(c => `<li><span class="tag">${esc(c.type.replace("_", " "))}</span>${c.type === "price_change" ? `in/out ${c.from.map(money).join(" / ")} → ${c.to.map(money).join(" / ")}` : ""} <span class="muted">${ago(c.ts)}</span></li>`).join("")}</ul>` : `<div class="panel empty">No changes recorded since tracking began.</div>`}</section>
+  ${sim.length ? `<section class="sec"><h2>More from ${esc(p.name)}</h2><div class="panel tablewrap"><table><tbody>${sim.map(x => `<tr><td>${mlink(x)}</td><td class="n">${ctx(x.context)}</td><td class="n">${money(x.input_price)} / ${money(x.output_price)}</td><td>${esc(x.release_date || "–")}</td></tr>`).join("")}</tbody></table></div></section>` : ""}
+  <section class="sec"><p class="muted">Fields reported by ${esc((m.source || []).map(sourceLabel).join(" and ") || "tracked sources")}; catalog last refreshed ${esc(D.catalog?.updated || "unknown")}. "Not reported" means a tracked source did not supply the field.</p>
+  <details><summary>All available source fields</summary><pre>${esc(JSON.stringify(m, null, 1))}</pre></details></section>`);
+  const b = $("#cmp"), setB = () => b.textContent = picked.has(key) ? "Remove from compare" : "Add to compare";
+  setB(); b.onclick = () => { picked.has(key) ? picked.delete(key) : picked.size < 4 && picked.add(key); setB(); };
+  const calc = () => { const c = $("#cost"); if (!c) return; const v = ((+$("#ti").value || 0) * m.input_price + (+$("#to").value || 0) * m.output_price) / 1e6; c.textContent = "≈ $" + (v < 0.01 && v > 0 ? v.toFixed(5) : v.toFixed(2)); };
+  if ($("#ti")) { $("#ti").oninput = $("#to").oninput = calc; calc(); }
+}
+
+/* ---------- models ---------- */
+const F = {q: "", p: "", t: "", basis: "release_date", from: "", to: "", rangeMode: "all", group: true, reasoning: false, open: false, sort: "release_date", dir: -1, shown: 100, unl: false};
+const BASIS = {release_date: "Released", first_seen: "Added to tracker", updated_at: "Last changed"};
+const SOURCE_LABELS = {alibaba_model_studio: "Alibaba Cloud Model Studio", "models.dev": "models.dev", openrouter: "OpenRouter"};
+const sourceLabel = source => SOURCE_LABELS[source] || source;
+const fmtDay = d => !d ? "No date" : d.length === 10 ? new Date(d + "T00:00:00Z").toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric", timeZone: "UTC"}) : d;
+const localDateKey = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const daysBeforeToday = n => { const d = new Date(); d.setHours(12, 0, 0, 0); d.setDate(d.getDate() - n); return localDateKey(d); };
+function modelsView() {
+  if (!models().length) return show(empty("models"));
+  const ps = [...new Set(models().map(m => m.provider))].sort();
+  const nl = models().filter(m => m.listed === false).length;
+  const sources = [...new Set(models().flatMap(m => m.source || []))].sort().map(sourceLabel);
+  show(`<h2>Models</h2><p class="sub">${(models().length - nl).toLocaleString("en-US")} model records${nl ? ` · ${nl.toLocaleString("en-US")} kept for history` : ""} · catalog refreshed ${ago(D.catalog?.updated)} · configured sources: ${esc(sources.join(", ") || "not reported")}. Coverage is limited to these sources and may not include every available model.</p>
+  <div class="model-filters panel" role="region" aria-label="Model filters">
+  <div class="filter-heading"><strong>Filter models</strong><span class="filter-help">Search by model, provider, or capability, then narrow by date.</span></div>
+  <div class="controls"><input type="search" id="q" placeholder="Search models" aria-label="Search models" value="${esc(F.q)}">
+  <select id="p" aria-label="Provider"><option value="">All providers</option>${ps.map(p => `<option value="${esc(p)}" ${F.p === p ? "selected" : ""}>${esc(prov(p).name)}</option>`).join("")}</select>
+  <select id="t" aria-label="Type"><option value="">All types</option>${[...new Set(models().flatMap(m => m.outputs || []))].sort().map(t => `<option value="${esc(t)}" ${F.t === t ? "selected" : ""}>Outputs ${esc(t)}</option>`).join("")}</select></div>
+  <div class="controls"><label>Date field <select id="basis" aria-label="Date field">${Object.entries(BASIS).map(([k, v]) => `<option value="${k}" ${F.basis === k ? "selected" : ""}>${v}</option>`).join("")}</select></label>
+  <select id="sort" aria-label="Sort models">${[["release_date","Release date"],["name","Name"],["provider","Provider"],["context","Context"],["input_price","Input price"],["output_price","Output price"],["first_seen","Added"],["updated_at","Last changed"]].map(([k,l]) => `<option value="${k}" ${F.sort === k ? "selected" : ""}>Sort: ${l}</option>`).join("")}</select>
+  <button id="sort-dir" type="button" aria-label="Toggle sort direction">Direction ${F.dir < 0 ? "↓" : "↑"}</button>
+  <label><input type="checkbox" id="group"> Group by day</label> <label><input type="checkbox" id="reasoning" ${F.reasoning ? "checked" : ""}> Reasoning</label> <label><input type="checkbox" id="open" ${F.open ? "checked" : ""}> Open weights</label> <label><input type="checkbox" id="unl" ${F.unl ? "checked" : ""}> Include no longer listed</label></div>
+  <div class="date-range-section"><div class="date-range-heading"><strong>Date range</strong><span id="date-basis-label"></span></div>
+  <p class="filter-help">Choose a quick range or set custom dates.</p>
+  <div id="chips" aria-label="Quick date filters"></div>
+  <details id="custom-range" class="custom-range" ${F.rangeMode === "custom" ? "open" : ""}><summary>Custom date range</summary><div class="custom-range-fields">
+  <label for="from">From<input type="date" id="from"></label><label for="to">To<input type="date" id="to"></label></div></details></div>
+  </div>
+  <p class="muted" id="count"></p><div id="rows" class="model-list"></div><button id="more" hidden>Load 100 more models</button>`);
+  const base = m => (!F.q || [m.name, m.id, m.aliases, m.description, m.official_description].join(" ").toLowerCase().includes(F.q.toLowerCase())) && (!F.p || m.provider === F.p) && (!F.t || (m.outputs || []).includes(F.t)) && (!F.reasoning || m.reasoning) && (!F.open || m.open_weights) && (F.unl || m.listed !== false);
+  const dateOk = m => { if (!F.from && !F.to) return true; const d = m[F.basis]; return !!d && (!F.from || d >= F.from) && (!F.to || d <= F.to); };
+  const row = m => {
+    const retirement = retirementInfo(m);
+    const retirementTag = retirement ? `<span class="tag ${retirement.passed ? "bad" : "warn"}">${retirement.passed ? "Deprecated" : "Retires"} ${esc(fmtDay(retirement.date))}</span>` : "";
+    return `<article class="model-card"><div class="model-visual">${modelImage(m)}</div><div class="model-info"><div class="model-title">${mlink(m)}${m.listed === false ? '<span class="tag bad">not listed by sources</span>' : ""}${retirementTag}</div><div class="model-summary">${esc(modelSummary(m))}</div><div class="model-meta"><span>${icon(m.provider, 16)}${esc(prov(m.provider).name)}</span><span>${ctx(m.context)} context</span><span>${m.release_date ? `Released ${esc(m.release_date)}` : `Added ${esc(m.first_seen || "–")}`}</span>${m.reasoning ? '<span class="tag">Reasoning</span>' : ""}${m.tool_call ? '<span class="tag">Tools</span>' : ""}${m.open_weights ? '<span class="tag">Open weights</span>' : ""}</div><div class="model-prices"><span><strong>${money(m.input_price)}</strong><small>INPUT / 1M</small></span><span><strong>${money(m.output_price)}</strong><small>OUTPUT / 1M</small></span></div><a class="model-profile-link" href="#/model/${encodeURIComponent(m.key)}">Full model details →</a></div><div class="model-actions"><input type="checkbox" data-k="${esc(m.key)}" aria-label="Compare ${esc(m.name)}" ${picked.has(m.key) ? "checked" : ""}></div></article>`;
+  };
+  const upd = () => {
+    const pool = models().filter(base);
+    const today = localDateKey(new Date()), ranges = [
+      {id: "today", label: "Today", from: today, to: today},
+      {id: "last3", label: "Last 3 days", from: daysBeforeToday(2), to: today},
+      {id: "last7", label: "Last 7 days", from: daysBeforeToday(6), to: today},
+      {id: "last30", label: "Last 30 days", from: daysBeforeToday(29), to: today},
+    ];
+    const rangeCount = (from, to) => pool.filter(m => { const d = m[F.basis]; return !!d && d >= from && d <= to; }).length;
+    $("#chips").innerHTML = `<button data-r="all" aria-pressed="${F.rangeMode === "all"}">All time <span class="range-count">${pool.length}</span></button>` +
+      ranges.map(r => `<button data-r="${r.id}" aria-pressed="${F.rangeMode === r.id}">${r.label}<span class="range-count">${rangeCount(r.from, r.to)}</span></button>`).join("");
+    $("#date-basis-label").textContent = `Based on ${BASIS[F.basis].toLowerCase()}`;
+    $("#from").value = F.from; $("#to").value = F.to; $("#group").checked = F.group;
+    const l = pool.filter(dateOk), key = F.group ? F.basis : F.sort, dir = F.group ? -1 : F.dir, gc = {};
+    l.sort((a, b) => { const x = a[key], y = b[key]; if (x == null) return 1; if (y == null) return -1; return (x > y ? 1 : x < y ? -1 : 0) * dir; });
+    l.forEach(m => { const d = m[F.basis] || ""; gc[d] = (gc[d] || 0) + 1; });
+    $("#count").textContent = `Showing ${Math.min(F.shown, l.length).toLocaleString("en-US")} of ${l.length.toLocaleString("en-US")} matching models`;
+    $("#more").hidden = l.length <= F.shown;
+    $("#more").textContent = `Load 100 more models · ${(l.length - F.shown).toLocaleString("en-US")} remaining`;
+    let last = null, out = "";
+    l.slice(0, F.shown).forEach(m => { if (F.group) { const d = m[F.basis] || ""; if (d !== last) { out += `<h3 class="model-group">${esc(fmtDay(d))} · ${gc[d]} model${gc[d] > 1 ? "s" : ""}</h3>`; last = d; } } out += row(m); });
+    $("#rows").innerHTML = out || `<div class="panel empty">No models match these filters.</div>`;
+  };
+  const set = f => e => { f(e.target); F.shown = 100; upd(); };
+  $("#more").onclick = () => { F.shown += 100; upd(); };
+  $("#q").oninput = set(t => F.q = t.value); $("#p").onchange = set(t => F.p = t.value); $("#t").onchange = set(t => F.t = t.value);
+  $("#basis").onchange = set(t => F.basis = t.value);
+  $("#from").oninput = set(t => { F.from = t.value; F.rangeMode = F.from || F.to ? "custom" : "all"; });
+  $("#to").oninput = set(t => { F.to = t.value; F.rangeMode = F.from || F.to ? "custom" : "all"; });
+  $("#group").onchange = set(t => F.group = t.checked); $("#reasoning").onchange = set(t => F.reasoning = t.checked);
+  $("#open").onchange = set(t => F.open = t.checked); $("#unl").onchange = set(t => F.unl = t.checked);
+  $("#chips").onclick = e => {
+    const b = e.target.closest("button"); if (!b) return;
+    const today = localDateKey(new Date());
+    const range = {today: [today, today], last3: [daysBeforeToday(2), today], last7: [daysBeforeToday(6), today], last30: [daysBeforeToday(29), today]}[b.dataset.r];
+    if (b.dataset.r === "all") { F.from = F.to = ""; F.rangeMode = "all"; }
+    else if (range) { [F.from, F.to] = range; F.rangeMode = b.dataset.r; }
+    $("#custom-range").open = false; F.shown = 100; upd();
+  };
+  $("#sort").onchange = set(t => { F.sort = t.value; F.group = false; });
+  $("#sort-dir").onclick = () => { F.dir = -F.dir; $("#sort-dir").textContent = `Direction ${F.dir < 0 ? "↓" : "↑"}`; upd(); };
+  $("#rows").onchange = e => { const k = e.target.dataset.k; if (!k) return; if (e.target.checked) { if (picked.size >= 4) { e.target.checked = false; return; } picked.add(k); } else picked.delete(k); };
+  upd();
+}
+
+/* ---------- best for ---------- */
+let purpose = null;
+function bestView() {
+  const b = D.best;
+  if (!b || !models().length) return show(empty("rankings"));
+  purpose = purpose && b[purpose] ? purpose : Object.keys(b)[0];
+  const P = D.meta?.purposes || {}, cur = b[purpose];
+  const item = (m, i) => `<tr><td class="muted">${i + 1}</td><td>${mlink(m)}</td><td>${icon(m.provider)}<a href="${href(prov(m.provider).docs || prov(m.provider).url)}">${esc(prov(m.provider).name)}</a></td><td class="n">${ctx(m.context)}</td><td class="n">${money(m.input_price)}</td><td class="n">${money(m.output_price)}</td><td>${esc(m.release_date || "–")}</td></tr>`;
+  const head = `<thead><tr><th></th><th>Model</th><th>Provider</th><th class="n">Context</th><th class="n">In $/M</th><th class="n">Out $/M</th><th>Released</th></tr></thead>`;
+  show(`<h2>Best for</h2><p class="sub">Each purpose shows up to ${cur.top.length} rule-based matches based on collected metadata, not an overall quality or benchmark ranking. <a href="#/models">Browse all ${models().length.toLocaleString("en-US")} model records</a>.</p>
+  <div class="controls">${Object.keys(b).map(k => `<button data-p="${esc(k)}" aria-pressed="${k === purpose}">${esc(P[k]?.label || k)}</button>`).join("")}</div>
+  <p class="muted">${esc(P[purpose]?.description || "")}</p>
+  <h3 class="model-group">Top ${cur.top.length} matches</h3><div class="panel tablewrap"><table>${head}<tbody>${cur.top.map(byKey).filter(Boolean).map(item).join("") || `<tr><td class="muted">No models match this rule.</td></tr>`}</tbody></table></div>
+  <h2 style="margin-top:28px">Top pick per provider</h2><div class="cards">${Object.entries(cur.by_provider).map(([p, k]) => { const m = byKey(k); return m ? `<div class="panel"><div class="muted">${icon(p)}${esc(prov(p).name)}</div><strong>${mlink(m)}</strong><div class="muted">${ctx(m.context)} context · ${money(m.input_price)} in / ${money(m.output_price)} out</div><a href="${href(prov(p).docs || prov(p).url)}">Provider docs</a></div>` : ""; }).join("")}</div>`);
+  document.querySelectorAll("button[data-p]").forEach(btn => btn.onclick = () => { purpose = btn.dataset.p; bestView(); });
+}
+
+/* ---------- compare ---------- */
+function compare() {
+  const ms = [...picked].map(byKey).filter(Boolean);
+  if (ms.length < 2) return show(`<h2>Compare</h2><p class="sub">Tick two to four models in the Models tab, then come back here.</p><div class="panel empty">${ms.length} selected. <a href="#/models">Choose models</a></div>`);
+  const columns = `style="--columns:${ms.length}"`;
+  const metrics = [
+    {label:"Context window", key:"context", lower:false, format:ctx},
+    {label:"Maximum output tokens", key:"max_output", lower:false, format:value => value == null ? "–" : fmtN(value)},
+    {label:"Input cost / 1M tokens", key:"input_price", lower:true, format:money},
+    {label:"Output cost / 1M tokens", key:"output_price", lower:true, format:money},
+  ];
+  const metricRow = metric => {
+    const values = ms.map(m => m[metric.key] == null || m[metric.key] === "" || !Number.isFinite(Number(m[metric.key]))
+      ? null
+      : Number(m[metric.key]));
+    const present = values.filter(value => value !== null);
+    const max = Math.max(...present, 0), best = present.length ? (metric.lower ? Math.min(...present) : max) : null;
+    return `<div class="compare-grid" ${columns}><div class="compare-row-label">${esc(metric.label)}<div class="compare-note">${metric.lower ? "Lower costs less" : "Higher is more"}</div></div>${ms.map((m, i) => {
+      const value = values[i];
+      if (value === null) return `<div class="compare-value"><span>Not reported</span></div>`;
+      const width = max > 0 ? Math.max(4, value / max * 100) : 4;
+      return `<div class="compare-value ${value === best ? "best" : ""}"><div class="compare-track"><i style="width:${width}%"></i></div><span>${esc(metric.format(value))}</span></div>`;
+    }).join("")}</div>`;
+  };
+  const featureRows = [
+    ["Capabilities", "Reasoning", m => m.reasoning],
+    ["Capabilities", "Tool / function calling", m => m.tool_call],
+    ["Capabilities", "Web search", m => m.web_search],
+    ["Capabilities", "Structured output", m => m.structured_output],
+    ["Capabilities", "JSON mode", m => m.json_mode],
+    ["Capabilities", "Open weights", m => m.open_weights],
+    ["Input and output", "Input modalities", m => m.modalities],
+    ["Input and output", "Output modalities", m => m.outputs],
+    ["Limits", "Knowledge cutoff", m => m.knowledge],
+    ["Limits", "Tokenizer", m => m.tokenizer],
+    ["Limits", "Temperature control", m => m.temperature],
+    ["Model details", "Provider", m => prov(m.provider).name],
+    ["Model details", "Released", m => m.release_date],
+    ["Model details", "Family", m => m.family],
+    ["Model details", "API identifier", m => m.id],
+    ["Model details", "Reported sources", m => (m.source || []).join(", ")],
+  ];
+  const displayFeature = value => {
+    if (value === true) return ["Yes", "yes"];
+    if (value === false) return ["No", "no"];
+    if (value == null || value === "") return ["Not reported", "unknown"];
+    if (Array.isArray(value)) return [value.length ? value.join(", ") : "Not reported", value.length ? "" : "unknown"];
+    return [String(value), ""];
+  };
+  let lastGroup = "";
+  const comparisonRows = featureRows.map(([group, label, get]) => {
+    const heading = group !== lastGroup ? `<tr><th class="compare-group" colspan="${ms.length + 1}">${esc(group)}</th></tr>` : "";
+    lastGroup = group;
+    return `${heading}<tr><th scope="row">${esc(label)}</th>${ms.map(m => {
+      const [value, state] = displayFeature(get(m));
+      return `<td><span class="feature-value ${state}">${esc(value)}</span></td>`;
+    }).join("")}</tr>`;
+  }).join("");
+  show(`<div class="compare-toolbar"><div><h2>Model comparison</h2><p class="sub">Compare up to four models using reported pricing, limits, and capabilities.</p></div><button id="clr" type="button">Clear selection</button></div>
+  <section class="sec"><h2>Capacity and pricing</h2><div class="compare-scroll"><div class="compare-grid compare-model-head" ${columns}><div>Metric</div>${ms.map(m => `<div>${icon(m.provider)}<strong>${mlink(m)}</strong><small>${esc(prov(m.provider).name)}</small></div>`).join("")}</div>${metrics.map(metricRow).join("")}</div></section>
+  <section class="sec"><h2>Feature comparison</h2><div class="panel tablewrap"><table><thead><tr><th>Feature</th>${ms.map(m => `<th>${mlink(m)}</th>`).join("")}</tr></thead><tbody>${comparisonRows}</tbody></table></div><p class="compare-note">“Not reported” means the available catalog sources did not provide that detail; it does not mean the model lacks the feature.</p></section>`);
+  $("#clr").onclick = () => { picked.clear(); compare(); };
+}
+
+/* ---------- deprecations ---------- */
+function depView() {
+  const rowsAll = (D.deprecations?.rows || []).map(r => ({...r, left: days(r.retire_guess)})), all = rowsAll.filter(r => r.listed !== false), dropped = rowsAll.filter(r => r.listed === false);
+  if (!all.length) return show(`<h2>Deprecations</h2><p class="sub">Models retiring today or later, sorted by retirement date.</p>${empty("deprecation dates")}`);
+  const up = all.filter(r => r.left >= 0).sort((a, b) => a.left - b.left), gone = all.filter(r => r.left < 0).sort((a, b) => b.left - a.left);
+  show(`<h2>Deprecations</h2><p class="sub">Models retiring today or later are listed first; expired dates are under “Already retired.” Dates are parsed from provider pages and APIs. Always confirm on the source page. Updated ${ago(D.deprecations.updated)}.</p>
+  <ul class="runway panel">${up.map(runwayItem).join("") || '<li class="muted">Nothing scheduled.</li>'}</ul>
+  ${dropped.length ? `<details style="margin-top:20px"><summary>No longer on the source page (${dropped.length})</summary><p class="sub" style="margin-top:10px">Kept for history. A date may have been replaced or the entry removed.</p><ul class="runway panel">${dropped.slice(0, 150).map(r => `<li><div class="rows"><a href="${href(r.source_url)}">${esc(r.model)}</a><span class="muted">${esc(r.retire_guess)}</span></div><div class="muted">${esc(prov(r.provider).name || r.provider)} · last seen ${esc(r.last_seen || "–")}</div></li>`).join("")}</ul></details>` : ""}
+  <details style="margin-top:20px"><summary>Already retired (${gone.length})</summary><ul class="runway panel" style="margin-top:10px">${gone.slice(0, 150).map(r => `<li><div class="rows"><a href="${href(r.source_url)}">${esc(r.model)}</a><span class="muted">${esc(r.retire_guess)}</span></div><div class="muted">${esc(prov(r.provider).name || r.provider)}</div></li>`).join("")}</ul></details>`);
+}
+
+/* ---------- news ---------- */
+let src = "";
+function newsView() {
+  const items = [...(D.news?.items || [])].sort((a, b) => {
+    const aDate = Date.parse(a.published || "") || 0, bDate = Date.parse(b.published || "") || 0;
+    return bDate - aDate;
+  });
+  if (!items.length) return show(`<h2>News</h2>${empty("news")}`);
+  const srcs = [...new Set(items.map(i => i.source))];
+  const filtered = items.filter(item => !src || item.source === src).slice(0, 80);
+  const cards = filtered.map(item => {
+    const description = item.description ? `<p class="news-description">${esc(plain(item.description))}</p>` : "";
+    const published = item.published && Number.isFinite(Date.parse(item.published)) ? `<time>${ago(item.published)}</time>` : "";
+    return `<article class="news-card"><div class="news-copy"><div class="news-meta"><span>${esc(item.source)}</span>${published}</div><h3 class="news-title"><a href="${href(item.link)}" target="_blank" rel="noopener noreferrer">${esc(item.title)}</a></h3>${description}<a class="news-read" href="${href(item.link)}" target="_blank" rel="noopener noreferrer">Read at source &rarr;</a></div></article>`;
+  }).join("");
+  show(`<h2>Latest news</h2><p class="sub">Newest stories from the configured feeds.</p><div class="controls news-controls"><label for="s">Filter by source</label><select id="s" aria-label="Filter by source"><option value="">All sources</option>${srcs.map(source => `<option value="${esc(source)}" ${source === src ? "selected" : ""}>${esc(source)}</option>`).join("")}</select></div><div class="news-grid">${cards || `<div class="panel empty">No stories match this source.</div>`}</div>`);
+  $("#s").onchange = e => { src = e.target.value; newsView(); };
+}
+
+boot();
+</script>
+</body>
+</html>

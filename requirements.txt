@@ -1,0 +1,2 @@
+# Installs AI Models Tracker and the dependencies declared in pyproject.toml.
+-e .

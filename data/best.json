@@ -1,0 +1,145 @@
+{
+ "reasoning": {
+  "top": [
+   "ling32flashfree",
+   "gemini4hydrogeneu",
+   "gemini4hydrogenus",
+   "ultramarine1flash",
+   "oathbreakerglm53flash",
+   "gemini4hydrogen",
+   "gemini4hydrogenbatch",
+   "gemini4carbon",
+   "nexn26",
+   "gemini4carbonus"
+  ],
+  "by_provider": {
+   "google": "gemini4hydrogen",
+   "anthropic": "claudefable52batch",
+   "meta": "museember",
+   "zhipu": "glm53flashxlegal",
+   "openai": "gpt61terraprobatch",
+   "moonshot": "kimik31probatch",
+   "nvidia": "minimaxm31flash",
+   "mistral": "deepseekv41flash1017",
+   "deepseek": "deepseekv4flash",
+   "alibaba": "qwen38maxprime",
+   "xai": "grok47",
+   "cohere": "northminicodefree",
+   "sarvam": "sarvam105b"
+  }
+ },
+ "agents": {
+  "top": [
+   "ling32flashfree",
+   "gemini4hydrogeneu",
+   "gemini4hydrogenus",
+   "ultramarine1flash",
+   "oathbreakerglm53flash",
+   "gemini4hydrogen",
+   "gemini4hydrogenbatch",
+   "gemini4carbon",
+   "nexn26",
+   "gemini4carbonus"
+  ],
+  "by_provider": {
+   "google": "gemini4hydrogen",
+   "anthropic": "claudefable52batch",
+   "meta": "museember",
+   "zhipu": "glm53flashxlegal",
+   "openai": "gpt61terraprobatch",
+   "moonshot": "kimik31pro",
+   "nvidia": "minimaxm31flash",
+   "mistral": "deepseekv41flash1017",
+   "deepseek": "deepseekv4flash",
+   "alibaba": "qwen38maxprime",
+   "xai": "grok47",
+   "cohere": "northminicodefree",
+   "sarvam": "sarvam105b"
+  }
+ },
+ "cheapest": {
+  "top": [
+   "small",
+   "qwen3827bgguf",
+   "ling30tinythinking",
+   "granite40hmicro",
+   "gptoss20beu",
+   "gemma4e4bit",
+   "qwen352b",
+   "llama318binstructturbo",
+   "ling30flash",
+   "doubaoseed16flash"
+  ],
+  "by_provider": {
+   "deepseek": "deepseekv41flash1017batch",
+   "openai": "gptoss20bbatch",
+   "mistral": "mistralnemo",
+   "alibaba": "qwen37flash",
+   "cohere": "commandr7barabic022025",
+   "meta": "llama318binstruct",
+   "anthropic": "claudehaiku55batch",
+   "zhipu": "glm53flashbatch",
+   "nvidia": "nemotron3nano30ba3b",
+   "google": "gemini25flashlite",
+   "sarvam": "sarvam105b",
+   "moonshot": "kimik25",
+   "xai": "grok43batch"
+  }
+ },
+ "long_context": {
+  "top": [
+   "klingv26",
+   "liquidauto",
+   "usmetallama4scout17binstructv10",
+   "metallama4scout17binstructv10",
+   "qwenlong",
+   "deepseekv41flashmarathon",
+   "glm53marathon",
+   "autocode",
+   "autobeta",
+   "paretocode"
+  ],
+  "by_provider": {
+   "xai": "grok420multiagent",
+   "alibaba": "qwen3827b",
+   "openai": "gpt61terraprobatch",
+   "google": "gemini4hydrogen",
+   "meta": "museember",
+   "zhipu": "glm53flashxlegal",
+   "moonshot": "kimik31probatch",
+   "mistral": "deepseekv41flash1017",
+   "deepseek": "deepseekv4flash",
+   "nvidia": "nemotron35supervl120ba12b",
+   "anthropic": "claudefable52batch",
+   "cohere": "northminicodefree",
+   "sarvam": "sarvam105b"
+  }
+ },
+ "open_weights": {
+  "top": [
+   "nexn26",
+   "ernie55flashpreviewfree",
+   "deepseekv4proqwen359buncensoredheretic",
+   "lfm317b",
+   "lfm317bfree",
+   "artemis31bv12",
+   "inkling2smallfree",
+   "inkling2small",
+   "ripple65bpreview",
+   "assistantpepe32b"
+  ],
+  "by_provider": {
+   "moonshot": "kimik31pro",
+   "nvidia": "minimaxm31flash",
+   "mistral": "deepseekv41flash1017",
+   "deepseek": "deepseekv4flash",
+   "meta": "musesparkopen",
+   "zhipu": "glm53flashx",
+   "cohere": "northsmalltranslate092026",
+   "alibaba": "qwen3827b",
+   "google": "gemma431bit",
+   "sarvam": "sarvam105b",
+   "openai": "gptosssafeguard20b"
+  }
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "providers": {
+  "anthropic": {
+   "name": "Anthropic",
+   "url": "https://www.anthropic.com",
+   "docs": "https://docs.claude.com",
+   "aliases": [
+    "anthropic"
+   ]
+  },
+  "openai": {
+   "name": "OpenAI",
+   "url": "https://openai.com",
+   "docs": "https://platform.openai.com/docs",
+   "aliases": [
+    "openai"
+   ]
+  },
+  "google": {
+   "name": "Google",
+   "url": "https://deepmind.google",
+   "docs": "https://ai.google.dev",
+   "aliases": [
+    "google"
+   ]
+  },
+  "meta": {
+   "name": "Meta",
+   "url": "https://www.llama.com",
+   "docs": "https://www.llama.com/docs",
+   "aliases": [
+    "meta-llama",
+    "meta"
+   ]
+  },
+  "xai": {
+   "name": "xAI",
+   "url": "https://x.ai",
+   "docs": "https://docs.x.ai",
+   "aliases": [
+    "x-ai",
+    "xai"
+   ]
+  },
+  "cohere": {
+   "name": "Cohere",
+   "url": "https://cohere.com",
+   "docs": "https://docs.cohere.com",
+   "aliases": [
+    "cohere"
+   ]
+  },
+  "mistral": {
+   "name": "Mistral AI",
+   "url": "https://mistral.ai",
+   "docs": "https://docs.mistral.ai",
+   "aliases": [
+    "mistralai",
+    "mistral"
+   ]
+  },
+  "deepseek": {
+   "name": "DeepSeek",
+   "url": "https://www.deepseek.com",
+   "docs": "https://api-docs.deepseek.com",
+   "aliases": [
+    "deepseek"
+   ]
+  },
+  "alibaba": {
+   "name": "Alibaba Qwen",
+   "url": "https://qwen.ai",
+   "docs": "https://www.alibabacloud.com/help/en/model-studio",
+   "aliases": [
+    "qwen",
+    "alibaba"
+   ]
+  },
+  "moonshot": {
+   "name": "Moonshot AI",
+   "url": "https://www.moonshot.ai",
+   "docs": "https://platform.moonshot.ai",
+   "aliases": [
+    "moonshotai"
+   ]
+  },
+  "zhipu": {
+   "name": "Z.ai (Zhipu)",
+   "url": "https://z.ai",
+   "docs": "https://docs.z.ai",
+   "aliases": [
+    "z-ai",
+    "zhipuai",
+    "zai"
+   ]
+  },
+  "sarvam": {
+   "name": "Sarvam AI",
+   "url": "https://www.sarvam.ai",
+   "docs": "https://docs.sarvam.ai",
+   "aliases": [
+    "sarvamai",
+    "sarvam"
+   ]
+  },
+  "nvidia": {
+   "name": "NVIDIA",
+   "url": "https://www.nvidia.com/en-us/",
+   "docs": "https://docs.nvidia.com/nim/",
+   "aliases": [
+    "nvidia"
+   ]
+  }
+ },
+ "icons": {
+  "alibaba": "data/icons/alibaba.png",
+  "anthropic": "data/icons/anthropic.ico",
+  "cohere": "data/icons/cohere.png",
+  "google": "data/icons/google.png",
+  "mistral": "data/icons/mistral.ico",
+  "moonshot": "data/icons/moonshot.ico",
+  "nvidia": "data/icons/nvidia.ico",
+  "openai": "data/icons/openai.svg",
+  "sarvam": "data/icons/sarvam.ico",
+  "xai": "data/icons/xai.ico",
+  "zhipu": "data/icons/zhipu.svg"
+ },
+ "purposes": {
+  "reasoning": {
+   "label": "Reasoning",
+   "description": "Newest models that support a reasoning mode."
+  },
+  "agents": {
+   "label": "Tool use and agents",
+   "description": "Tool-calling models with at least 100K context, newest first."
+  },
+  "cheapest": {
+   "label": "Lowest cost",
+   "description": "Cheapest paid models that support tool calling."
+  },
+  "long_context": {
+   "label": "Longest context",
+   "description": "Models with the largest context windows."
+  },
+  "open_weights": {
+   "label": "Open weights",
+   "description": "Newest models with downloadable weights."
+  }
+ }
+}

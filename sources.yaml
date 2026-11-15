@@ -1,0 +1,73 @@
+# Everything the fetchers need lives here. Add a provider, feed or page = edit this file only.
+user_agent: "AI-Models-Tracker/0.1"
+
+# Data is never deleted: models/deprecations that disappear are flagged, not removed. News and change logs keep this many newest items.
+retention: {news: 3000, changes: 5000}
+
+openrouter_url: https://openrouter.ai/api/v1/models?output_modalities=all   # public JSON API, all model types (text, image, audio, embeddings)
+modelsdev_url: https://models.dev/api.json                # open catalog
+modelsdev_all: true   # true = include every provider/reseller on models.dev; false = only providers listed below
+qwen_catalog_url: https://www.alibabacloud.com/help/en/model-studio/models
+qwen_details_url: https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview
+
+# Provider config. `aliases` = ids used by OpenRouter / models.dev for the same company.
+# country/region are a small curated list (no live source exists for this).
+providers:
+  anthropic: {name: Anthropic, url: "https://www.anthropic.com", docs: "https://docs.claude.com", aliases: [anthropic]}
+  openai:    {name: OpenAI, url: "https://openai.com", docs: "https://platform.openai.com/docs", aliases: [openai]}
+  google:    {name: Google, url: "https://deepmind.google", docs: "https://ai.google.dev", aliases: [google]}
+  meta:      {name: Meta, url: "https://www.llama.com", docs: "https://www.llama.com/docs", aliases: [meta-llama, meta]}
+  xai:       {name: xAI, url: "https://x.ai", docs: "https://docs.x.ai", aliases: [x-ai, xai]}
+  cohere:    {name: Cohere, url: "https://cohere.com", docs: "https://docs.cohere.com", aliases: [cohere]}
+  mistral:   {name: Mistral AI, url: "https://mistral.ai", docs: "https://docs.mistral.ai", aliases: [mistralai, mistral]}
+  deepseek:  {name: DeepSeek, url: "https://www.deepseek.com", docs: "https://api-docs.deepseek.com", aliases: [deepseek]}
+  alibaba:   {name: Alibaba Qwen, url: "https://qwen.ai", docs: "https://www.alibabacloud.com/help/en/model-studio", aliases: [qwen, alibaba]}
+  moonshot:  {name: Moonshot AI, url: "https://www.moonshot.ai", docs: "https://platform.moonshot.ai", aliases: [moonshotai]}
+  zhipu:     {name: Z.ai (Zhipu), url: "https://z.ai", docs: "https://docs.z.ai", aliases: [z-ai, zhipuai, zai]}
+  sarvam:    {name: Sarvam AI, url: "https://www.sarvam.ai", docs: "https://docs.sarvam.ai", aliases: [sarvamai, sarvam]}
+  nvidia:    {name: NVIDIA, url: "https://www.nvidia.com/en-us/", docs: "https://docs.nvidia.com/nim/", aliases: [nvidia]}
+
+# Official retirement pages (tables and preview windows are parsed; every row keeps its source URL).
+deprecation_pages:
+  anthropic: https://platform.claude.com/docs/en/about-claude/model-deprecations
+  openai:    https://developers.openai.com/api/docs/deprecations
+  google:    https://ai.google.dev/gemini-api/docs/deprecations
+  azure:     https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule
+  alibaba:   https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview
+
+# RSS/Atom feeds. Source-provided descriptions and images are stored when present; broken feeds are skipped.
+feeds:
+  OpenRouter new models: https://openrouter.ai/api/v1/models?use_rss=true
+  Hugging Face blog:     https://huggingface.co/blog/feed.xml
+  OpenAI news:           https://openai.com/news/rss.xml
+  Google DeepMind:       https://deepmind.google/blog/rss.xml
+  NVIDIA Blog:           https://blogs.nvidia.com/feed/
+
+# Purpose lists are RULES over live metadata (not quality benchmarks).
+# filter: [field, op, value] with op in eq, gt, gte, lte, truthy.   sort: [field, asc|desc]
+purposes:
+  reasoning:
+    label: Reasoning
+    description: Newest models that support a reasoning mode.
+    filter: [[reasoning, truthy, true]]
+    sort: [[release_date, desc]]
+  agents:
+    label: Tool use and agents
+    description: Tool-calling models with at least 100K context, newest first.
+    filter: [[tool_call, truthy, true], [context, gte, 100000]]
+    sort: [[release_date, desc]]
+  cheapest:
+    label: Lowest cost
+    description: Cheapest paid models that support tool calling.
+    filter: [[input_price, gt, 0], [tool_call, truthy, true]]
+    sort: [[input_price, asc]]
+  long_context:
+    label: Longest context
+    description: Models with the largest context windows.
+    filter: [[context, gt, 0]]
+    sort: [[context, desc]]
+  open_weights:
+    label: Open weights
+    description: Newest models with downloadable weights.
+    filter: [[open_weights, truthy, true]]
+    sort: [[release_date, desc]]

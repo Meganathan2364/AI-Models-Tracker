@@ -1,0 +1,8078 @@
+[
+ {
+  "ts": "2026-11-15T07:21:18+00:00",
+  "type": "price_change",
+  "key": "gemma34bit",
+  "name": "Gemma 3 4B IT",
+  "provider": "nvidia",
+  "from": [
+   0.05,
+   0.1
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:21:18+00:00",
+  "type": "price_change",
+  "key": "kimik26",
+  "name": "Kimi K2.6",
+  "provider": "nvidia",
+  "from": [
+   0.95,
+   4
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:21:18+00:00",
+  "type": "price_change",
+  "key": "minimaxm31flash",
+  "name": "MiniMax-M3.1-Flash",
+  "provider": "nvidia",
+  "from": [
+   0.15,
+   0.6
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:21:18+00:00",
+  "type": "price_change",
+  "key": "qwenimage",
+  "name": "Qwen Image",
+  "provider": "nvidia",
+  "from": [
+   0.5,
+   2
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:21:18+00:00",
+  "type": "price_change",
+  "key": "whisperlargev3",
+  "name": "Whisper Large v3",
+  "provider": "nvidia",
+  "from": [
+   0.01,
+   0.01
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:21:18+00:00",
+  "type": "price_change",
+  "key": "gemma312bit",
+  "name": "Gemma 3 12B IT",
+  "provider": "nvidia",
+  "from": [
+   0.05,
+   0.15
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:21:18+00:00",
+  "type": "price_change",
+  "key": "llamaguard412b",
+  "name": "Llama Guard 4 12B",
+  "provider": "nvidia",
+  "from": [
+   0.18,
+   0.18
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:21:18+00:00",
+  "type": "price_change",
+  "key": "llama31nemotron70binstruct",
+  "name": "Llama 3.1 Nemotron 70B Instruct",
+  "provider": "nvidia",
+  "from": [
+   0.6,
+   0.6
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:21:18+00:00",
+  "type": "price_change",
+  "key": "llama3211bvisioninstruct",
+  "name": "Llama 3.2 11b Vision Instruct",
+  "provider": "nvidia",
+  "from": [
+   0.345,
+   0.345
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:21:18+00:00",
+  "type": "price_change",
+  "key": "gptoss20b",
+  "name": "GPT OSS 20B",
+  "provider": "nvidia",
+  "from": [
+   0.04,
+   0.19
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:21:18+00:00",
+  "type": "price_change",
+  "key": "step5preview",
+  "name": "Step 5 Preview",
+  "provider": "nvidia",
+  "from": [
+   1,
+   2.7
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:21:18+00:00",
+  "type": "price_change",
+  "key": "deepseekv41flash",
+  "name": "DeepSeek V4.1 Flash",
+  "provider": "nvidia",
+  "from": [
+   0.4,
+   1.6
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:15+00:00",
+  "type": "deprecation",
+  "name": "claude-opus-4-5 (2027-02-22)",
+  "provider": "azure",
+  "link": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule"
+ },
+ {
+  "ts": "2026-11-15T07:02:15+00:00",
+  "type": "deprecation",
+  "name": "claude-haiku-4-5 (2027-02-22)",
+  "provider": "azure",
+  "link": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule"
+ },
+ {
+  "ts": "2026-11-15T07:02:15+00:00",
+  "type": "deprecation",
+  "name": "claude-haiku-4-5 (2027-02-22)",
+  "provider": "azure",
+  "link": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule"
+ },
+ {
+  "ts": "2026-11-15T07:02:15+00:00",
+  "type": "deprecation",
+  "name": "Recraft: Recraft V4.1 Flash V2 (free) (2026-11-28)",
+  "provider": "recraft",
+  "link": "https://openrouter.ai/models"
+ },
+ {
+  "ts": "2026-11-15T07:02:15+00:00",
+  "type": "deprecation",
+  "name": "Dots3-Note Preview (free) (2026-12-31)",
+  "provider": "dots-studio",
+  "link": "https://openrouter.ai/models"
+ },
+ {
+  "ts": "2026-11-15T07:02:15+00:00",
+  "type": "deprecation",
+  "name": "GLM-5.1 (2026-11-20)",
+  "provider": "zhipu",
+  "link": "https://openrouter.ai/models"
+ },
+ {
+  "ts": "2026-11-15T07:02:15+00:00",
+  "type": "deprecation",
+  "name": "Step 3.5 Flash (Deep Infra) (2026-11-15)",
+  "provider": "stepfun",
+  "link": "https://openrouter.ai/models"
+ },
+ {
+  "ts": "2026-11-15T07:02:15+00:00",
+  "type": "deprecation",
+  "name": "Qwen3 VL 30B A3B Thinking (2026-11-15)",
+  "provider": "alibaba",
+  "link": "https://openrouter.ai/models"
+ },
+ {
+  "ts": "2026-11-15T07:02:15+00:00",
+  "type": "deprecation",
+  "name": "Hunyuan A13B Instruct (2026-11-15)",
+  "provider": "tencent",
+  "link": "https://openrouter.ai/models"
+ },
+ {
+  "ts": "2026-11-15T07:02:15+00:00",
+  "type": "deprecation",
+  "name": "Llama 3.2 3B Instruct (Cloudflare) (2026-11-20)",
+  "provider": "meta",
+  "link": "https://openrouter.ai/models"
+ },
+ {
+  "ts": "2026-11-15T07:02:15+00:00",
+  "type": "deprecation",
+  "name": "Llama 3.2 1B Instruct (Cloudflare) (2026-11-20)",
+  "provider": "meta",
+  "link": "https://openrouter.ai/models"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nemotron3nanoomni30ba3breasoning",
+  "name": "Nemotron 3 Nano Omni 30B A3B Reasoning",
+  "provider": "requesty",
+  "from": [
+   0.2,
+   0.8
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "inkling",
+  "name": "Inkling",
+  "provider": "thinkingmachines",
+  "from": [
+   0.95,
+   4.05
+  ],
+  "to": [
+   1.87,
+   4.68
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "openaigpt55",
+  "name": "GPT-5.5",
+  "provider": "venice",
+  "from": [
+   5.5,
+   33
+  ],
+  "to": [
+   5,
+   30
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "glm51thinking",
+  "name": "GLM 5.1 Thinking TEE",
+  "provider": "nano-gpt",
+  "from": [
+   0.966,
+   3.036
+  ],
+  "to": [
+   0.9,
+   2.9
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "ministral14binstruct2512",
+  "name": "Ministral 3 14B",
+  "provider": "nano-gpt",
+  "from": [
+   0.1,
+   0.4
+  ],
+  "to": [
+   0.2,
+   0.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "llama4maverick17binstruct",
+  "name": "Llama 4 Maverick 17B Instruct (NovitaAI)",
+  "provider": "llmgateway-providers",
+  "from": [
+   0.24,
+   0.97
+  ],
+  "to": [
+   0.27,
+   0.85
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "gptoss20beu",
+  "name": "GPT OSS 20B (FlexAI, EU)",
+  "provider": "edenai"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv4pro0423",
+  "name": "DeepSeek V4 Pro 0423",
+  "provider": "ofox",
+  "from": [
+   1.65,
+   3.3
+  ],
+  "to": [
+   1.74,
+   3.48
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "llama3370binstruct",
+  "name": "Llama-3.3-70B-Instruct",
+  "provider": "meta",
+  "from": [
+   0.71,
+   0.71
+  ],
+  "to": [
+   0.25,
+   0.75
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3reranker4b",
+  "name": "Qwen3-Reranker-4B",
+  "provider": "regolo-ai",
+  "from": [
+   0.0575,
+   0
+  ],
+  "to": [
+   0.12,
+   0.12
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "nwflashflex",
+  "name": "Neuralwatt Flash (flex)",
+  "provider": "neuralwatt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "abliteratedmodellargev2",
+  "name": "Abliterated Model Large V2",
+  "provider": "abliteration-ai",
+  "from": [
+   3,
+   5
+  ],
+  "to": [
+   5,
+   5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mistrallarge2407",
+  "name": "Mistral Large 2407",
+  "provider": "mistral",
+  "from": [
+   2.116,
+   6.348
+  ],
+  "to": [
+   2,
+   6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "openaigpt61sol",
+  "name": "GPT-6.1 Sol",
+  "provider": "venice",
+  "from": [
+   2.2,
+   11
+  ],
+  "to": [
+   2,
+   10
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemma426ba4bitthinking",
+  "name": "Gemma 4 26B A4B Thinking",
+  "provider": "nano-gpt",
+  "from": [
+   0.031,
+   0.092
+  ],
+  "to": [
+   0.034,
+   0.102
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "qwen3coder480b",
+  "name": "Qwen3-Coder 480B-A35B Instruct",
+  "provider": "phase"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemininanobanana21",
+  "name": "Nano Banana 2.1 (Vertex AI)",
+  "provider": "google",
+  "from": [
+   1.5,
+   30
+  ],
+  "to": [
+   1.5,
+   7.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "solarpro4",
+  "name": "Solar Pro 4",
+  "provider": "upstage",
+  "from": [
+   0.3,
+   1.2
+  ],
+  "to": [
+   0.15,
+   0.6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3827bfp8",
+  "name": "Qwen3.8 27B",
+  "provider": "doubleword",
+  "from": [
+   0.46,
+   3.48
+  ],
+  "to": [
+   0.45,
+   3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3vl235ba22bthinking",
+  "name": "Qwen3 VL 235B A22B Thinking",
+  "provider": "orcarouter",
+  "from": [
+   0.287,
+   2.867
+  ],
+  "to": [
+   0.4,
+   4
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mixtral8x22binstruct",
+  "name": "Mixtral 8x22B Instruct",
+  "provider": "mistral",
+  "from": [
+   2.116,
+   6.348
+  ],
+  "to": [
+   2,
+   6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3235ba22bthinking2507",
+  "name": "Qwen3 235B-A22B Thinking 2507 (Deep Infra)",
+  "provider": "alibaba",
+  "from": [
+   0.3,
+   0.5
+  ],
+  "to": [
+   0.23,
+   2.3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3coder480ba35binstructturbo",
+  "name": "Qwen 3 Coder 480B Turbo",
+  "provider": "venice",
+  "from": [
+   0.3,
+   1
+  ],
+  "to": [
+   0.35,
+   1.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "lingflash20",
+  "name": "inclusionAI/Ling-flash-2.0",
+  "provider": "siliconflow",
+  "from": [
+   0.14944748,
+   0.59778991
+  ],
+  "to": [
+   0.14,
+   0.57
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv41flashlatest",
+  "name": "deepseek-v4.1-flash-latest (Inference.net)",
+  "provider": "llmgateway-providers",
+  "from": [
+   0.2,
+   0.6
+  ],
+  "to": [
+   0.3,
+   1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv31",
+  "name": "DeepSeek-V3.1",
+  "provider": "thinkingmachines",
+  "from": [
+   0.25,
+   0.95
+  ],
+  "to": [
+   1.695,
+   4.215
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv4pro0813",
+  "name": "DeepSeek V4 Pro 0813",
+  "provider": "deepseek",
+  "from": [
+   1.3,
+   2.6
+  ],
+  "to": [
+   1.2,
+   3.8
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "novalitev1",
+  "name": "Nova Lite 1.0",
+  "provider": "amazon",
+  "from": [
+   0.0595,
+   0.238
+  ],
+  "to": [
+   0.06,
+   0.24
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "glm53fast",
+  "name": "GLM-5.3 Fast",
+  "provider": "abliteratedllm",
+  "from": [
+   2.1,
+   6.6
+  ],
+  "to": [
+   1.89,
+   5.94
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv41flash1017thinking",
+  "name": "DeepSeek V4.1 Flash 1017",
+  "provider": "kitani",
+  "from": [
+   0.1,
+   0.6
+  ],
+  "to": [
+   0.25,
+   1.1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "llama3370b",
+  "name": "Llama 3.3 70B",
+  "provider": "venice",
+  "from": [
+   0.72,
+   0.72
+  ],
+  "to": [
+   0.7,
+   2.8
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "gptimage2c",
+  "name": "GPT-Image-2",
+  "provider": "steadyrouter"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv4flash0423",
+  "name": "DeepSeek V4 Flash 0423",
+  "provider": "ofox",
+  "from": [
+   0.139,
+   0.278
+  ],
+  "to": [
+   0.19,
+   0.51
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gptosssafeguard20b",
+  "name": "GPT OSS Safeguard 20B (Groq)",
+  "provider": "openai",
+  "from": [
+   0.07,
+   0.2
+  ],
+  "to": [
+   0.075,
+   0.3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "bodybuilder",
+  "name": "Body Builder (beta)",
+  "provider": "openrouter",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   -1000000.0,
+   -1000000.0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "oathbreakerglm53",
+  "name": "Oathbreaker GLM-5.3 Abliterated",
+  "provider": "oathbreaker"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mercury2",
+  "name": "Mercury 2",
+  "provider": "aimlapi",
+  "from": [
+   0.25,
+   0.75
+  ],
+  "to": [
+   0.2645,
+   0.7935
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "kimik27codeweb",
+  "name": "Kimi K2.7 Code (Web)",
+  "provider": "moneo"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "jadgo",
+  "name": "Jad Go",
+  "provider": "jad-ai"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "glm52fp8",
+  "name": "GLM-5.2",
+  "provider": "doubleword",
+  "from": [
+   1.2,
+   4.2
+  ],
+  "to": [
+   0.93,
+   3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "grok420nonreasoning",
+  "name": "Grok 4.20 (Non-Reasoning)",
+  "provider": "google-vertex",
+  "from": [
+   2,
+   6
+  ],
+  "to": [
+   1.25,
+   2.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "summarize",
+  "name": "Summarize",
+  "provider": "scaledown",
+  "from": [
+   0.05,
+   0
+  ],
+  "to": [
+   0.04,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3coder",
+  "name": "Qwen3 Coder 480B A35B",
+  "provider": "alibaba",
+  "from": [
+   0.22,
+   1.8
+  ],
+  "to": [
+   0.3,
+   1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "geminiomniflashpreview",
+  "name": "Gemini Omni Flash Preview",
+  "provider": "google",
+  "from": [
+   1.5,
+   9
+  ],
+  "to": [
+   1.5,
+   17.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "kolibri1",
+  "name": "Kolibri 1",
+  "provider": "munito-eu",
+  "from": [
+   0.13,
+   0.51
+  ],
+  "to": [
+   0.16,
+   0.56
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "kimik3fast",
+  "name": "Kimi K3 Fast",
+  "provider": "abliteratedllm",
+  "from": [
+   4.5,
+   22.5
+  ],
+  "to": [
+   4.05,
+   20.25
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "phi4",
+  "name": "Phi 4",
+  "provider": "microsoft",
+  "from": [
+   0.125,
+   0.5
+  ],
+  "to": [
+   0.07,
+   0.14
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "qwen3vl",
+  "name": "Qwen3 VL",
+  "provider": "graphn"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "hymt230ba3b",
+  "name": "Hy-MT2-30B-A3B",
+  "provider": "tencent",
+  "from": [
+   0.078292,
+   0.31211
+  ],
+  "to": [
+   0.074,
+   0.295
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekr1",
+  "name": "DeepSeek-R1 (Deep Infra)",
+  "provider": "edenai",
+  "from": [
+   0.59778991,
+   2.39115964
+  ],
+  "to": [
+   0.7,
+   2.4
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "llama3211bvisioninstruct",
+  "name": "Llama-3.2-11B-Vision-Instruct (Deep Infra)",
+  "provider": "edenai",
+  "from": [
+   0.0485,
+   0.676
+  ],
+  "to": [
+   0.345,
+   0.345
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "openaigpt5nano",
+  "name": "OpenAI GPT-5 Nano",
+  "provider": "digitalocean",
+  "from": [
+   0.06,
+   0.44
+  ],
+  "to": [
+   0.05,
+   0.4
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "openpangu20flash",
+  "name": "openPangu 2.0 Flash",
+  "provider": "huawei-maas"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "nwlargeflex",
+  "name": "Neuralwatt Large (flex)",
+  "provider": "neuralwatt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nanobananapro",
+  "name": "Nano-Banana-Pro",
+  "provider": "poe",
+  "from": [
+   null,
+   null
+  ],
+  "to": [
+   2.0202,
+   12.1212
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "mineru25250912b",
+  "name": "MinerU2.5 2509 1.2B",
+  "provider": "stepping-stone"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nemotron35contentsafety",
+  "name": "Nemotron 3.5 Content Safety",
+  "provider": "nvidia",
+  "from": [
+   0.05,
+   0.15
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3635b",
+  "name": "Qwen3.6 35B",
+  "provider": "neuralwatt",
+  "from": [
+   5,
+   10
+  ],
+  "to": [
+   0.29,
+   1.15
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "kimik25",
+  "name": "Kimi K2.5 (TensorX)",
+  "provider": "moonshot",
+  "from": [
+   0.6,
+   3
+  ],
+  "to": [
+   0.5,
+   2.8
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv41flash1017batch",
+  "name": "DeepSeek: DeepSeek V4.1 Flash 1017 (batch)",
+  "provider": "deepseek",
+  "from": [
+   0.05,
+   0.15
+  ],
+  "to": [
+   0.023,
+   0.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "deepseekv41flash1017tl5",
+  "name": "DeepSeek V4.1 Flash 1017",
+  "provider": "aki-io"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "openaigpt54",
+  "name": "GPT-5.4",
+  "provider": "venice",
+  "from": [
+   2.75,
+   16.5
+  ],
+  "to": [
+   2.5,
+   15
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "grok4fastnonreasoning",
+  "name": "X-Ai/Grok-4-Fast-Non-Reasoning",
+  "provider": "edenai",
+  "from": [
+   1.25,
+   2.5
+  ],
+  "to": [
+   0.2,
+   0.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "openaigpt56terra",
+  "name": "GPT-5.6 Terra",
+  "provider": "venice",
+  "from": [
+   2.2,
+   13.2
+  ],
+  "to": [
+   2,
+   12
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "sonar",
+  "name": "Sonar",
+  "provider": "perplexity",
+  "from": [
+   0.25,
+   2.5
+  ],
+  "to": [
+   1,
+   1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "humainm3researchpreview",
+  "name": "HUMAIN M3 Research Preview",
+  "provider": "humain"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv41flash1017uncensored",
+  "name": "DeepSeek V4.1 Flash 1017 Uncensored",
+  "provider": "nokeep",
+  "from": [
+   0.33,
+   1.32
+  ],
+  "to": [
+   0.45,
+   1.75
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "openaigpt61terra",
+  "name": "GPT-6.1 Terra",
+  "provider": "venice",
+  "from": [
+   1.1,
+   5.5
+  ],
+  "to": [
+   1,
+   5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "gpt6astralowcost",
+  "name": "GPT-6 Astra (Low cost)",
+  "provider": "infer"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv32exp",
+  "name": "DeepSeek V3.2 Exp",
+  "provider": "deepseek",
+  "from": [
+   0.28,
+   0.42
+  ],
+  "to": [
+   0.27,
+   0.41
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "autovaluetooling",
+  "name": "Auto Value Tool Use",
+  "provider": "aistupidlevel"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemini25propreview0605",
+  "name": "gemini-2.5-pro-preview-06-05",
+  "provider": "jiekou",
+  "from": [
+   2.5,
+   10
+  ],
+  "to": [
+   1.1875,
+   9.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "nwflash",
+  "name": "Neuralwatt Flash",
+  "provider": "neuralwatt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "doubaoseed20lite260428",
+  "name": "Doubao Seed 2.0 Lite 260428",
+  "provider": "aihubmix",
+  "from": [
+   0.08906,
+   0.53436
+  ],
+  "to": [
+   0.09041,
+   0.54246
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "doubaoseed21lite",
+  "name": "Seed 2.1 Lite",
+  "provider": "volcengine-coding-plan"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nexn26",
+  "name": "Nex-N2.6",
+  "provider": "nex-agi",
+  "from": [
+   0.15,
+   0.5
+  ],
+  "to": [
+   0.12,
+   0.4
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "openaigpt6sol",
+  "name": "GPT-6 Sol",
+  "provider": "venice",
+  "from": [
+   2.2,
+   11
+  ],
+  "to": [
+   2,
+   10
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "autocoding",
+  "name": "Auto Coding",
+  "provider": "aistupidlevel"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen330ba3bfp8",
+  "name": "Qwen3 30B A3B",
+  "provider": "zerogpu",
+  "from": [
+   0.0509,
+   0.335
+  ],
+  "to": [
+   0.1,
+   0.45
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "llama3290bvisioninstruct",
+  "name": "Llama-3.2-90B-Vision-Instruct",
+  "provider": "nvidia",
+  "from": [
+   0.35,
+   0.4
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv4profast",
+  "name": "DeepSeek V4 Pro Fast",
+  "provider": "wally",
+  "from": [
+   1.91,
+   3.83
+  ],
+  "to": [
+   1.68,
+   3.38
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "hyworld21panorama",
+  "name": "Tencent: HY-World 2.1 Panorama",
+  "provider": "tencent"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "grok40709",
+  "name": "grok-4-0709",
+  "provider": "jiekou",
+  "from": [
+   3,
+   15
+  ],
+  "to": [
+   2.85,
+   14.25
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "nvidianemotron3ultra550ba55bnvfp4",
+  "name": "Nemotron 3 Ultra 550B A55B",
+  "provider": "doubleword"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "autofastestquality",
+  "name": "Auto Fastest Quality",
+  "provider": "aistupidlevel"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3vl8binstruct",
+  "name": "Qwen3 VL 8B Instruct",
+  "provider": "alibaba",
+  "from": [
+   0.07472374,
+   0.29889496
+  ],
+  "to": [
+   0.25,
+   0.75
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nemotron3ultra",
+  "name": "Nemotron 3 Ultra 550B A55B",
+  "provider": "routing-run",
+  "from": [
+   0.1,
+   3
+  ],
+  "to": [
+   0.1,
+   0.1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "kimik31proflex",
+  "name": "Kimi K3.1 Pro (flex)",
+  "provider": "neuralwatt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemini31pro",
+  "name": "Gemini 3.1 Pro Preview",
+  "provider": "opencode",
+  "from": [
+   1.2,
+   7.14285714
+  ],
+  "to": [
+   2,
+   12
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nova2litev1",
+  "name": "Nova 2 Lite",
+  "provider": "amazon",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.3,
+   2.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekr10528",
+  "name": "DeepSeek R1 0528 (TensorX)",
+  "provider": "deepseek",
+  "from": [
+   0.5,
+   2.15
+  ],
+  "to": [
+   0.66,
+   2.6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "rekaedge2603",
+  "name": "Reka Edge 2603 (reka-ai)",
+  "provider": "llmgateway-providers",
+  "from": [
+   0.105,
+   0.105
+  ],
+  "to": [
+   0.1,
+   0.1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "openqwen38flashnext",
+  "name": "Qwen3.8 Flash Next",
+  "provider": "augure"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "kimik28preview",
+  "name": "Kimi K2.8 Preview",
+  "provider": "volcengine-coding-plan",
+  "from": [
+   1,
+   4
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "lfm317b",
+  "name": "LFM3-1.7B",
+  "provider": "liquid",
+  "from": [
+   0.1,
+   0.25
+  ],
+  "to": [
+   0.08,
+   0.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "hy4",
+  "name": "Hy4",
+  "provider": "tencent",
+  "from": [
+   0.96,
+   2.88
+  ],
+  "to": [
+   1.170936,
+   3.511404
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "llamapromptguard286m",
+  "name": "Llama Prompt Guard 2 86M (Groq)",
+  "provider": "edenai",
+  "from": [
+   0.01,
+   0.01
+  ],
+  "to": [
+   0.04,
+   0.04
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "oathbreakerglm53flash",
+  "name": "Oathbreaker GLM-5.3 Flash Abliterated",
+  "provider": "oathbreaker"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "gemma4e4b",
+  "name": "Gemma 4 E4B",
+  "provider": "graphn"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "gemini38flashlowcost",
+  "name": "Gemini 3.8 Flash (Low cost)",
+  "provider": "infer"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv31terminus",
+  "name": "DeepSeek V3.1 Terminus",
+  "provider": "deepseek",
+  "from": [
+   0.59778991,
+   1.79336973
+  ],
+  "to": [
+   0.27,
+   1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "museglimmer30b",
+  "name": "Muse Glimmer 30B",
+  "provider": "meta",
+  "from": [
+   0.35,
+   1.5
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "rekaedge",
+  "name": "Reka Edge",
+  "provider": "rekaai",
+  "from": [
+   0.1058,
+   0.1058
+  ],
+  "to": [
+   0.1,
+   0.1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "databricksgptoss120beu",
+  "name": "GPT OSS 120B (Databricks, EU)",
+  "provider": "edenai",
+  "from": [
+   0.15001,
+   0.59997
+  ],
+  "to": [
+   0.15,
+   0.6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "glm53flashabliterated",
+  "name": "GLM 5.3 Flash Abliterated",
+  "provider": "uncensuredai"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "databricksgptoss20b",
+  "name": "GPT OSS 20B (Databricks)",
+  "provider": "edenai",
+  "from": [
+   0.07,
+   0.30002
+  ],
+  "to": [
+   0.07,
+   0.3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekocr",
+  "name": "DeepSeek OCR",
+  "provider": "clarifai",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.2,
+   0.7
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv4flashga260731",
+  "name": "DeepSeek V4 Flash 0731",
+  "provider": "volcengine",
+  "from": [
+   0.44,
+   1.32
+  ],
+  "to": [
+   0.4453,
+   1.3359
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "grok47lowcost",
+  "name": "Grok 4.7 (Low cost)",
+  "provider": "infer"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen25vl72binstruct",
+  "name": "Qwen2.5-VL 72B Instruct",
+  "provider": "alibaba",
+  "from": [
+   0.69989,
+   0.69989
+  ],
+  "to": [
+   0.8,
+   1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "jadai",
+  "name": "Jad CoWork",
+  "provider": "jad-ai"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekchatv30324",
+  "name": "DeepSeek V3 0324",
+  "provider": "deepseek",
+  "from": [
+   0.30682,
+   1.20612
+  ],
+  "to": [
+   0.29,
+   1.14
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nemotron3ultra550ba55b",
+  "name": "Nemotron 3 Ultra 550B A55B",
+  "provider": "nvidia",
+  "from": [
+   1,
+   3
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "wizardlm28x22b",
+  "name": "WizardLM 2 8x22B (Deep Infra)",
+  "provider": "edenai",
+  "from": [
+   0.493,
+   0.493
+  ],
+  "to": [
+   0.48,
+   0.48
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mixtral8x7binstructv01",
+  "name": "Mixtral 8x7B Instruct v0.1 (Deep Infra)",
+  "provider": "edenai",
+  "from": [
+   0.488,
+   0.758
+  ],
+  "to": [
+   0.4,
+   0.4
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "glm46voriginal",
+  "name": "GLM 4.6V Original",
+  "provider": "nano-gpt",
+  "from": [
+   0.6,
+   0.9
+  ],
+  "to": [
+   0.3,
+   0.9
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "ling30tiny",
+  "name": "ling-3.0-tiny",
+  "provider": "inclusionai",
+  "from": [
+   0.015,
+   0.045
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gptimage1",
+  "name": "GPT-Image-1",
+  "provider": "openai",
+  "from": [
+   5,
+   40
+  ],
+  "to": [
+   10.0,
+   10.0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "kimik2instruct",
+  "name": "Kimi K2 Instruct (Deep Infra)",
+  "provider": "edenai",
+  "from": [
+   0.4,
+   1.8
+  ],
+  "to": [
+   0.5,
+   2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "ornith15122b",
+  "name": "Ornith 1.5 122B",
+  "provider": "commandcode",
+  "from": [
+   0.26,
+   2.08
+  ],
+  "to": [
+   0.16,
+   0.64
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "restyler1",
+  "name": "Restyler 1",
+  "provider": "meragpt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "gemma431bweb",
+  "name": "Gemma 4 31B (Web)",
+  "provider": "moneo"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "minimaxm25highspeed",
+  "name": "MiniMax-M2.5-highspeed",
+  "provider": "minimax-cn-coding-plan",
+  "from": [
+   0.6,
+   2.4
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "nodecodecyberv1",
+  "name": "Cyber v1",
+  "provider": "nodecode"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "whisperlargev3",
+  "name": "Whisper Large v3",
+  "provider": "openai",
+  "from": [
+   0.0023,
+   0.0023
+  ],
+  "to": [
+   0.01,
+   0.01
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "ling32flash",
+  "name": "Ling 3.2 Flash",
+  "provider": "bailing"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "openaigpt56sol",
+  "name": "GPT-5.6 Sol",
+  "provider": "venice",
+  "from": [
+   4.4,
+   22
+  ],
+  "to": [
+   4,
+   20
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "step35flash",
+  "name": "Step 3.5 Flash (Deep Infra)",
+  "provider": "stepfun",
+  "from": [
+   0.10461323,
+   0.3138397
+  ],
+  "to": [
+   0.09,
+   0.3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mistralnemoinstruct2407",
+  "name": "Mistral Nemo",
+  "provider": "kitani",
+  "from": [
+   0.1003,
+   0.1207
+  ],
+  "to": [
+   0.09027,
+   0.10863
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "recraftv41flashv2",
+  "name": "Recraft: Recraft V4.1 Flash V2",
+  "provider": "recraft"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mercury25",
+  "name": "Mercury 2.5",
+  "provider": "aimlapi",
+  "from": [
+   0.2,
+   0.75
+  ],
+  "to": [
+   0.2116,
+   0.7935
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "glyphclusterfree",
+  "name": "Glyph Cluster",
+  "provider": "commandcode"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "dolly2security",
+  "name": "Dolly 2 Security",
+  "provider": "zro"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nemotron3super120ba12b",
+  "name": "Nemotron 3 Super 120B A12B",
+  "provider": "nvidia",
+  "from": [
+   0.3,
+   0.9
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "l31euryale70b",
+  "name": "Llama 3.1 Euryale 70B v2.2",
+  "provider": "sao10k",
+  "from": [
+   1.534523,
+   1.534523
+  ],
+  "to": [
+   0.85,
+   0.85
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "claudesonnet55lowcost",
+  "name": "Claude Sonnet 5.5 (Low cost)",
+  "provider": "infer"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "ossington5",
+  "name": "Ossington 5",
+  "provider": "augure"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3vl32bthinking",
+  "name": "Qwen/Qwen3-VL-32B-Thinking",
+  "provider": "siliconflow",
+  "from": [
+   0.14944748,
+   1.49447478
+  ],
+  "to": [
+   0.2,
+   1.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "gemini31propreviewlowcost",
+  "name": "Gemini 3.1 Pro Preview (Low cost)",
+  "provider": "infer"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "glm52thinking",
+  "name": "GLM 5.2 Thinking TEE",
+  "provider": "nano-gpt",
+  "from": [
+   0.42,
+   1.32
+  ],
+  "to": [
+   1.25,
+   3.95
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mistralmedium35",
+  "name": "Mistral Medium 3.5",
+  "provider": "mistral",
+  "from": [
+   1.5,
+   7.5
+  ],
+  "to": [
+   1.65,
+   8.25
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3827b",
+  "name": "Qwen3.8 27B",
+  "provider": "alibaba",
+  "from": [
+   0.2,
+   2.5
+  ],
+  "to": [
+   0.45,
+   3.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "glm53batch",
+  "name": "Z.ai: GLM 5.3 (batch)",
+  "provider": "zhipu",
+  "from": [
+   0.45,
+   2.0
+  ],
+  "to": [
+   0.322,
+   0.989
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mistralsmall3224binstruct",
+  "name": "Mistral Small 3.2 24B",
+  "provider": "mistral",
+  "from": [
+   0.2,
+   0.4
+  ],
+  "to": [
+   0.1,
+   0.3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "autobest",
+  "name": "Auto Best",
+  "provider": "aistupidlevel"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "paretocode",
+  "name": "Pareto Code Router",
+  "provider": "openrouter",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   -1000000.0,
+   -1000000.0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gpt52codex",
+  "name": "GPT-5.2 Codex",
+  "provider": "openai",
+  "from": [
+   1.75,
+   14
+  ],
+  "to": [
+   0.14,
+   1.14
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "bgem3",
+  "name": "BGE M3",
+  "provider": "baai",
+  "from": [
+   0.01,
+   0
+  ],
+  "to": [
+   0.119,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "llamapromptguard222m",
+  "name": "Llama Prompt Guard 2 22M (Groq)",
+  "provider": "edenai",
+  "from": [
+   0.01,
+   0.01
+  ],
+  "to": [
+   0.03,
+   0.03
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "ling31flash",
+  "name": "Ling 3.1 Flash",
+  "provider": "inclusionai",
+  "from": [
+   0.3,
+   0.9
+  ],
+  "to": [
+   0.045,
+   0.135
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "seedoss36binstruct",
+  "name": "ByteDance-Seed/Seed-OSS-36B-Instruct",
+  "provider": "siliconflow",
+  "from": [
+   0.22417122,
+   0.59778991
+  ],
+  "to": [
+   0.21,
+   0.57
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mistralmediumlatesteu",
+  "name": "Mistral Medium (latest) (EU)",
+  "provider": "requesty",
+  "from": [
+   1.65,
+   8.25
+  ],
+  "to": [
+   0.44,
+   2.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "minimaxm3",
+  "name": "MiniMax-M3",
+  "provider": "minimax",
+  "from": [
+   0.33,
+   1.32
+  ],
+  "to": [
+   0.39,
+   1.56
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "nwsmallflex",
+  "name": "Neuralwatt Small (flex)",
+  "provider": "neuralwatt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "lightonocr21b",
+  "name": "LightOnOCR 2 1B",
+  "provider": "stepping-stone",
+  "from": [
+   0.1785,
+   0.3465
+  ],
+  "to": [
+   0.0238,
+   0.0714
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mimov25",
+  "name": "MiMo-V2.5",
+  "provider": "xiaomi",
+  "from": [
+   0.14,
+   0.28
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "openglm53",
+  "name": "GLM-5.3",
+  "provider": "augure"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv4flash0731fast",
+  "name": "DeepSeek V4 Flash 0731 Fast",
+  "provider": "venice",
+  "from": [
+   0.28,
+   0.56
+  ],
+  "to": [
+   0.35,
+   0.7
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "relaceapply3",
+  "name": "Relace Apply 3",
+  "provider": "relace",
+  "from": [
+   0.8993,
+   1.3225
+  ],
+  "to": [
+   0.85,
+   1.25
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3vl32binstruct",
+  "name": "Qwen/Qwen3-VL-32B-Instruct",
+  "provider": "siliconflow",
+  "from": [
+   0.14944748,
+   0.59778991
+  ],
+  "to": [
+   0.2,
+   0.6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "openaigptoss120b",
+  "name": "OpenAI GPT OSS 120B",
+  "provider": "venice",
+  "from": [
+   0.15,
+   0.6
+  ],
+  "to": [
+   0.07,
+   0.3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "unslopnemo12b",
+  "name": "UnslopNemo 12B",
+  "provider": "thedrummer",
+  "from": [
+   0.4232,
+   0.4232
+  ],
+  "to": [
+   0.4,
+   0.4
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gptoss120b",
+  "name": "GPT OSS 120B",
+  "provider": "openai",
+  "from": [
+   2.92,
+   2.92
+  ],
+  "to": [
+   0.2,
+   0.8
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "doubaoseed20codepreview260215",
+  "name": "Seed 2.0 Code",
+  "provider": "volcengine",
+  "from": [
+   0.782,
+   3.893
+  ],
+  "to": [
+   0.47499,
+   2.37494
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "superbot",
+  "name": "superbot",
+  "provider": "superbot-gg"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "grok420reasoning",
+  "name": "Grok 4.20 (Reasoning)",
+  "provider": "google-vertex",
+  "from": [
+   2,
+   6
+  ],
+  "to": [
+   1.25,
+   2.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "deepseekflash1017",
+  "name": "DeepSeek V4.1 Flash 1017",
+  "provider": "teamorouter"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "recraftv41flashv2free",
+  "name": "Recraft: Recraft V4.1 Flash V2 (free)",
+  "provider": "recraft"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv41flash",
+  "name": "DeepSeek V4.1 Flash",
+  "provider": "deepseek",
+  "from": [
+   0.3,
+   1.2
+  ],
+  "to": [
+   0.4,
+   1.6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mimov25pro",
+  "name": "MiMo-V2.5-Pro",
+  "provider": "xiaomi",
+  "from": [
+   1,
+   3
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "deepseekv41flash1017economy",
+  "name": "DeepSeek V4.1 Flash 1017 (Economy)",
+  "provider": "hyper"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "doubaoseed20mini260428",
+  "name": "Doubao Seed 2.0 Mini 260428",
+  "provider": "aihubmix",
+  "from": [
+   0.02969,
+   0.29687
+  ],
+  "to": [
+   0.030136,
+   0.30136
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mistrallarge",
+  "name": "Mistral Large",
+  "provider": "mistral",
+  "from": [
+   2.006,
+   6.001
+  ],
+  "to": [
+   2,
+   6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemma431b",
+  "name": "Gemma 4 31B IT",
+  "provider": "regolo-ai",
+  "from": [
+   0.12,
+   0.37
+  ],
+  "to": [
+   0.46,
+   2.42
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "devstralsmall2505",
+  "name": "Devstral Small 2505",
+  "provider": "io-net",
+  "from": [
+   0.06,
+   0.06
+  ],
+  "to": [
+   0.05,
+   0.22
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "hermes3llama31405b",
+  "name": "Hermes 3 405B Instruct (Deep Infra)",
+  "provider": "edenai",
+  "from": [
+   1.058,
+   1.058
+  ],
+  "to": [
+   1,
+   1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv41flash1017ultrafast",
+  "name": "DeepSeek V4.1 Flash 1017 Ultrafast",
+  "provider": "venice",
+  "from": [
+   2.4,
+   9.6
+  ],
+  "to": [
+   3,
+   12
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "lagunas21",
+  "name": "Laguna S 2.1",
+  "provider": "vultr",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.09,
+   0.18
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "gpt61sollowcost",
+  "name": "GPT-6.1 Sol (Low cost)",
+  "provider": "infer"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "qwen35397b",
+  "name": "Qwen3.5 397B-A17B",
+  "provider": "adaption"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "extract",
+  "name": "Extract",
+  "provider": "scaledown",
+  "from": [
+   0.05,
+   0
+  ],
+  "to": [
+   0.04,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "claudefablelatest",
+  "name": "Claude Fable Latest (Claude Fable 5.2)",
+  "provider": "~anthropic",
+  "from": [
+   10,
+   50
+  ],
+  "to": [
+   8,
+   40
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "qwen3535ba3bfp8",
+  "name": "Qwen3.5 35B-A3B FP8",
+  "provider": "stepping-stone"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "ernielightdt10intl",
+  "name": "ERNIE-Light-DT-1.0",
+  "provider": "baidu",
+  "from": [
+   1.3,
+   4.5
+  ],
+  "to": [
+   1.13,
+   3.94
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "inklingsmall",
+  "name": "Inkling Small",
+  "provider": "thinkingmachines",
+  "from": [
+   0.45,
+   1.2
+  ],
+  "to": [
+   0.58,
+   1.44
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mistralsaba",
+  "name": "Saba",
+  "provider": "mistral",
+  "from": [
+   0.1989,
+   0.595
+  ],
+  "to": [
+   0.2,
+   0.6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwenqwen3codernext",
+  "name": "Qwen3 Coder Next (Amazon Bedrock)",
+  "provider": "edenai",
+  "from": [
+   0.5,
+   1.2
+  ],
+  "to": [
+   0.78,
+   1.86
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mimov26flash",
+  "name": "MiMo-V2.6-Flash",
+  "provider": "xiaomi",
+  "from": [
+   0.16,
+   0.32
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv32",
+  "name": "DeepSeek V3.2",
+  "provider": "deepseek",
+  "from": [
+   0.58,
+   1.68
+  ],
+  "to": [
+   0.29,
+   0.43
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "deepseekv41flashoriginal",
+  "name": "DeepSeek V4.1 Flash (original)",
+  "provider": "abliteratedllm"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "autovalue",
+  "name": "Auto Value",
+  "provider": "aistupidlevel"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemma327bit",
+  "name": "Gemma 3 27B",
+  "provider": "google",
+  "from": [
+   0.08,
+   0.16
+  ],
+  "to": [
+   0.342,
+   0.684
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "hymt218b",
+  "name": "Hy-MT2-1.8B",
+  "provider": "tencent",
+  "from": [
+   0.046552,
+   0.187266
+  ],
+  "to": [
+   0.044,
+   0.177
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "autoreasoning",
+  "name": "Auto Reasoning",
+  "provider": "aistupidlevel"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "llama318binstruct",
+  "name": "Llama-3.1-8B-Instruct",
+  "provider": "meta",
+  "from": [
+   0.22,
+   0.22
+  ],
+  "to": [
+   0.04896,
+   0.0765
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "doubaoseed20pro260215",
+  "name": "Seed 2.0 Pro",
+  "provider": "volcengine",
+  "from": [
+   0.782,
+   3.876
+  ],
+  "to": [
+   0.47499,
+   2.37494
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "tofino3",
+  "name": "Tofino 3",
+  "provider": "augure"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "magistralsmall2506",
+  "name": "Magistral Small 2506",
+  "provider": "nvidia",
+  "from": [
+   0.5,
+   1.5
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "openaigpt56luna",
+  "name": "GPT-5.6 Luna",
+  "provider": "venice",
+  "from": [
+   0.22,
+   1.32
+  ],
+  "to": [
+   0.2,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv4proga260813",
+  "name": "DeepSeek V4 Pro 0813",
+  "provider": "volcengine",
+  "from": [
+   1.32,
+   3.96
+  ],
+  "to": [
+   1.3359,
+   4.00771
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "ministral314binstruct2512",
+  "name": "Ministral 3 14B (Infomaniak)",
+  "provider": "edenai",
+  "from": [
+   0.37,
+   0.5
+  ],
+  "to": [
+   0.33156,
+   0.44208
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "ossington41",
+  "name": "Ossington 4.1",
+  "provider": "augure"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemini20flash",
+  "name": "Gemini-2.0-Flash",
+  "provider": "poe",
+  "from": [
+   null,
+   null
+  ],
+  "to": [
+   0.1,
+   0.42
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "abliteratedmodel",
+  "name": "Abliterated Model",
+  "provider": "abliteration-ai",
+  "from": [
+   1,
+   3
+  ],
+  "to": [
+   3,
+   3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "solarpro3",
+  "name": "Solar Pro 3",
+  "provider": "llmtr",
+  "from": [
+   0.25,
+   0.25
+  ],
+  "to": [
+   0.15,
+   0.6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "minimaxm27web",
+  "name": "MiniMax M2.7 (Web)",
+  "provider": "moneo"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "jadcode",
+  "name": "Jad Code",
+  "provider": "jad-ai"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "kolibri1tl5",
+  "name": "Kolibri 1",
+  "provider": "aki-io"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "particle1",
+  "name": "Particle-1",
+  "provider": "particle-ai",
+  "from": [
+   0.125,
+   0.5
+  ],
+  "to": [
+   0.05,
+   0.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "dolly1security",
+  "name": "Dolly 1 Security",
+  "provider": "zro"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "ling30flashvl",
+  "name": "Ling 3.0 Flash VL",
+  "provider": "inclusionai",
+  "from": [
+   0.075,
+   0.22
+  ],
+  "to": [
+   0.06,
+   0.18
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3235ba22binstruct2507",
+  "name": "Qwen3 235B-A22B Instruct 2507",
+  "provider": "crusoe",
+  "from": [
+   0.09,
+   0.55
+  ],
+  "to": [
+   0.22,
+   0.8
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen25vl32binstruct",
+  "name": "Qwen2.5 VL 32B Instruct",
+  "provider": "meganova",
+  "from": [
+   0.05,
+   0.22
+  ],
+  "to": [
+   0.2,
+   0.6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "minimaxm30",
+  "name": "MiniMax-M3",
+  "provider": "tencent-token-plan"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "chatgpt4olatest",
+  "name": "ChatGPT-4o-Latest",
+  "provider": "poe",
+  "from": [
+   5,
+   20
+  ],
+  "to": [
+   4.5,
+   14
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "autotooling",
+  "name": "Auto Tool Use",
+  "provider": "aistupidlevel"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mimov26proflex",
+  "name": "MiMo-V2.6-Pro Flex",
+  "provider": "neuralwatt",
+  "from": [
+   0.5655,
+   1.131
+  ],
+  "to": [
+   0.28275,
+   0.5655
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "glm52fast",
+  "name": "glm-5.2-fast",
+  "provider": "requesty",
+  "from": [
+   2.31,
+   7.26
+  ],
+  "to": [
+   2.1,
+   6.6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "weaver",
+  "name": "Weaver (alpha)",
+  "provider": "mancer",
+  "from": [
+   0.7935,
+   1.058
+  ],
+  "to": [
+   0.3,
+   0.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "ling32flashfree",
+  "name": "inclusionAI: Ling 3.2 Flash (free)",
+  "provider": "inclusionai"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "deepseekv41flashspeed",
+  "name": "DeepSeek V4.1 Flash (Speed)",
+  "provider": "neuralwatt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3vl235ba22binstructfp8",
+  "name": "Qwen3 VL 235B A22B Instruct",
+  "provider": "doubleword",
+  "from": [
+   1.76,
+   2.05
+  ],
+  "to": [
+   0.21,
+   1.9
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "umanskimik31pro",
+  "name": "Kimi K3.1 Pro",
+  "provider": "umans-ai-coding-plan"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "rosedale1",
+  "name": "Rosedale One",
+  "provider": "augure"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "hunyuana13binstruct",
+  "name": "Hunyuan A13B Instruct",
+  "provider": "tencent",
+  "from": [
+   0.14944748,
+   0.59778991
+  ],
+  "to": [
+   0.14,
+   0.57
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3vl30ba3bthinking",
+  "name": "Qwen3 VL 30B A3B Thinking",
+  "provider": "alibaba",
+  "from": [
+   0.10461323,
+   0.41845294
+  ],
+  "to": [
+   0.29,
+   1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "relacesearch",
+  "name": "Relace Search",
+  "provider": "relace",
+  "from": [
+   1.058,
+   3.174
+  ],
+  "to": [
+   1,
+   3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "claudeopus4",
+  "name": "Claude-Opus-4",
+  "provider": "poe",
+  "from": [
+   15,
+   75
+  ],
+  "to": [
+   13,
+   64
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "minimaxlatest",
+  "name": "MiniMax Latest",
+  "provider": "fireworks-ai",
+  "from": [
+   null,
+   null
+  ],
+  "to": [
+   0.3,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "humainm3preview",
+  "name": "HUMAIN M3 Preview",
+  "provider": "humain"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "databricksqwen3next80ba3binstruct",
+  "name": "Qwen3-Next 80B-A3B Instruct (Databricks)",
+  "provider": "edenai",
+  "from": [
+   0.15001,
+   1.20001
+  ],
+  "to": [
+   0.15,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "deepseekv4flashweb",
+  "name": "DeepSeek V4 Flash (Web)",
+  "provider": "moneo"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "olmocr27b",
+  "name": "olmOCR 2 7B",
+  "provider": "stepping-stone"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "glm53abliterated",
+  "name": "GLM 5.3 Abliterated",
+  "provider": "uncensuredai"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen352b",
+  "name": "Qwen3.5 2B",
+  "provider": "requesty",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.02,
+   0.1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "novaprov1",
+  "name": "Nova Pro 1.0",
+  "provider": "amazon",
+  "from": [
+   0.799,
+   3.196
+  ],
+  "to": [
+   0.8,
+   3.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "claudefable51lowcost",
+  "name": "Claude Fable 5.1 (Low cost)",
+  "provider": "infer"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "qwen3535ba3bfp8dottxt",
+  "name": "Qwen3.5 35B A3B dottxt",
+  "provider": "doubleword"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "apertusv158b",
+  "name": "Apertus v1.5 8B",
+  "provider": "stepping-stone"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemini4argoneu",
+  "name": "Gemini 4 Argon (EU)",
+  "provider": "requesty",
+  "from": [
+   4.4,
+   22
+  ],
+  "to": [
+   2.2,
+   11
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "llama4scout17binstruct",
+  "name": "Llama 4 Scout 17B Instruct (NovitaAI)",
+  "provider": "llmgateway-providers",
+  "from": [
+   0.17,
+   0.66
+  ],
+  "to": [
+   0.18,
+   0.59
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen36",
+  "name": "Qwen3.6 35B-A3B",
+  "provider": "nan",
+  "from": [
+   0.04,
+   0.35
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "doubaoseed16vision250815",
+  "name": "doubao-seed-1-6-vision-250815",
+  "provider": "302ai",
+  "from": [
+   0.11875,
+   1.18747
+  ],
+  "to": [
+   0.114,
+   1.143
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3embedding4b",
+  "name": "Qwen 3 Embedding 4B",
+  "provider": "alibaba",
+  "from": [
+   0.02,
+   0.0
+  ],
+  "to": [
+   0.01,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "deepseekv41flasheconomy",
+  "name": "DeepSeek V4.1 Flash",
+  "provider": "volcengine-coding-plan"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "dolphinmistral24bveniceedition",
+  "name": "Uncensored",
+  "provider": "cognitivecomputations",
+  "from": [
+   0.2116,
+   0.9522
+  ],
+  "to": [
+   0.2,
+   0.9
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "llama4scout",
+  "name": "Llama 4 Scout",
+  "provider": "meta",
+  "from": [
+   0.17,
+   0.66
+  ],
+  "to": [
+   0.1,
+   0.3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "solarmini4",
+  "name": "Solar Mini 4",
+  "provider": "upstage",
+  "from": [
+   0.1,
+   0.4
+  ],
+  "to": [
+   0.05,
+   0.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen354b",
+  "name": "Qwen3.5 4B",
+  "provider": "thinkingmachines",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.33,
+   1.005
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemma227bit",
+  "name": "Gemma 2 27B",
+  "provider": "google",
+  "from": [
+   0.6877,
+   0.6877
+  ],
+  "to": [
+   0.65,
+   0.65
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "llama4maverick",
+  "name": "Llama 4 Maverick",
+  "provider": "meta",
+  "from": [
+   0.24,
+   0.97
+  ],
+  "to": [
+   0.35,
+   1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "deepseekv41flashultra",
+  "name": "DeepSeek V4.1 Flash 1017 Ultra",
+  "provider": "lithosai"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "claudeopus55lowcost",
+  "name": "Claude Opus 5.5 (Low cost)",
+  "provider": "infer"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemini38flasheu",
+  "name": "Gemini 3.8 Flash (EU)",
+  "provider": "requesty",
+  "from": [
+   1.65,
+   8.25
+  ],
+  "to": [
+   0.825,
+   4.125
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "arcswift10",
+  "name": "ARC Swift",
+  "provider": "rayline"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "llama323buncensored",
+  "name": "Llama 3.2 3B Uncensored",
+  "provider": "autarcho"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mythomaxl213b",
+  "name": "MythoMax L2 13B (Deep Infra)",
+  "provider": "gryphe",
+  "from": [
+   0.1003,
+   0.1003
+  ],
+  "to": [
+   0.4,
+   0.4
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "qwen3635ba3beu",
+  "name": "Qwen3.6 35B-A3B (EU)",
+  "provider": "sokkan"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "qwen380b",
+  "name": "Qwen3 80B",
+  "provider": "graphn"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "kimik31probatch",
+  "name": "MoonshotAI: Kimi K3.1 Pro (batch)",
+  "provider": "moonshot",
+  "from": [
+   0.7,
+   6.0
+  ],
+  "to": [
+   0.275,
+   4.125
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nvidianemotron3nano30ba3b",
+  "name": "Nemotron 3 Nano 30B A3B",
+  "provider": "crusoe",
+  "from": [
+   0.06,
+   0.24
+  ],
+  "to": [
+   0.05,
+   0.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "bgererankerv2m3",
+  "name": "BGE Reranker V2 M3",
+  "provider": "stepping-stone",
+  "from": [
+   0.01,
+   0
+  ],
+  "to": [
+   0.119,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "glm47flashthinking",
+  "name": "GLM 4.7 Flash Thinking",
+  "provider": "nano-gpt",
+  "from": [
+   0.07,
+   0.4
+  ],
+  "to": [
+   0.0605,
+   0.4
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nemotron35lightning",
+  "name": "Nemotron 3.5 Lightning 30B A3B",
+  "provider": "nvidia",
+  "from": [
+   0.06,
+   0.24
+  ],
+  "to": [
+   0.07,
+   0.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gpt54image2",
+  "name": "GPT-5.4 Image 2",
+  "provider": "openai",
+  "from": [
+   8.464,
+   15.87
+  ],
+  "to": [
+   8,
+   15
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "zaiglm51",
+  "name": "GLM-5.1 (Z.ai)",
+  "provider": "aihubmix",
+  "from": [
+   1.4,
+   4.4
+  ],
+  "to": [
+   0.845,
+   3.38
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "kimik20905",
+  "name": "Kimi K2 Instruct 0905",
+  "provider": "moonshot",
+  "from": [
+   1.058,
+   3.174
+  ],
+  "to": [
+   0.6,
+   2.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemma426ba4b",
+  "name": "Gemma 4 26B A4B IT",
+  "provider": "powerspring",
+  "from": [
+   0.05,
+   0.29
+  ],
+  "to": [
+   0.116046,
+   0.58023
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "abliteratedmodellarge",
+  "name": "Abliterated Model Large",
+  "provider": "abliteration-ai",
+  "from": [
+   3,
+   5
+  ],
+  "to": [
+   5,
+   5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen3codernext",
+  "name": "Qwen3 Coder Next",
+  "provider": "alibaba",
+  "from": [
+   0.15,
+   0.8
+  ],
+  "to": [
+   0.2,
+   1.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gpt35turboinstruct",
+  "name": "GPT-3.5-Turbo-Instruct",
+  "provider": "poe",
+  "from": [
+   1.5,
+   2
+  ],
+  "to": [
+   1.4,
+   1.8
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "qwen38flashnextnvfp4",
+  "name": "Qwen3.8 Flash Next",
+  "provider": "aipg"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen359b",
+  "name": "Qwen3.5 9B",
+  "provider": "alibaba",
+  "from": [
+   0.1,
+   0.15
+  ],
+  "to": [
+   0.3,
+   0.807
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "hermes3llama3170b",
+  "name": "Hermes 3 70B Instruct (Deep Infra)",
+  "provider": "edenai",
+  "from": [
+   0.7406,
+   0.7406
+  ],
+  "to": [
+   0.7,
+   0.7
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "nwlarge",
+  "name": "Neuralwatt Large",
+  "provider": "neuralwatt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "solarpro2",
+  "name": "Solar Pro 2",
+  "provider": "llmtr",
+  "from": [
+   0.25,
+   0.25
+  ],
+  "to": [
+   0.15,
+   0.6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "metallama3370binstruct",
+  "name": "Llama-3.3-70B-Instruct",
+  "provider": "sambanova",
+  "from": [
+   0.74,
+   0.74
+  ],
+  "to": [
+   0.6,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "glm52260617",
+  "name": "GLM-5.2",
+  "provider": "volcengine",
+  "from": [
+   1.4,
+   4.4
+  ],
+  "to": [
+   1.18747,
+   4.15615
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nvidianemotron3ultra550ba55b",
+  "name": "Nemotron 3 Ultra",
+  "provider": "wandb",
+  "from": [
+   0.6,
+   2.4
+  ],
+  "to": [
+   0.5,
+   2.15
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen2572binstruct",
+  "name": "Qwen2.5 72B Instruct",
+  "provider": "alibaba",
+  "from": [
+   0.61721808,
+   0.61721808
+  ],
+  "to": [
+   0.36,
+   0.4
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "openaigpt6astra",
+  "name": "GPT-6 Astra",
+  "provider": "venice",
+  "from": [
+   11,
+   55
+  ],
+  "to": [
+   10,
+   50
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekocr2",
+  "name": "DeepSeek OCR 2",
+  "provider": "regolo-ai",
+  "from": [
+   0.03,
+   0.03
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "decisionsfast",
+  "name": "Parallel: Decisions Fast",
+  "provider": "parallel"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemini25propreview",
+  "name": "Gemini 2.5 Pro Preview 06-05",
+  "provider": "google",
+  "from": [
+   0.625,
+   5
+  ],
+  "to": [
+   1.25,
+   10
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gptosssafeguard120b",
+  "name": "GPT OSS Safeguard 120B",
+  "provider": "lowrouter",
+  "from": [
+   0.15,
+   0.6
+  ],
+  "to": [
+   0.18,
+   0.73
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekr1distillllama70b",
+  "name": "DeepSeek R1 Distill Llama 70B",
+  "provider": "alibaba-cn",
+  "from": [
+   0.03,
+   0.13
+  ],
+  "to": [
+   0.287,
+   0.861
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nova2lite",
+  "name": "Nova 2 Lite",
+  "provider": "cortecs",
+  "from": [
+   0.33,
+   2.75
+  ],
+  "to": [
+   0.373,
+   3.144
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mistralsmall4119b2603",
+  "name": "Mistral Small 4",
+  "provider": "infomaniak",
+  "from": [
+   0.4,
+   1.4
+  ],
+  "to": [
+   0.25,
+   0.93
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "llama3170binstruct",
+  "name": "Llama-3.1-70B-Instruct",
+  "provider": "meta",
+  "from": [
+   0.99,
+   0.99
+  ],
+  "to": [
+   0.72,
+   0.72
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "ripple65bpreview",
+  "name": "Ripple 65B Preview",
+  "provider": "ricursiveai",
+  "from": [
+   0.2,
+   0.6
+  ],
+  "to": [
+   0.1,
+   0.3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "openaigpt6luna",
+  "name": "GPT-6 Luna",
+  "provider": "venice",
+  "from": [
+   0.11,
+   0.55
+  ],
+  "to": [
+   0.1,
+   0.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nvidianemotron35supervl120ba12b",
+  "name": "Nemotron 3.5 Super VL",
+  "provider": "wandb",
+  "from": [
+   0.2,
+   0.5
+  ],
+  "to": [
+   0.15,
+   0.47
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "glm53flashuncensored",
+  "name": "GLM 5.3 Flash Uncensored",
+  "provider": "nokeep",
+  "from": [
+   0.2,
+   0.8
+  ],
+  "to": [
+   0.2,
+   0.65
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwq32b",
+  "name": "QwQ 32B",
+  "provider": "abacus",
+  "from": [
+   0.66,
+   1
+  ],
+  "to": [
+   0.4,
+   0.4
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen38maxpreview",
+  "name": "Qwen3.8 Max Preview",
+  "provider": "impossibl",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   2.5,
+   7.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "hymt27b",
+  "name": "Hy-MT2-7B",
+  "provider": "tencent",
+  "from": [
+   0.078292,
+   0.31211
+  ],
+  "to": [
+   0.074,
+   0.295
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv4flash0731eu",
+  "name": "DeepSeek V4 Flash 0731 (EU)",
+  "provider": "requesty",
+  "from": [
+   0.119,
+   0.238
+  ],
+  "to": [
+   0.28,
+   0.56
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mistrallarge4eu",
+  "name": "Mistral Large 4 (EU)",
+  "provider": "requesty",
+  "from": [
+   0.748,
+   2.299
+  ],
+  "to": [
+   0.68,
+   2.09
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "superbotfast",
+  "name": "superbot-fast",
+  "provider": "superbot-gg"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "novamicrov1",
+  "name": "Nova Micro 1.0",
+  "provider": "amazon",
+  "from": [
+   0.03703,
+   0.14812
+  ],
+  "to": [
+   0.035,
+   0.14
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "minimaxm27",
+  "name": "MiniMax-M2.7",
+  "provider": "minimax",
+  "from": [
+   0.33,
+   1.32
+  ],
+  "to": [
+   0.3,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv41flashuncensored",
+  "name": "DeepSeek V4.1 Flash Uncensored",
+  "provider": "nokeep",
+  "from": [
+   0.33,
+   1.32
+  ],
+  "to": [
+   0.45,
+   1.75
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "openpangu20pro",
+  "name": "openPangu 2.0 Pro",
+  "provider": "huawei-maas"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv4flashlatest",
+  "name": "DeepSeek V4 Flash Latest",
+  "provider": "~deepseek",
+  "from": [
+   0.14,
+   0.28
+  ],
+  "to": [
+   0.0434,
+   0.3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "glm53flash260828",
+  "name": "GLM-5.3-Flash",
+  "provider": "volcengine",
+  "from": [
+   0.15,
+   0.5
+  ],
+  "to": [
+   0.11875,
+   0.41563
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gptoss20b",
+  "name": "GPT OSS 20B",
+  "provider": "openai",
+  "from": [
+   0.03,
+   0.14
+  ],
+  "to": [
+   0.04,
+   0.19
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen257binstruct",
+  "name": "Qwen2.5 7B Instruct (Deep Infra)",
+  "provider": "edenai",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.04,
+   0.1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "deepseekv41flashabliterated",
+  "name": "DeepSeek V4.1 Flash Abliterated",
+  "provider": "uncensuredai"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gptminilatest",
+  "name": "GPT Mini Latest (GPT-5.6 Luna)",
+  "provider": "~openai",
+  "from": [
+   0.75,
+   4.5
+  ],
+  "to": [
+   0.2,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "arcsage10",
+  "name": "ARC Sage",
+  "provider": "rayline"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mimov26pro",
+  "name": "MiMo-V2.6-Pro",
+  "provider": "xiaomi",
+  "from": [
+   0.47,
+   0.94
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "rekaflash3",
+  "name": "Reka Flash 3",
+  "provider": "rekaai",
+  "from": [
+   0.105,
+   0.21
+  ],
+  "to": [
+   0.1,
+   0.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen330ba3binstruct2507",
+  "name": "Qwen3 30B-A3B Instruct 2507 (Nebius)",
+  "provider": "alibaba",
+  "from": [
+   0.10461323,
+   0.41845294
+  ],
+  "to": [
+   0.1,
+   0.3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mistrallarge40",
+  "name": "Mistral Large 4",
+  "provider": "mistral",
+  "from": [
+   0.68,
+   2.09
+  ],
+  "to": [
+   0.7,
+   2.1
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "databricksqwen3next80ba3binstructeu",
+  "name": "Qwen3-Next 80B-A3B Instruct (Databricks, EU)",
+  "provider": "edenai",
+  "from": [
+   0.15001,
+   1.20001
+  ],
+  "to": [
+   0.15,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "nwsmall",
+  "name": "Neuralwatt Small",
+  "provider": "neuralwatt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv30324",
+  "name": "DeepSeek V3 0324",
+  "provider": "crusoe",
+  "from": [
+   0.24,
+   0.9
+  ],
+  "to": [
+   0.5,
+   1.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "ministral14b",
+  "name": "Ministral 14B (Arkanecloud)",
+  "provider": "edenai",
+  "from": [
+   0.2,
+   0.2
+  ],
+  "to": [
+   0.15,
+   0.15
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemini37flasheu",
+  "name": "Gemini 3.7 Flash (EU)",
+  "provider": "requesty",
+  "from": [
+   1.65,
+   8.25
+  ],
+  "to": [
+   0.825,
+   4.125
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "gemma412bit",
+  "name": "Gemma 4 12B IT",
+  "provider": "kitani",
+  "from": [
+   0.05,
+   0.25
+  ],
+  "to": [
+   0.045,
+   0.23
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "bgemultilingualgemma2",
+  "name": "BGE Multilingual Gemma2",
+  "provider": "infomaniak",
+  "from": [
+   0.11215,
+   0
+  ],
+  "to": [
+   0.08,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv32thinking",
+  "name": "DeepSeek-V3.2-Thinking",
+  "provider": "302ai",
+  "from": [
+   0.62,
+   1.85
+  ],
+  "to": [
+   0.29,
+   0.43
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nvidianemotron35lightning30ba3bbf16",
+  "name": "Nemotron 3.5 Lightning 30B A3B",
+  "provider": "thinkingmachines",
+  "from": [
+   0.05,
+   0.15
+  ],
+  "to": [
+   0.184,
+   0.495
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "magnumv472b",
+  "name": "Magnum v4 72B",
+  "provider": "anthracite-org",
+  "from": [
+   2.65,
+   5.3
+  ],
+  "to": [
+   2.5,
+   5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "hy4preview",
+  "name": "Hy4 preview (Deep Infra)",
+  "provider": "tencent",
+  "from": [
+   0.96,
+   2.88
+  ],
+  "to": [
+   0.834,
+   2.501
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "autovaluereasoning",
+  "name": "Auto Value Reasoning",
+  "provider": "aistupidlevel"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "qwen3235bweb",
+  "name": "Qwen3 235B (Web)",
+  "provider": "moneo"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "deepseekv41flashabliteratedfree",
+  "name": "DeepSeek V4.1 Flash 1017 Abliterated Free",
+  "provider": "refuseless"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "databricksgptoss20beu",
+  "name": "GPT OSS 20B (Databricks, EU)",
+  "provider": "edenai",
+  "from": [
+   0.07,
+   0.30002
+  ],
+  "to": [
+   0.07,
+   0.3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "hy3",
+  "name": "Hy3",
+  "provider": "tencent",
+  "from": [
+   0.16,
+   0.64
+  ],
+  "to": [
+   0.14,
+   0.58
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "qwen38flashnext",
+  "name": "Qwen3.8 Flash Next",
+  "provider": "requesty",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.2,
+   0.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "nemotron35supervl",
+  "name": "Nemotron 3.5 Super VL",
+  "provider": "nvidia",
+  "from": [
+   0.3,
+   0.9
+  ],
+  "to": [
+   0.15,
+   0.47
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekv41flashfast",
+  "name": "DeepSeek V4.1 Flash",
+  "provider": "coralbricks",
+  "from": [
+   0.6,
+   2.4
+  ],
+  "to": [
+   0.25,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "llama318binstructfast",
+  "name": "Llama-3.1-8B-Instruct",
+  "provider": "zerogpu"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "remmslerpl213b",
+  "name": "ReMM SLERP 13B",
+  "provider": "undi95",
+  "from": [
+   0.799,
+   1.207
+  ],
+  "to": [
+   0.3,
+   0.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "kimik2instruct0905",
+  "name": "Kimi K2 Instruct",
+  "provider": "io-net",
+  "from": [
+   0.4,
+   1.8
+  ],
+  "to": [
+   0.57,
+   2.3
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "pareto",
+  "name": "Pareto 26.10",
+  "provider": "unbiased",
+  "from": [
+   2.645,
+   7.935
+  ],
+  "to": [
+   0.8,
+   3.2
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "llama3370binstructturbo",
+  "name": "Llama-3.3-70B-Instruct",
+  "provider": "inferenceapis",
+  "from": [
+   0.1,
+   0.32
+  ],
+  "to": [
+   0.2,
+   0.5
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekchat",
+  "name": "DeepSeek Chat",
+  "provider": "deepseek",
+  "from": [
+   0.1,
+   0.425
+  ],
+  "to": [
+   0.15,
+   0.6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "deepseekr1distillqwen32b",
+  "name": "DeepSeek R1 Distill Qwen 32B",
+  "provider": "alibaba-cn",
+  "from": [
+   0.497,
+   4.881
+  ],
+  "to": [
+   0.287,
+   0.861
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "databricksgptoss120b",
+  "name": "GPT OSS 120B (Databricks)",
+  "provider": "edenai",
+  "from": [
+   0.15001,
+   0.59997
+  ],
+  "to": [
+   0.15,
+   0.6
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "new_model",
+  "key": "autovaluecoding",
+  "name": "Auto Value Coding",
+  "provider": "aistupidlevel"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "l3lunaris8b",
+  "name": "Llama 3 8B Lunaris",
+  "provider": "sao10k",
+  "from": [
+   0.0529,
+   0.0529
+  ],
+  "to": [
+   0.04,
+   0.05
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "price_change",
+  "key": "mimov26proultraspeed",
+  "name": "MiMo-V2.6-Pro-UltraSpeed",
+  "provider": "xiaomi",
+  "from": [
+   5.0769,
+   10.1538
+  ],
+  "to": [
+   4.35,
+   8.7
+  ]
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "decisionsfastfree",
+  "name": "Parallel: Decisions Fast (free)",
+  "provider": "parallel"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "qwenimage21",
+  "name": "Qwen-Image-2.1",
+  "provider": "nan"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "lfm25embedding350mfree",
+  "name": "LiquidAI: LFM2.5-Embedding-350M (free)",
+  "provider": "liquid"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "lfm2526bfree",
+  "name": "LFM2.5-2.6B (free)",
+  "provider": "liquid"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "deepseekv4flashspeed",
+  "name": "DeepSeek V4 Flash (Speed)",
+  "provider": "neuralwatt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "kimik3flex",
+  "name": "Kimi K3 Flex",
+  "provider": "neuralwatt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "glm52batch",
+  "name": "Z.ai: GLM 5.2 (batch)",
+  "provider": "zhipu"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "kimik27codefast",
+  "name": "Kimi K2.7 Code Fast",
+  "provider": "neuralwatt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "kimik27codeflex",
+  "name": "Kimi K2.7 Code Flex",
+  "provider": "neuralwatt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "deepseekv4flashflex",
+  "name": "DeepSeek V4 Flash Flex",
+  "provider": "neuralwatt"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "nvidianemotron3super120ba12bnvfp4",
+  "name": "Nemotron 3 Super 120B A12B",
+  "provider": "synthetic"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "ling1t",
+  "name": "Ling-1T",
+  "provider": "bailing"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "ring1t",
+  "name": "Ring-1T",
+  "provider": "bailing"
+ },
+ {
+  "ts": "2026-11-15T07:02:08+00:00",
+  "type": "removed",
+  "key": "deepseekv41flash1017basic",
+  "name": "DeepSeek V4.1 Flash 1017 (Basic)",
+  "provider": "hyper"
+ },
+ {
+  "ts": "2026-11-13T12:42:42+00:00",
+  "type": "deprecation",
+  "name": "LFM2.5 2.6B (2026-11-13)",
+  "provider": "liquid",
+  "link": "https://openrouter.ai/models"
+ },
+ {
+  "ts": "2026-11-13T12:42:42+00:00",
+  "type": "deprecation",
+  "name": "stepfun-ai/Step-3.5-Flash (2026-11-15)",
+  "provider": "stepfun",
+  "link": "https://openrouter.ai/models"
+ },
+ {
+  "ts": "2026-11-13T12:42:42+00:00",
+  "type": "deprecation",
+  "name": "Qwen/Qwen3-VL-30B-A3B-Thinking (2026-11-15)",
+  "provider": "alibaba",
+  "link": "https://openrouter.ai/models"
+ },
+ {
+  "ts": "2026-11-13T12:42:42+00:00",
+  "type": "deprecation",
+  "name": "tencent/Hunyuan-A13B-Instruct (2026-11-15)",
+  "provider": "tencent",
+  "link": "https://openrouter.ai/models"
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistralsmall3224binstruct",
+  "name": "Mistral Small 3.2 24B (2506)",
+  "provider": "mistral",
+  "from": [
+   0.07935,
+   0.2116
+  ],
+  "to": [
+   0.2,
+   0.4
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama4scout",
+  "name": "Llama-4-Scout-17B-16E-Instruct-FP8",
+  "provider": "meta",
+  "from": [
+   0.08,
+   0.24
+  ],
+  "to": [
+   0.17,
+   0.66
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gemmasealionv427bit",
+  "name": "Gemma Sea Lion V4 27B It",
+  "provider": "cloudflare-workers-ai",
+  "from": [
+   0.24,
+   0.48
+  ],
+  "to": [
+   0.351,
+   0.555
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "umansglm53",
+  "name": "GLM 5.3",
+  "provider": "umans-ai-coding-plan",
+  "from": [
+   1.4,
+   4.4
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "claude37sonnet",
+  "name": "Anthropic: Claude 3.7 Sonnet",
+  "provider": "helicone",
+  "from": [
+   null,
+   null
+  ],
+  "to": [
+   3,
+   15
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen25vl32binstruct",
+  "name": "Qwen 2.5 VL 32B Instruct",
+  "provider": "io-net",
+  "from": [
+   0.2,
+   0.6
+  ],
+  "to": [
+   0.05,
+   0.22
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama318binstruct",
+  "name": "Llama 3.1 8B",
+  "provider": "meta",
+  "from": [
+   0.02,
+   0.04
+  ],
+  "to": [
+   0.22,
+   0.22
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekv31terminus",
+  "name": "Pro/deepseek-ai/DeepSeek-V3.1-Terminus",
+  "provider": "deepseek",
+  "from": [
+   0.27,
+   1
+  ],
+  "to": [
+   0.59778991,
+   1.79336973
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistralsmall4119b2603",
+  "name": "Mistral Small 4 119B",
+  "provider": "nano-gpt",
+  "from": [
+   0.25,
+   0.93
+  ],
+  "to": [
+   0.4,
+   1.4
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mimov26pro",
+  "name": "MiMo-V2.6-Pro",
+  "provider": "xiaomi",
+  "from": [
+   0.435,
+   0.87
+  ],
+  "to": [
+   0.47,
+   0.94
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "hy3",
+  "name": "Hy3",
+  "provider": "tencent",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.16,
+   0.64
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "fuguultrav2",
+  "name": "Fugu Ultra v2",
+  "provider": "sakana",
+  "from": [
+   5.29,
+   31.74
+  ],
+  "to": [
+   5,
+   30
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistralmedium35128b",
+  "name": "Mistral Medium 3.5",
+  "provider": "greenpt",
+  "from": [
+   1.725,
+   6.9
+  ],
+  "to": [
+   2.052,
+   10.26
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "sonar",
+  "name": "Sonar",
+  "provider": "perplexity",
+  "from": [
+   1,
+   1
+  ],
+  "to": [
+   0.25,
+   2.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "doubaoseedevolving",
+  "name": "Seed Evolving",
+  "provider": "ofox",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.884,
+   4.42
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "step35flash2603",
+  "name": "Step 3.5 Flash 2603",
+  "provider": "nano-gpt",
+  "from": [
+   null,
+   null
+  ],
+  "to": [
+   0.1,
+   0.3
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwenimage",
+  "name": "Qwen-Image",
+  "provider": "regolo-ai",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.5,
+   2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistralnemoinstruct2407",
+  "name": "Mistral Nemo",
+  "provider": "nano-gpt",
+  "from": [
+   0.02,
+   0.04
+  ],
+  "to": [
+   0.1003,
+   0.1207
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekv32exp",
+  "name": "DeepSeek V3.2 Exp",
+  "provider": "deepseek",
+  "from": [
+   0.26,
+   0.38
+  ],
+  "to": [
+   0.28,
+   0.42
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen330ba3binstruct2507",
+  "name": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "provider": "alibaba",
+  "from": [
+   0.1,
+   0.3
+  ],
+  "to": [
+   0.10461323,
+   0.41845294
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "morphv3fast",
+  "name": "Morph V3 Fast",
+  "provider": "morph",
+  "from": [
+   0.8464,
+   1.2696
+  ],
+  "to": [
+   0.8,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "auto",
+  "name": "Auto",
+  "provider": "openrouter",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   -1000000.0,
+   -1000000.0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "inklingsmall",
+  "name": "Inkling Small",
+  "provider": "thinkingmachines",
+  "from": [
+   0.61364,
+   1.52352
+  ],
+  "to": [
+   0.45,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama3370b",
+  "name": "Llama-3.3-70B-Instruct",
+  "provider": "vercel",
+  "from": [
+   1.75,
+   2.75
+  ],
+  "to": [
+   0.72,
+   0.72
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gptosssafeguard20b",
+  "name": "GPT OSS Safeguard 20B",
+  "provider": "openai",
+  "from": [
+   0.07935,
+   0.3174
+  ],
+  "to": [
+   0.07,
+   0.2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gptoss120b",
+  "name": "OpenAI GPT OSS 120B",
+  "provider": "openai",
+  "from": [
+   0.15,
+   0.6
+  ],
+  "to": [
+   2.92,
+   2.92
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3coder480ba35binstructfp8",
+  "name": "Qwen3 Coder 480B A35B Instruct",
+  "provider": "submodel",
+  "from": [
+   2,
+   2
+  ],
+  "to": [
+   0.2,
+   0.8
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekv4flashlatest",
+  "name": "DeepSeek V4 Flash Latest",
+  "provider": "~deepseek",
+  "from": [
+   0.0434,
+   0.3
+  ],
+  "to": [
+   0.14,
+   0.28
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen354b",
+  "name": "Qwen/Qwen3.5-4B",
+  "provider": "siliconflow-cn",
+  "from": [
+   0.04,
+   0.07
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nvidianemotron35lightning30ba3bbf16",
+  "name": "Nemotron 3.5 Lightning 30B A3B",
+  "provider": "runinfra",
+  "from": [
+   0.184,
+   0.495
+  ],
+  "to": [
+   0.05,
+   0.15
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3635b",
+  "name": "Qwen3.6 35B-A3B",
+  "provider": "llmtr",
+  "from": [
+   0.29,
+   1.15
+  ],
+  "to": [
+   5,
+   10
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistralsmall24binstruct2501",
+  "name": "Mistral Small 3",
+  "provider": "mistral",
+  "from": [
+   0.0529,
+   0.08464
+  ],
+  "to": [
+   0.05,
+   0.08
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "schematronv2small",
+  "name": "Schematron V2 Small",
+  "provider": "inference-net",
+  "from": [
+   0.0529,
+   0.24334
+  ],
+  "to": [
+   0.05,
+   0.23
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "umansglm53flash",
+  "name": "GLM 5.3 Flash",
+  "provider": "umans-ai-coding-plan",
+  "from": [
+   0.15,
+   0.5
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama3290bvisioninstruct",
+  "name": "Llama 3.2 90B Vision Instruct",
+  "provider": "io-net",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.35,
+   0.4
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama3170binstruct",
+  "name": "Llama 3.1 70B",
+  "provider": "meta",
+  "from": [
+   0.72,
+   0.72
+  ],
+  "to": [
+   0.99,
+   0.99
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "hy4",
+  "name": "Hy4",
+  "provider": "tencent",
+  "from": [
+   0.834,
+   2.501
+  ],
+  "to": [
+   0.96,
+   2.88
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekr1distillqwen32b",
+  "name": "Deepseek R1 Distill Qwen 32B",
+  "provider": "cloudflare-workers-ai",
+  "from": [
+   0.287,
+   0.861
+  ],
+  "to": [
+   0.497,
+   4.881
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mercury2",
+  "name": "Mercury 2",
+  "provider": "inception",
+  "from": [
+   0.2645,
+   0.7935
+  ],
+  "to": [
+   0.25,
+   0.75
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "commanda",
+  "name": "Command A",
+  "provider": "cohere",
+  "from": [
+   2.645,
+   10.58
+  ],
+  "to": [
+   2.5,
+   10
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistrallarge",
+  "name": "Mistral Large 2411",
+  "provider": "mistral",
+  "from": [
+   2.116,
+   6.348
+  ],
+  "to": [
+   2.006,
+   6.001
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nemotron3nanoomni",
+  "name": "nemotron-3-nano-omni",
+  "provider": "requesty",
+  "from": [
+   0.5,
+   0.9
+  ],
+  "to": [
+   0.06,
+   0.24
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "metallama3370binstruct",
+  "name": "Meta-Llama-3_3-70B-Instruct",
+  "provider": "ovhcloud",
+  "from": [
+   0.5,
+   1.5
+  ],
+  "to": [
+   0.74,
+   0.74
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "umansdeepseekv41flash",
+  "name": "DeepSeek V4.1 Flash",
+  "provider": "umans-ai-coding-plan",
+  "from": [
+   0.15,
+   0.6
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mythomaxl213b",
+  "name": "MythoMax 13B",
+  "provider": "gryphe",
+  "from": [
+   1.98375,
+   1.98375
+  ],
+  "to": [
+   0.1003,
+   0.1003
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3codernext",
+  "name": "Qwen3 Coder Next",
+  "provider": "alibaba",
+  "from": [
+   0.12,
+   0.8
+  ],
+  "to": [
+   0.15,
+   0.8
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "xiaomimimov25",
+  "name": "MiMo-V2.5",
+  "provider": "venice",
+  "from": [
+   0.44,
+   2.2
+  ],
+  "to": [
+   0.4,
+   2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3vl32binstruct",
+  "name": "Qwen/Qwen3-VL-32B-Instruct",
+  "provider": "siliconflow-cn",
+  "from": [
+   0.2,
+   0.6
+  ],
+  "to": [
+   0.14944748,
+   0.59778991
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "minimaxm21",
+  "name": "MiniMax M2.1",
+  "provider": "merge-gateway",
+  "from": [
+   0.28,
+   1.2
+  ],
+  "to": [
+   0.3,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "cydonia24bv41",
+  "name": "The Drummer Cydonia 24B v4.1",
+  "provider": "thedrummer",
+  "from": [
+   0.3174,
+   0.529
+  ],
+  "to": [
+   0.3,
+   0.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "phi4",
+  "name": "Phi-4",
+  "provider": "microsoft",
+  "from": [
+   0.056,
+   0.112
+  ],
+  "to": [
+   0.125,
+   0.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3vl235ba22bthinking",
+  "name": "Qwen3-VL 235B A22B Thinking",
+  "provider": "merge-gateway",
+  "from": [
+   0.5,
+   6
+  ],
+  "to": [
+   0.287,
+   2.867
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3coder480ba35binstructturbo",
+  "name": "Qwen3 Coder 480B A35B Instruct Turbo",
+  "provider": "deepinfra",
+  "from": [
+   0.35,
+   1.5
+  ],
+  "to": [
+   0.3,
+   1
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3vl8binstruct",
+  "name": "Qwen/Qwen3-VL-8B-Instruct",
+  "provider": "alibaba",
+  "from": [
+   0.25,
+   0.75
+  ],
+  "to": [
+   0.07472374,
+   0.29889496
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "minimaxm25lightning",
+  "name": "MiniMax-M2.5 Lightning",
+  "provider": "ofox",
+  "from": [
+   0.6,
+   2.4
+  ],
+  "to": [
+   0.3,
+   2.4
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llamapromptguard222m",
+  "name": "Meta Llama Prompt Guard 2 22M",
+  "provider": "helicone",
+  "from": [
+   0.03,
+   0.03
+  ],
+  "to": [
+   0.01,
+   0.01
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "kolibri1",
+  "name": "Kolibri 1",
+  "provider": "munito",
+  "from": [
+   0.168,
+   0.588
+  ],
+  "to": [
+   0.13,
+   0.51
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nemotron3super120ba12b",
+  "name": "Nemotron-3-Super-120B-A12B",
+  "provider": "nvidia",
+  "from": [
+   0.075,
+   0.4
+  ],
+  "to": [
+   0.3,
+   0.9
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "claude45haiku",
+  "name": "Anthropic: Claude 4.5 Haiku",
+  "provider": "helicone",
+  "from": [
+   null,
+   null
+  ],
+  "to": [
+   1,
+   5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "umanscoder",
+  "name": "Umans Coder",
+  "provider": "umans-ai-coding-plan",
+  "from": [
+   0.15,
+   0.5
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "inkling2small",
+  "name": "Inkling 2 Small",
+  "provider": "thinkingmachines",
+  "from": [
+   0.15,
+   0.5
+  ],
+  "to": [
+   0.3,
+   1
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "umansdeepseekv4flash0731",
+  "name": "DeepSeek V4 Flash",
+  "provider": "umans-ai-coding-plan",
+  "from": [
+   0.14,
+   0.28
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "glm51thinking",
+  "name": "GLM 5.1 Thinking",
+  "provider": "nano-gpt",
+  "from": [
+   0.9,
+   2.9
+  ],
+  "to": [
+   0.966,
+   3.036
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "ernielightdt10intl",
+  "name": "ERNIE Light DT 1.0 (Intl)",
+  "provider": "baidu",
+  "from": [
+   1.13,
+   3.94
+  ],
+  "to": [
+   1.3,
+   4.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "doubaoseed20mini",
+  "name": "Seed 2.0 Mini",
+  "provider": "ofox",
+  "from": [
+   0.03,
+   0.28
+  ],
+  "to": [
+   0.06,
+   0.56
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "ling30flash",
+  "name": "Ling 3.0 Flash",
+  "provider": "inclusionai",
+  "from": [
+   0.06,
+   0.18
+  ],
+  "to": [
+   0.021,
+   0.063
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gpt51codexmax",
+  "name": "GPT-5.1 Codex Max",
+  "provider": "openai",
+  "from": [
+   2.645,
+   21.16
+  ],
+  "to": [
+   1.25,
+   10
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "ripple65bpreview",
+  "name": "Ripple 65B Preview",
+  "provider": "ricursiveai",
+  "from": [
+   0.1,
+   0.3
+  ],
+  "to": [
+   0.2,
+   0.6
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen359b",
+  "name": "Qwen3.5 9B",
+  "provider": "alibaba",
+  "from": [
+   0.09,
+   0.133
+  ],
+  "to": [
+   0.1,
+   0.15
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nova2litev1",
+  "name": "Nova 2 Lite",
+  "provider": "amazon",
+  "from": [
+   0.3,
+   2.5
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "claude45opus",
+  "name": "Anthropic: Claude Opus 4.5",
+  "provider": "helicone",
+  "from": [
+   null,
+   null
+  ],
+  "to": [
+   5,
+   25
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "step5preview",
+  "name": "Step 5 Preview",
+  "provider": "stepfun",
+  "from": [
+   1.058,
+   2.8566
+  ],
+  "to": [
+   1,
+   2.7
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekv32",
+  "name": "DeepSeek-V3.2",
+  "provider": "deepseek",
+  "from": [
+   0.26,
+   0.38
+  ],
+  "to": [
+   0.58,
+   1.68
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "doubaoseed21turbo",
+  "name": "Seed 2.1 Turbo",
+  "provider": "ofox",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.3536,
+   1.7696
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gemma426ba4bitthinking",
+  "name": "Gemma 4 26B A4B Thinking",
+  "provider": "nano-gpt",
+  "from": [
+   0.012,
+   0.036
+  ],
+  "to": [
+   0.031,
+   0.092
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "schematronv2turbo",
+  "name": "Schematron V2 Turbo",
+  "provider": "inference-net",
+  "from": [
+   0.03174,
+   0.1587
+  ],
+  "to": [
+   0.03,
+   0.15
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "lfm317b",
+  "name": "LFM3 1.7B",
+  "provider": "liquid",
+  "from": [
+   0.08,
+   0.2
+  ],
+  "to": [
+   0.1,
+   0.25
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "solarpro3",
+  "name": "solar-pro3",
+  "provider": "upstage",
+  "from": [
+   0.15,
+   0.6
+  ],
+  "to": [
+   0.25,
+   0.25
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "magnumv472b",
+  "name": "Magnum v4 72B",
+  "provider": "anthracite-org",
+  "from": [
+   3.174,
+   5.29
+  ],
+  "to": [
+   2.65,
+   5.3
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gpt56lunapro",
+  "name": "GPT 5.6 Luna Pro",
+  "provider": "openai",
+  "from": [
+   0.2116,
+   1.2696
+  ],
+  "to": [
+   0.2,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "ministral3b",
+  "name": "Ministral 3B",
+  "provider": "azure-cognitive-services",
+  "from": [
+   0.1,
+   0.1
+  ],
+  "to": [
+   0.04,
+   0.04
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gpt56solpro",
+  "name": "GPT 5.6 Sol Pro",
+  "provider": "openai",
+  "from": [
+   4.232,
+   21.16
+  ],
+  "to": [
+   4,
+   20
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3635ba3bfp8",
+  "name": "Qwen3.6 35B A3B FP8",
+  "provider": "inferx",
+  "from": [
+   0.17,
+   1.1
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "lagunas21",
+  "name": "Laguna S 2.1",
+  "provider": "poolside",
+  "from": [
+   0.09,
+   0.18
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "devstral2123binstruct2512",
+  "name": "Devstral 2",
+  "provider": "greenpt",
+  "from": [
+   0.4,
+   1.4
+  ],
+  "to": [
+   0.57,
+   2.736
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "solarpro4",
+  "name": "Solar Pro 4",
+  "provider": "upstage",
+  "from": [
+   0.09522,
+   0.38088
+  ],
+  "to": [
+   0.3,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "glm45thinking",
+  "name": "GLM 4.5 (Thinking)",
+  "provider": "nano-gpt",
+  "from": [
+   0.3,
+   1.3
+  ],
+  "to": [
+   0.6,
+   2.2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "doubaoseed16vision250815",
+  "name": "Seed 1.6 Vision",
+  "provider": "volcengine",
+  "from": [
+   0.114,
+   1.143
+  ],
+  "to": [
+   0.11875,
+   1.18747
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistralsmall3124binstruct",
+  "name": "Mistral Small 3.1 24B Instruct",
+  "provider": "mistral",
+  "from": [
+   0.371358,
+   0.58719
+  ],
+  "to": [
+   0.351,
+   0.555
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "novaprov1",
+  "name": "Amazon Nova Pro 1.0",
+  "provider": "amazon",
+  "from": [
+   0.8464,
+   3.3856
+  ],
+  "to": [
+   0.799,
+   3.196
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama4scout17binstruct",
+  "name": "Llama 4 Scout 17B Instruct (AWS Bedrock)",
+  "provider": "llmgateway-providers",
+  "from": [
+   0.18,
+   0.59
+  ],
+  "to": [
+   0.17,
+   0.66
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekv30324",
+  "name": "DeepSeek V3 0324",
+  "provider": "deepinfra",
+  "from": [
+   0.275,
+   1.1
+  ],
+  "to": [
+   0.24,
+   0.9
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen257binstruct",
+  "name": "Qwen/Qwen2.5-7B-Instruct",
+  "provider": "siliconflow-cn",
+  "from": [
+   0.05,
+   0.05
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistrallarge40",
+  "name": "Mistral Large 4",
+  "provider": "mistral",
+  "from": [
+   0.7,
+   2.1
+  ],
+  "to": [
+   0.68,
+   2.09
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llamaguard412b",
+  "name": "Llama Guard 4 12B",
+  "provider": "meta",
+  "from": [
+   0.144,
+   0.144
+  ],
+  "to": [
+   0.18,
+   0.18
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nvidianemotron3nano30ba3b",
+  "name": "nvidia-nemotron-3-nano-30b-a3b",
+  "provider": "cortecs",
+  "from": [
+   0.05,
+   0.2
+  ],
+  "to": [
+   0.06,
+   0.24
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "minimaxm27",
+  "name": "MiniMax-M2.7",
+  "provider": "minimax",
+  "from": [
+   0.3,
+   1.2
+  ],
+  "to": [
+   0.33,
+   1.32
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gemma312bit",
+  "name": "Gemma 3 12B IT",
+  "provider": "google",
+  "from": [
+   0.0529,
+   0.1587
+  ],
+  "to": [
+   0.05,
+   0.15
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "small",
+  "name": "Ambient Small",
+  "provider": "ambient",
+  "from": [
+   0.05,
+   0.4
+  ],
+  "to": [
+   0.001,
+   0.001
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "kimik25",
+  "name": "Kimi K2.5",
+  "provider": "moonshot",
+  "from": [
+   0.45,
+   2.25
+  ],
+  "to": [
+   0.6,
+   3
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nemotron3nano30ba3b",
+  "name": "Nemotron 3 Nano 30B A3B",
+  "provider": "nvidia",
+  "from": [
+   0.06,
+   0.24
+  ],
+  "to": [
+   0.05,
+   0.2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mercury25",
+  "name": "Mercury 2.5",
+  "provider": "inception",
+  "from": [
+   0.2116,
+   0.7935
+  ],
+  "to": [
+   0.2,
+   0.75
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "novalitev1",
+  "name": "Amazon Nova Lite 1.0",
+  "provider": "amazon",
+  "from": [
+   0.06348,
+   0.25392
+  ],
+  "to": [
+   0.0595,
+   0.238
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "kimik2thinking",
+  "name": "Kimi K2 Thinking",
+  "provider": "moonshot",
+  "from": [
+   0.6,
+   2.6
+  ],
+  "to": [
+   0.6,
+   2.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nemotron35contentsafety",
+  "name": "Nemotron 3.5 Content Safety",
+  "provider": "nvidia",
+  "from": [
+   0.2,
+   0.2
+  ],
+  "to": [
+   0.05,
+   0.15
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "lingflash20",
+  "name": "inclusionAI/Ling-flash-2.0",
+  "provider": "siliconflow-cn",
+  "from": [
+   0.14,
+   0.57
+  ],
+  "to": [
+   0.14944748,
+   0.59778991
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "bgem3",
+  "name": "BGE M3",
+  "provider": "baai",
+  "from": [
+   0.02,
+   0
+  ],
+  "to": [
+   0.01,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "inkling",
+  "name": "Inkling",
+  "provider": "thinkingmachines",
+  "from": [
+   1.058,
+   4.2849
+  ],
+  "to": [
+   0.95,
+   4.05
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gpt56terrapro",
+  "name": "GPT 5.6 Terra Pro",
+  "provider": "openai",
+  "from": [
+   2.116,
+   12.696
+  ],
+  "to": [
+   2,
+   12
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "rekaflash3",
+  "name": "Reka Flash 3",
+  "provider": "rekaai",
+  "from": [
+   0.1,
+   0.2
+  ],
+  "to": [
+   0.105,
+   0.21
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistralnemo",
+  "name": "Mistral Nemo",
+  "provider": "mistral",
+  "from": [
+   0.1587,
+   0.17986
+  ],
+  "to": [
+   0.029,
+   0.03
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "grok420",
+  "name": "Grok 4.20 (Reasoning)",
+  "provider": "xai",
+  "from": [
+   1.25,
+   2.5
+  ],
+  "to": [
+   4,
+   12
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekv4flash0423",
+  "name": "DeepSeek V4 Flash 0423",
+  "provider": "merge-gateway",
+  "from": [
+   0.14,
+   0.28
+  ],
+  "to": [
+   0.139,
+   0.278
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "kimik2",
+  "name": "Kimi K2 Instruct",
+  "provider": "moonshot",
+  "from": [
+   0.60306,
+   2.4334
+  ],
+  "to": [
+   0.57,
+   2.3
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "hunyuana13binstruct",
+  "name": "tencent/Hunyuan-A13B-Instruct",
+  "provider": "tencent",
+  "from": [
+   0.14,
+   0.57
+  ],
+  "to": [
+   0.14944748,
+   0.59778991
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen38maxprime",
+  "name": "Qwen 3.8 Max Prime",
+  "provider": "alibaba",
+  "from": [
+   4.232,
+   12.696
+  ],
+  "to": [
+   4,
+   12
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekr1",
+  "name": "Pro/deepseek-ai/DeepSeek-R1",
+  "provider": "siliconflow-cn",
+  "from": [
+   1.35,
+   5.4
+  ],
+  "to": [
+   0.59778991,
+   2.39115964
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "seed20mini",
+  "name": "Seed 2.0 Mini",
+  "provider": "bytedance-seed",
+  "from": [
+   0.1058,
+   0.4232
+  ],
+  "to": [
+   0.1,
+   0.4
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "grok420nonreasoning",
+  "name": "Grok 4.20 (Non-Reasoning)",
+  "provider": "azure-cognitive-services",
+  "from": [
+   1.25,
+   2.5
+  ],
+  "to": [
+   2,
+   6
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nemotron3nanoomni30ba3breasoning",
+  "name": "Nemotron 3 Nano Omni 30B A3B Reasoning",
+  "provider": "deepinfra",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.2,
+   0.8
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "ring261t",
+  "name": "ring-2.6-1t",
+  "provider": "requesty",
+  "from": [
+   0.1318155,
+   1.0984625
+  ],
+  "to": [
+   0.3,
+   2.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "umansflash",
+  "name": "Umans Flash",
+  "provider": "umans-ai-coding-plan",
+  "from": [
+   0.15,
+   1
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistralsmall2503",
+  "name": "Mistral Small 3.1",
+  "provider": "azure-cognitive-services",
+  "from": [
+   0.111,
+   0.334
+  ],
+  "to": [
+   0.1,
+   0.3
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "longcat25preview",
+  "name": "LongCat-2.5-Preview",
+  "provider": "longcat",
+  "from": [
+   0.7875,
+   3.0975
+  ],
+  "to": [
+   0.3,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "aionrpllama318b",
+  "name": "Llama 3.1 8b (uncensored)",
+  "provider": "aion-labs",
+  "from": [
+   0.8464,
+   1.6928
+  ],
+  "to": [
+   0.8,
+   1.6
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "doubaoseed20lite260428",
+  "name": "Seed 2.0 Lite",
+  "provider": "volcengine",
+  "from": [
+   0.09041,
+   0.54246
+  ],
+  "to": [
+   0.08906,
+   0.53436
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama4maverick",
+  "name": "Llama-4-Maverick-17B-128E-Instruct-FP8",
+  "provider": "meta",
+  "from": [
+   0.35,
+   1
+  ],
+  "to": [
+   0.24,
+   0.97
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "hy4preview",
+  "name": "Hy4 preview",
+  "provider": "tencent",
+  "from": [
+   0.834,
+   2.501
+  ],
+  "to": [
+   0.96,
+   2.88
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3embedding8b",
+  "name": "Qwen3-Embedding-8B",
+  "provider": "alibaba",
+  "from": [
+   0.115,
+   0.115
+  ],
+  "to": [
+   0.01,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekv4pro0813",
+  "name": "DeepSeek V4 Pro 0813",
+  "provider": "deepseek",
+  "from": [
+   1.84092,
+   3.68184
+  ],
+  "to": [
+   1.3,
+   2.6
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistralmedium35",
+  "name": "Mistral Medium Latest",
+  "provider": "mistral",
+  "from": [
+   1.587,
+   7.935
+  ],
+  "to": [
+   1.5,
+   7.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3235ba22bthinking2507",
+  "name": "Qwen 3 235b A22B 2507 Thinking",
+  "provider": "alibaba",
+  "from": [
+   0.45,
+   3.5
+  ],
+  "to": [
+   0.3,
+   0.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistralsmall3224binstruct2506",
+  "name": "Mistral Small 3.2",
+  "provider": "greenpt",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.228,
+   0.456
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "voxtralsmall24b2507",
+  "name": "Voxtral Small 24B",
+  "provider": "mistral",
+  "from": [
+   0.1058,
+   0.3174
+  ],
+  "to": [
+   0.228,
+   0.513
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nemotron3ultra550ba55b",
+  "name": "Nemotron 3 Ultra 550B A55B",
+  "provider": "nvidia",
+  "from": [
+   0.4,
+   1.76
+  ],
+  "to": [
+   1,
+   3
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "longcat20",
+  "name": "LongCat-2.0",
+  "provider": "meituan",
+  "from": [
+   0.75,
+   3
+  ],
+  "to": [
+   0.3,
+   1.2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama4scout17b16einstruct",
+  "name": "Llama 4 Scout 17B 16E Instruct",
+  "provider": "azure-cognitive-services",
+  "from": [
+   0.27,
+   0.85
+  ],
+  "to": [
+   0.2,
+   0.78
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama4maverick17b128einstructfp8",
+  "name": "Llama 4 Maverick 17B 128E Instruct FP8",
+  "provider": "azure-cognitive-services",
+  "from": [
+   0.371,
+   1.484
+  ],
+  "to": [
+   0.25,
+   1
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "remmslerpl213b",
+  "name": "ReMM SLERP 13B",
+  "provider": "undi95",
+  "from": [
+   0.529,
+   0.7935
+  ],
+  "to": [
+   0.799,
+   1.207
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekv41flashlatest",
+  "name": "deepseek-v4.1-flash-latest (DeepInfra)",
+  "provider": "llmgateway-providers",
+  "from": [
+   0.15,
+   0.6
+  ],
+  "to": [
+   0.2,
+   0.6
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3235ba22binstruct2507",
+  "name": "Qwen3 235B-A22B Instruct 2507",
+  "provider": "deepinfra",
+  "from": [
+   0.09,
+   0.1
+  ],
+  "to": [
+   0.09,
+   0.55
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "lfm2526b",
+  "name": "LFM2.5 2.6B",
+  "provider": "liquid",
+  "from": [
+   0.35,
+   0.5
+  ],
+  "to": [
+   0.1,
+   0.2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "whisperlargev3",
+  "name": "Whisper 3 Large",
+  "provider": "openai",
+  "from": [
+   0.01,
+   0.01
+  ],
+  "to": [
+   0.0023,
+   0.0023
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nova2lite",
+  "name": "Nova 2 Lite",
+  "provider": "vercel",
+  "from": [
+   0.373,
+   3.144
+  ],
+  "to": [
+   0.33,
+   2.75
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "minimaxm3",
+  "name": "MiniMax-M3",
+  "provider": "minimax",
+  "from": [
+   0.3,
+   1.2
+  ],
+  "to": [
+   0.33,
+   1.32
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama3370binstruct",
+  "name": "Llama-3.3-70B-Instruct",
+  "provider": "meta",
+  "from": [
+   0.1,
+   0.3
+  ],
+  "to": [
+   0.71,
+   0.71
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gemma327bit",
+  "name": "Gemma 3 27B IT",
+  "provider": "google",
+  "from": [
+   0.1587,
+   0.48668
+  ],
+  "to": [
+   0.08,
+   0.16
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekchat",
+  "name": "DeepSeek V3/Deepseek Chat",
+  "provider": "deepseek",
+  "from": [
+   0.39,
+   1.56
+  ],
+  "to": [
+   0.1,
+   0.425
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "glm52fast",
+  "name": "GLM 5.2 Fast",
+  "provider": "above",
+  "from": [
+   2.8,
+   8.8
+  ],
+  "to": [
+   2.31,
+   7.26
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gemma34bit",
+  "name": "Gemma 3 4B IT",
+  "provider": "google",
+  "from": [
+   0.0529,
+   0.1058
+  ],
+  "to": [
+   0.05,
+   0.1
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "doubaoseed20mini260428",
+  "name": "Seed 2.0 Mini",
+  "provider": "volcengine",
+  "from": [
+   0.030136,
+   0.30136
+  ],
+  "to": [
+   0.02969,
+   0.29687
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nvidianemotron35supervl120ba12b",
+  "name": "NVIDIA Nemotron 3.5 Super VL 120B",
+  "provider": "venice",
+  "from": [
+   0.15,
+   0.47
+  ],
+  "to": [
+   0.2,
+   0.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nemotron35lightning",
+  "name": "Nemotron 3.5 Lightning 30B A3B",
+  "provider": "nvidia",
+  "from": [
+   0.025,
+   0.12
+  ],
+  "to": [
+   0.06,
+   0.24
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "perceptronmk15",
+  "name": "Perceptron Mk1.5",
+  "provider": "perceptron",
+  "from": [
+   0.1587,
+   1.587
+  ],
+  "to": [
+   0.15,
+   1.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "grok41fast",
+  "name": "Grok 4.1 Fast",
+  "provider": "ofox",
+  "from": [
+   null,
+   null
+  ],
+  "to": [
+   0.2,
+   0.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "claudefablelatest",
+  "name": "Claude Fable Latest",
+  "provider": "~anthropic",
+  "from": [
+   8,
+   40
+  ],
+  "to": [
+   10,
+   50
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekv3",
+  "name": "DeepSeek-V3",
+  "provider": "deepinfra",
+  "from": [
+   1.25,
+   1.25
+  ],
+  "to": [
+   0.32,
+   0.89
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama31nemotron70binstruct",
+  "name": "Llama 3.1 Nemotron 70B Instruct (Deep Infra)",
+  "provider": "edenai",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.6,
+   0.6
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "seed20lite",
+  "name": "ByteDance Seed 2.0 Lite",
+  "provider": "bytedance-seed",
+  "from": [
+   0.2645,
+   2.116
+  ],
+  "to": [
+   0.25,
+   2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "glm52batch",
+  "name": "Z.ai: GLM 5.2 (batch)",
+  "provider": "zhipu",
+  "from": [
+   0.298,
+   0.916
+  ],
+  "to": [
+   0.322,
+   0.989
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama3370binstructturbo",
+  "name": "Llama 3.3 70B Turbo",
+  "provider": "deepinfra",
+  "from": [
+   0.76176,
+   2.383674
+  ],
+  "to": [
+   0.1,
+   0.32
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "museglimmer30b",
+  "name": "Muse Glimmer 30B",
+  "provider": "meta",
+  "from": [
+   0.3703,
+   1.587
+  ],
+  "to": [
+   0.35,
+   1.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "doubaoseed20code",
+  "name": "Seed 2.0 Code",
+  "provider": "ofox",
+  "from": [
+   0.45,
+   2.24
+  ],
+  "to": [
+   0.67,
+   3.36
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "skyfall36bv2",
+  "name": "TheDrummer Skyfall 36B V2",
+  "provider": "thedrummer",
+  "from": [
+   0.5819,
+   0.8464
+  ],
+  "to": [
+   0.55,
+   0.8
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mimov25",
+  "name": "MiMo-V2.5",
+  "provider": "xiaomi",
+  "from": [
+   0.14812,
+   0.29624
+  ],
+  "to": [
+   0.14,
+   0.28
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistralmedium3",
+  "name": "Mistral Medium 3",
+  "provider": "mistral",
+  "from": [
+   0.4232,
+   2.116
+  ],
+  "to": [
+   0.4,
+   2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nvidianemotron3ultra550ba55b",
+  "name": "Nemotron 3 Ultra",
+  "provider": "baseten",
+  "from": [
+   0.5,
+   2.15
+  ],
+  "to": [
+   0.6,
+   2.4
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "seed20pro",
+  "name": "Seed 2.0 Pro",
+  "provider": "deepinfra",
+  "from": [
+   0.63,
+   3.79
+  ],
+  "to": [
+   0.5,
+   3
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "grok420reasoning",
+  "name": "Grok 4.20 (Reasoning)",
+  "provider": "azure-cognitive-services",
+  "from": [
+   1.25,
+   2.5
+  ],
+  "to": [
+   2,
+   6
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "glm52thinking",
+  "name": "GLM 5.2 Thinking",
+  "provider": "nano-gpt",
+  "from": [
+   1.25,
+   3.95
+  ],
+  "to": [
+   0.42,
+   1.32
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama4maverick17binstruct",
+  "name": "Llama 4 Maverick 17B Instruct (AWS Bedrock)",
+  "provider": "llmgateway-providers",
+  "from": [
+   0.27,
+   0.85
+  ],
+  "to": [
+   0.24,
+   0.97
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekv31",
+  "name": "DeepSeek-V3.1",
+  "provider": "deepinfra",
+  "from": [
+   0.19,
+   0.79
+  ],
+  "to": [
+   0.25,
+   0.95
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3vl235ba22binstruct",
+  "name": "Qwen3 VL 235B A22B Instruct",
+  "provider": "alibaba",
+  "from": [
+   0.21,
+   1.9
+  ],
+  "to": [
+   0.2,
+   0.88
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3827b",
+  "name": "Qwen3.8 27B",
+  "provider": "alibaba",
+  "from": [
+   0.4761,
+   3.3856
+  ],
+  "to": [
+   0.2,
+   2.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "bgemultilingualgemma2",
+  "name": "BGE Multilingual Gemma2",
+  "provider": "scaleway",
+  "from": [
+   0.08,
+   0
+  ],
+  "to": [
+   0.11215,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mimov25pro",
+  "name": "MiMo-V2.5-Pro",
+  "provider": "xiaomi",
+  "from": [
+   0.46023,
+   0.92046
+  ],
+  "to": [
+   1,
+   3
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llama323binstruct",
+  "name": "Llama 3.2 3B Instruct",
+  "provider": "meta",
+  "from": [
+   0.05,
+   0.33
+  ],
+  "to": [
+   0.0509,
+   0.335
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "umanskimik3",
+  "name": "Kimi K3",
+  "provider": "umans-ai-coding-plan",
+  "from": [
+   3,
+   15
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistralsaba",
+  "name": "Mistral Saba",
+  "provider": "mistral",
+  "from": [
+   0.2116,
+   0.6348
+  ],
+  "to": [
+   0.1989,
+   0.595
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3coder",
+  "name": "Qwen3 Coder 480B A35B Instruct",
+  "provider": "alibaba",
+  "from": [
+   0.3,
+   1
+  ],
+  "to": [
+   0.22,
+   1.8
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nemotron3ultra",
+  "name": "nemotron-3-ultra",
+  "provider": "ollama-cloud",
+  "from": [
+   0.1,
+   0.1
+  ],
+  "to": [
+   0.1,
+   3
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "bielik11bv30instruct",
+  "name": "Bielik 11B v3.0 Instruct",
+  "provider": "cloudferro-sherlock",
+  "from": [
+   0.48,
+   0.48
+  ],
+  "to": [
+   0.67,
+   0.67
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "deepseekr1distillllama70b",
+  "name": "DeepSeek R1 Distill Llama 70B",
+  "provider": "helicone",
+  "from": [
+   0.287,
+   0.861
+  ],
+  "to": [
+   0.03,
+   0.13
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "morphv3large",
+  "name": "Morph V3 Large",
+  "provider": "morph",
+  "from": [
+   0.9522,
+   2.0102
+  ],
+  "to": [
+   0.9,
+   1.9
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen25vl72binstruct",
+  "name": "Qwen25 VL 72b",
+  "provider": "alibaba",
+  "from": [
+   0.8,
+   1
+  ],
+  "to": [
+   0.69989,
+   0.69989
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "fuguultra",
+  "name": "Fugu Ultra",
+  "provider": "sakana",
+  "from": [
+   5.29,
+   31.74
+  ],
+  "to": [
+   5,
+   30
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "step35flash",
+  "name": "stepfun-ai/Step-3.5-Flash",
+  "provider": "stepfun",
+  "from": [
+   0.1,
+   0.3
+  ],
+  "to": [
+   0.10461323,
+   0.3138397
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "llamapromptguard286m",
+  "name": "Meta Llama Prompt Guard 2 86M",
+  "provider": "helicone",
+  "from": [
+   0.04,
+   0.04
+  ],
+  "to": [
+   0.01,
+   0.01
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "seedoss36binstruct",
+  "name": "ByteDance-Seed/Seed-OSS-36B-Instruct",
+  "provider": "siliconflow-cn",
+  "from": [
+   0.21,
+   0.57
+  ],
+  "to": [
+   0.22417122,
+   0.59778991
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mistralmedium31",
+  "name": "Mistral Medium 3.1",
+  "provider": "mistral",
+  "from": [
+   0.4232,
+   2.116
+  ],
+  "to": [
+   0.4,
+   2
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen2572binstruct",
+  "name": "Qwen/Qwen2.5-72B-Instruct",
+  "provider": "alibaba",
+  "from": [
+   0.36,
+   0.4
+  ],
+  "to": [
+   0.61721808,
+   0.61721808
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3824ta95b",
+  "name": "Qwen3.8 2.4T A95B",
+  "provider": "alibaba",
+  "from": [
+   2.645,
+   6.6125
+  ],
+  "to": [
+   2,
+   6
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "doubaoseed20lite",
+  "name": "Seed 2.0 Lite",
+  "provider": "ofox",
+  "from": [
+   0.09,
+   0.51
+  ],
+  "to": [
+   0.13,
+   0.76
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "doubaoseed20pro",
+  "name": "Seed 2.0 Pro",
+  "provider": "ofox",
+  "from": [
+   0.45,
+   2.24
+  ],
+  "to": [
+   0.67,
+   3.36
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "doubaoseedcharacter",
+  "name": "Seed Character",
+  "provider": "ofox",
+  "from": [
+   0.15,
+   0.37
+  ],
+  "to": [
+   0.177,
+   0.884
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gemini3proimagepreview",
+  "name": "Gemini 3 Pro Image",
+  "provider": "google",
+  "from": [
+   1,
+   6
+  ],
+  "to": [
+   2,
+   12
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "ling30flashvl",
+  "name": "Ling 3.0 Flash VL",
+  "provider": "inclusionai",
+  "from": [
+   0.06,
+   0.18
+  ],
+  "to": [
+   0.075,
+   0.22
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mimov26flash",
+  "name": "MiMo-V2.6-Flash",
+  "provider": "xiaomi",
+  "from": [
+   0.1,
+   0.28
+  ],
+  "to": [
+   0.16,
+   0.32
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3vl32bthinking",
+  "name": "Qwen/Qwen3-VL-32B-Thinking",
+  "provider": "siliconflow-cn",
+  "from": [
+   0.2,
+   1.5
+  ],
+  "to": [
+   0.14944748,
+   1.49447478
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gemininanobanana21",
+  "name": "Nano Banana 2.1",
+  "provider": "google",
+  "from": [
+   1.5,
+   7.5
+  ],
+  "to": [
+   1.5,
+   30
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "beam10501ba23b",
+  "name": "Beam 1.0 501B A23B",
+  "provider": "reflection",
+  "from": [
+   0.25,
+   1
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "gptoss20b",
+  "name": "GPT OSS 20B",
+  "provider": "openai",
+  "from": [
+   0.07,
+   0.2
+  ],
+  "to": [
+   0.03,
+   0.14
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "magistralsmall2506",
+  "name": "Magistral Small 2506",
+  "provider": "io-net",
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   0.5,
+   1.5
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "nemotron35supervl",
+  "name": "Nemotron 3.5 Super VL 120B A12B",
+  "provider": "nvidia",
+  "from": [
+   0.06,
+   0.35
+  ],
+  "to": [
+   0.3,
+   0.9
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "mimov26proultraspeed",
+  "name": "MiMo V2.6 Pro UltraSpeed",
+  "provider": "xiaomi",
+  "from": [
+   4.35,
+   8.7
+  ],
+  "to": [
+   5.0769,
+   10.1538
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "qwen3vl30ba3bthinking",
+  "name": "Qwen/Qwen3-VL-30B-A3B-Thinking",
+  "provider": "alibaba",
+  "from": [
+   0.29,
+   1
+  ],
+  "to": [
+   0.10461323,
+   0.41845294
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "umansdeepseekv41flash1017",
+  "name": "DeepSeek V4.1 Flash 1017",
+  "provider": "umans-ai-coding-plan",
+  "from": [
+   0.15,
+   0.6
+  ],
+  "to": [
+   0,
+   0
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "price_change",
+  "key": "fugumax",
+  "name": "Fugu Max",
+  "provider": "sakana",
+  "from": [
+   2.116,
+   6.348
+  ],
+  "to": [
+   2,
+   6
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:42:35+00:00",
+  "type": "removed",
+  "key": "apodex11minifree",
+  "name": "Apodex: Apodex 1.1 Mini (free)",
+  "provider": "kilo"
+ },
+ {
+  "ts": "2026-11-13T12:23:25+00:00",
+  "type": "new_model",
+  "key": "qwenaudio30asrflash",
+  "name": "qwen-audio-3.0-asr-flash",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:23:25+00:00",
+  "type": "new_model",
+  "key": "qwenaudio30realtimeplus",
+  "name": "qwen-audio-3.0-realtime-plus",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:20:59+00:00",
+  "type": "deprecation",
+  "name": "qwen4-max-preview (2026-11-26)",
+  "provider": "alibaba",
+  "link": "https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwenaudio31asrflash",
+  "name": "qwen-audio-3.1-asr-flash",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwenaudio31asrflashmessage",
+  "name": "qwen-audio-3.1-asr-flash-message",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwenaudio31asrflashfiletrans",
+  "name": "qwen-audio-3.1-asr-flash-filetrans",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwen3rerank",
+  "name": "qwen3-rerank",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwenaudio31realtimeflash",
+  "name": "qwen-audio-3.1-realtime-flash",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwenaudio31asrflashstreaming",
+  "name": "qwen-audio-3.1-asr-flash-streaming",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwenaudio31ttsflash",
+  "name": "qwen-audio-3.1-tts-flash",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwenaudio31ttsnext",
+  "name": "qwen-audio-3.1-tts-next",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwenaudio31realtimeplus",
+  "name": "qwen-audio-3.1-realtime-plus",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwen38omniflashrealtime",
+  "name": "qwen3.8-omni-flash-realtime",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwen37textembedding",
+  "name": "qwen3.7-text-embedding",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwenaudio31ttsplus",
+  "name": "qwen-audio-3.1-tts-plus",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwen4maxpreview",
+  "name": "qwen4-max-preview",
+  "provider": "alibaba"
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "price_change",
+  "key": "glm52batch",
+  "name": "Z.ai: GLM 5.2 (batch)",
+  "provider": "zhipu",
+  "from": [
+   0.322,
+   0.989
+  ],
+  "to": [
+   0.298,
+   0.916
+  ]
+ },
+ {
+  "ts": "2026-11-13T12:19:40+00:00",
+  "type": "new_model",
+  "key": "qwenimage30pro",
+  "name": "qwen-image-3.0-pro",
+  "provider": "alibaba"
+ }
+]
