@@ -14,7 +14,7 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 from backend import jobs as collector_jobs
 
@@ -25,8 +25,8 @@ DATASETS = frozenset({"catalog", "best", "deprecations", "news", "changes", "met
 LOGGER = logging.getLogger(__name__)
 ADMIN_COOKIE = "model_atlas_admin"
 ADMIN_SESSION_TTL = 12 * 60 * 60
-DEFAULT_REFRESH_INTERVAL = 6
-REFRESH_INTERVALS = tuple(range(1, 25))
+DEFAULT_REFRESH_INTERVAL_MINUTES = 6 * 60
+REFRESH_INTERVALS_MINUTES = (15, 30, 45, *range(60, 24 * 60 + 1, 60))
 SETTINGS_PATH = "admin_settings.json"
 
 _settings_lock = threading.Lock()
@@ -43,7 +43,14 @@ class LoginRequest(BaseModel):
 
 
 class RefreshSettingsRequest(BaseModel):
-    interval_hours: int = Field(strict=True, ge=1, le=24)
+    interval_minutes: int = Field(strict=True, ge=15, le=24 * 60)
+
+    @field_validator("interval_minutes")
+    @classmethod
+    def interval_must_be_available(cls, value: int) -> int:
+        if value not in REFRESH_INTERVALS_MINUTES:
+            raise ValueError("Choose 15, 30, or 45 minutes, or a whole-hour interval from 1 to 24 hours.")
+        return value
 
 
 def _admin_enabled() -> bool:
@@ -105,8 +112,8 @@ def _read_settings_unlocked() -> dict:
     path = _settings_path()
     if not path.exists():
         settings = {
-            "interval_hours": DEFAULT_REFRESH_INTERVAL,
-            "next_run_at": time.time() + DEFAULT_REFRESH_INTERVAL * 3600,
+            "interval_minutes": DEFAULT_REFRESH_INTERVAL_MINUTES,
+            "next_run_at": time.time() + DEFAULT_REFRESH_INTERVAL_MINUTES * 60,
             "last_started_at": None,
             "last_finished_at": None,
             "last_error": None,
@@ -117,11 +124,20 @@ def _read_settings_unlocked() -> dict:
 
     try:
         settings = json.loads(path.read_text(encoding="utf-8"))
+        migrated_interval = False
+        if "interval_minutes" not in settings:
+            previous_hours = settings.pop("interval_hours", None)
+            if type(previous_hours) is int:
+                settings["interval_minutes"] = previous_hours * 60
+                migrated_interval = True
+        elif "interval_hours" in settings:
+            settings.pop("interval_hours")
+            migrated_interval = True
         next_run_at = settings.get("next_run_at")
         last_icons_attempt_at = settings.get("last_icons_attempt_at", 0)
         if (
-            type(settings.get("interval_hours")) is not int
-            or settings["interval_hours"] not in REFRESH_INTERVALS
+            type(settings.get("interval_minutes")) is not int
+            or settings["interval_minutes"] not in REFRESH_INTERVALS_MINUTES
             or type(next_run_at) not in (int, float)
             or type(last_icons_attempt_at) not in (int, float)
             or not 0 <= next_run_at < 1_000_000_000_000
@@ -129,6 +145,8 @@ def _read_settings_unlocked() -> dict:
         ):
             raise ValueError("Invalid refresh settings.")
         settings.setdefault("last_icons_attempt_at", 0)
+        if migrated_interval:
+            _write_settings_unlocked(settings)
     except (OSError, json.JSONDecodeError, AttributeError, ValueError) as error:
         LOGGER.exception("Could not read refresh settings")
         raise RuntimeError("Refresh settings are unavailable or invalid.") from error
@@ -153,7 +171,7 @@ def _settings_response() -> dict:
     with _refresh_state_lock:
         running = _refresh_state["running"]
     return {
-        "interval_hours": settings["interval_hours"],
+        "interval_minutes": settings["interval_minutes"],
         "next_run_at": datetime.fromtimestamp(settings["next_run_at"], timezone.utc).isoformat(),
         "last_started_at": settings.get("last_started_at"),
         "last_finished_at": settings.get("last_finished_at"),
@@ -194,7 +212,7 @@ def _start_refresh() -> bool:
     try:
         settings = _get_settings()
         _update_settings(
-            next_run_at=now + settings["interval_hours"] * 3600,
+            next_run_at=now + settings["interval_minutes"] * 60,
             last_started_at=now,
             last_error=None,
         )
@@ -352,8 +370,8 @@ def update_admin_settings(update: RefreshSettingsRequest, request: Request) -> J
     _require_admin(request)
     try:
         _update_settings(
-            interval_hours=update.interval_hours,
-            next_run_at=time.time() + update.interval_hours * 3600,
+            interval_minutes=update.interval_minutes,
+            next_run_at=time.time() + update.interval_minutes * 60,
         )
         settings = _settings_response()
     except RuntimeError as error:
