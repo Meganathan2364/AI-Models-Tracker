@@ -84,7 +84,12 @@ td:last-child{text-align:right}
 <script>
 const $ = selector => document.querySelector(selector);
 const message = $("#message");
-const formatTime = value => value ? new Date(value).toLocaleString() : "Not yet";
+const formatTime = value => {
+  if (value == null) return "Not yet";
+  const timestamp = typeof value === "number" && value < 1e12 ? value * 1000 : value;
+  const date = new Date(timestamp);
+  return Number.isNaN(date.getTime()) ? "Unknown" : date.toLocaleString();
+};
 
 async function api(url, options = {}) {
   const response = await fetch(url, {cache: "no-store", ...options});
