@@ -313,21 +313,26 @@ const timestampMs = value => {
 let refreshStatus = null, refreshStatusUnavailable = false, refreshPending = false, dataStorageMode = null;
 function renderFreshness() {
   const updated = D.catalog?.updated;
+  const updatedAt = timestampMs(updated);
   let text = updated ? `Catalog refreshed ${ago(updated)}` : "No data fetched yet";
-  if (refreshStatus?.scheduled) {
-    if (refreshStatus.running) text += " · Refresh running";
-    text += refreshStatus.next_run_at
-      ? ` · Next refresh ${countdown(refreshStatus.next_run_at)}`
-      : " · Next refresh time unavailable";
-  } else if (refreshStatusUnavailable) {
-    text += " · Refresh schedule unavailable";
+  if (updated && Number.isFinite(updatedAt)) {
+    text += ` · Last update ${new Date(updatedAt).toLocaleString()}`;
+  }
+  if (refreshStatusUnavailable) {
+    text += " · Manual refresh status unavailable";
+  } else if (refreshStatus?.running) {
+    text += " · Manual refresh running";
+  } else if (refreshStatus?.public_refresh_available) {
+    text += " · Manual refresh available now";
+  } else if (refreshStatus?.public_refresh_after) {
+    text += ` · Manual refresh in ${countdown(refreshStatus.public_refresh_after)}`;
   }
   $("#fresh").textContent = text;
-  $("#fresh").title = refreshStatus?.next_run_at
-    ? `Next refresh at ${new Date(refreshStatus.next_run_at).toLocaleString()}`
+  $("#fresh").title = updated
+    ? `Catalog data last refreshed ${Number.isFinite(updatedAt) ? new Date(updatedAt).toLocaleString() : updated}`
     : "";
   const button = $("#public-refresh");
-  const available = refreshStatus?.public_refresh_available === true;
+  const available = !refreshStatusUnavailable && refreshStatus?.public_refresh_available === true;
   button.disabled = refreshStatusUnavailable || !available || refreshPending;
   $("#refresh-notice").hidden = refreshStatusUnavailable || !available || refreshPending;
   button.textContent = refreshPending || refreshStatus?.running

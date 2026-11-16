@@ -98,6 +98,7 @@ const formatTime = value => {
   const date = new Date(timestamp);
   return Number.isNaN(date.getTime()) ? "Unknown" : date.toLocaleString();
 };
+const formatInterval = minutes => minutes < 60 ? `${minutes} minutes` : `${minutes / 60} hours`;
 
 async function api(url, options = {}) {
   const response = await fetch(url, {cache: "no-store", ...options});
@@ -138,7 +139,7 @@ async function refreshStatus() {
   $("#public-cooldown").value = String(refresh.public_refresh_cooldown_minutes);
   $("#summary").textContent = refresh.running
     ? `Refresh in progress. Started ${formatTime(refresh.last_started_at)}.`
-    : `Next refresh: ${formatTime(refresh.next_run_at)} · Last finished: ${formatTime(refresh.last_finished_at)}${refresh.last_error ? ` · Error: ${refresh.last_error}` : ""}`;
+    : `Last data refresh: ${formatTime(refresh.last_finished_at)} · Automatic interval setting: every ${formatInterval(refresh.interval_minutes)}${refresh.last_error ? ` · Error: ${refresh.last_error}` : ""}`;
   $("#refresh").disabled = refresh.running;
   $("#refresh").textContent = refresh.running ? "Refresh running…" : "Refresh now";
   showSources(status.sources);

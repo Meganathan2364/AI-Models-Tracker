@@ -33,6 +33,7 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn('href="/admin" aria-label="Admin sign in">Admin</a>', response.text)
         self.assertIn('id="public-refresh"', response.text)
         self.assertIn('id="refresh-notice"', response.text)
+        self.assertIn("Manual refresh in", response.text)
 
     async def test_health_reports_catalog_readiness(self):
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -275,6 +276,9 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(page.status_code, 200)
         self.assertIn("Refresh now", page.text)
         self.assertIn('id="public-cooldown"', page.text)
+        self.assertIn("Last data refresh:", page.text)
+        self.assertIn("Automatic interval setting:", page.text)
+        self.assertNotIn("Next refresh:", page.text)
         self.assertEqual(settings.json()["interval_minutes"], 360)
         self.assertTrue(all(result.status_code == 200 for result in minute_presets))
         self.assertEqual(update.status_code, 200)
