@@ -33,7 +33,7 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn('href="/admin" aria-label="Admin sign in">Admin</a>', response.text)
         self.assertIn('id="public-refresh"', response.text)
         self.assertIn('id="refresh-notice"', response.text)
-        self.assertIn("Manual refresh in", response.text)
+        self.assertNotIn("Manual refresh in", response.text)
 
     async def test_health_reports_catalog_readiness(self):
         with tempfile.TemporaryDirectory() as temp_dir:

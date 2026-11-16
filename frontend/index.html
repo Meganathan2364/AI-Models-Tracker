@@ -318,15 +318,6 @@ function renderFreshness() {
   if (updated && Number.isFinite(updatedAt)) {
     text += ` · Last update ${new Date(updatedAt).toLocaleString()}`;
   }
-  if (refreshStatusUnavailable) {
-    text += " · Manual refresh status unavailable";
-  } else if (refreshStatus?.running) {
-    text += " · Manual refresh running";
-  } else if (refreshStatus?.public_refresh_available) {
-    text += " · Manual refresh available now";
-  } else if (refreshStatus?.public_refresh_after) {
-    text += ` · Manual refresh in ${countdown(refreshStatus.public_refresh_after)}`;
-  }
   $("#fresh").textContent = text;
   $("#fresh").title = updated
     ? `Catalog data last refreshed ${Number.isFinite(updatedAt) ? new Date(updatedAt).toLocaleString() : updated}`
