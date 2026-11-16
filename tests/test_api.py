@@ -2,28 +2,36 @@ import asyncio
 import json
 import os
 import tempfile
+import time
 import unittest
 from pathlib import Path
 from unittest.mock import patch
 
 import httpx
 
-from backend.app import _get_settings, app
+from backend.app import _get_settings, _persist_dataset_snapshots, app
 
 
 class ApiTests(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self):
+        self.storage_env = patch.dict(
+            os.environ,
+            {"SUPABASE_URL": "", "SUPABASE_SECRET_KEY": "", "SUPABASE_SERVICE_ROLE_KEY": ""},
+        )
+        self.storage_env.start()
         transport = httpx.ASGITransport(app=app)
         self.client = httpx.AsyncClient(transport=transport, base_url="http://testserver")
 
     async def asyncTearDown(self):
         await self.client.aclose()
+        self.storage_env.stop()
 
     async def test_home_serves_frontend(self):
         response = await self.client.get("/")
         self.assertEqual(response.status_code, 200)
         self.assertIn("AI Models Tracker", response.text)
         self.assertIn('href="/admin" aria-label="Admin sign in">Admin</a>', response.text)
+        self.assertIn('id="public-refresh"', response.text)
 
     async def test_health_reports_catalog_readiness(self):
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -55,7 +63,60 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
                 response = await self.client.get("/api/refresh-status")
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {"scheduled": False, "next_run_at": None, "running": False})
+        self.assertFalse(response.json()["scheduled"])
+        self.assertIsNone(response.json()["next_run_at"])
+        self.assertTrue(response.json()["public_refresh_available"])
+        self.assertIsNone(response.json()["public_refresh_after"])
+        self.assertEqual(response.json()["cooldown_minutes"], 360)
+        self.assertFalse(response.json()["running"])
+
+    async def test_public_refresh_status_enforces_six_hour_cooldown(self):
+        now = time.time()
+        settings = {
+            "interval_minutes": 360,
+            "next_run_at": now + 3600,
+            "last_started_at": now - 3 * 3600,
+            "last_finished_at": now - 3 * 3600 + 60,
+            "last_error": None,
+            "last_icons_attempt_at": 0,
+        }
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(os.environ, {}, clear=True):
+            Path(temp_dir, "admin_settings.json").write_text(json.dumps(settings), encoding="utf-8")
+            with patch("backend.app.DATA_DIR", Path(temp_dir)):
+                response = await self.client.get("/api/refresh-status")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(response.json()["public_refresh_available"])
+        self.assertIsNotNone(response.json()["public_refresh_after"])
+
+    async def test_public_refresh_can_be_started_without_admin_login(self):
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(os.environ, {}, clear=True):
+            with patch("backend.app.DATA_DIR", Path(temp_dir)):
+                with patch("backend.app._start_refresh", return_value=True) as start_refresh:
+                    response = await self.client.post("/api/refresh")
+
+        self.assertEqual(response.status_code, 202)
+        start_refresh.assert_called_once_with()
+
+    async def test_public_refresh_rejects_requests_during_cooldown(self):
+        now = time.time()
+        settings = {
+            "interval_minutes": 360,
+            "next_run_at": now + 3600,
+            "last_started_at": now - 3 * 3600,
+            "last_finished_at": now - 3 * 3600 + 60,
+            "last_error": None,
+            "last_icons_attempt_at": 0,
+        }
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(os.environ, {}, clear=True):
+            Path(temp_dir, "admin_settings.json").write_text(json.dumps(settings), encoding="utf-8")
+            with patch("backend.app.DATA_DIR", Path(temp_dir)):
+                with patch("backend.app._start_refresh") as start_refresh:
+                    response = await self.client.post("/api/refresh")
+
+        self.assertEqual(response.status_code, 429)
+        self.assertIn("retry-after", response.headers)
+        start_refresh.assert_not_called()
 
     async def test_catalog_endpoint_returns_models(self):
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -66,6 +127,59 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
                 response = await self.client.get("/api/data/catalog")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["models"], [{"key": "sample"}])
+        self.assertEqual(response.headers["x-ai-data-source"], "local-only")
+
+    async def test_catalog_endpoint_reads_remote_snapshot_when_configured(self):
+        payload = {"models": [{"key": "remote-sample"}]}
+        supabase_env = {
+            "SUPABASE_URL": "https://example.supabase.co",
+            "SUPABASE_SECRET_KEY": "sb_secret_test-key",
+        }
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(os.environ, supabase_env):
+            with patch("backend.app.DATA_DIR", Path(temp_dir)):
+                with patch("backend.app.supabase_store.read_record", return_value=(True, payload)):
+                    response = await self.client.get("/api/data/catalog")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), payload)
+        self.assertEqual(response.headers["x-ai-data-source"], "supabase")
+
+    async def test_catalog_endpoint_seeds_remote_storage_from_local_cache(self):
+        payload = {"models": [{"key": "local-sample"}]}
+        supabase_env = {
+            "SUPABASE_URL": "https://example.supabase.co",
+            "SUPABASE_SECRET_KEY": "sb_secret_test-key",
+        }
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(os.environ, supabase_env):
+            Path(temp_dir, "catalog.json").write_text(json.dumps(payload), encoding="utf-8")
+            with patch("backend.app.DATA_DIR", Path(temp_dir)):
+                with patch("backend.app.supabase_store.read_record", return_value=(False, None)):
+                    with patch("backend.app.supabase_store.write_records") as write_records:
+                        response = await self.client.get("/api/data/catalog")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), payload)
+        self.assertEqual(response.headers["x-ai-data-source"], "supabase")
+        write_records.assert_called_once_with({"catalog": payload})
+
+    async def test_catalog_endpoint_uses_local_cache_when_remote_storage_fails(self):
+        payload = {"models": [{"key": "cached-sample"}]}
+        supabase_env = {
+            "SUPABASE_URL": "https://example.supabase.co",
+            "SUPABASE_SECRET_KEY": "sb_secret_test-key",
+        }
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(os.environ, supabase_env):
+            Path(temp_dir, "catalog.json").write_text(json.dumps(payload), encoding="utf-8")
+            with patch("backend.app.DATA_DIR", Path(temp_dir)):
+                with patch(
+                    "backend.app.supabase_store.read_record",
+                    side_effect=RuntimeError("remote unavailable"),
+                ):
+                    response = await self.client.get("/api/data/catalog")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), payload)
+        self.assertEqual(response.headers["x-ai-data-source"], "local-fallback")
 
     async def test_unknown_dataset_is_rejected(self):
         response = await self.client.get("/api/data/unknown")
@@ -166,6 +280,48 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(settings["interval_minutes"], 360)
         self.assertNotIn("interval_hours", stored)
         self.assertEqual(stored["interval_minutes"], 360)
+
+    def test_refresh_settings_restore_from_supabase_after_local_files_are_lost(self):
+        stored_settings = {
+            "interval_minutes": 180,
+            "next_run_at": 1_800_000_000,
+            "last_started_at": 1_799_000_000,
+            "last_finished_at": 1_799_000_100,
+            "last_error": None,
+            "last_icons_attempt_at": 0,
+        }
+        supabase_env = {
+            "SUPABASE_URL": "https://example.supabase.co",
+            "SUPABASE_SECRET_KEY": "sb_secret_test-key",
+        }
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(os.environ, supabase_env):
+            with patch("backend.app.DATA_DIR", Path(temp_dir)):
+                with patch(
+                    "backend.app.supabase_store.read_record",
+                    return_value=(True, stored_settings),
+                ):
+                    settings = _get_settings()
+                stored = json.loads(Path(temp_dir, "admin_settings.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(settings["interval_minutes"], 180)
+        self.assertEqual(settings["last_started_at"], 1_799_000_000)
+        self.assertEqual(stored, stored_settings)
+
+    def test_refresh_persists_json_snapshots_to_supabase(self):
+        supabase_env = {
+            "SUPABASE_URL": "https://example.supabase.co",
+            "SUPABASE_SECRET_KEY": "sb_secret_test-key",
+        }
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(os.environ, supabase_env):
+            for name in ("catalog", "best", "deprecations", "news", "changes", "meta", "status"):
+                Path(temp_dir, f"{name}.json").write_text(json.dumps({"name": name}), encoding="utf-8")
+            with patch("backend.app.DATA_DIR", Path(temp_dir)):
+                with patch("backend.app.supabase_store.write_records") as write_records:
+                    _persist_dataset_snapshots()
+
+        records = write_records.call_args.args[0]
+        self.assertEqual(set(records), {"catalog", "best", "deprecations", "news", "changes", "meta", "status"})
+        self.assertEqual(records["catalog"], {"name": "catalog"})
 
     async def test_admin_refresh_rejects_invalid_interval_and_prevents_overlapping_runs(self):
         admin_env = {

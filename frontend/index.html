@@ -181,7 +181,8 @@ pre{background:var(--surface);border-radius:9px;padding:14px}
 .source-links a{display:inline-flex;align-items:center;padding:7px 10px;border:1px solid var(--line);border-radius:7px;background:var(--surface-raised);font-size:13px;text-decoration:none}
 .source-links a:hover{border-color:#a8c7ae}
 @media(max-width:860px){.grid{grid-template-columns:1fr}}
-@media(max-width:620px){header{padding:14px 16px;min-height:72px;flex-wrap:wrap;gap:10px}.header-actions{gap:8px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end;max-width:100%}nav{padding:10px 12px}main{padding:25px 15px 60px}.fresh{flex-basis:100%;max-width:100%;font-size:11px;line-height:1.35;text-align:right;white-space:normal}.fresh:before{margin-right:6px}.stats{gap:7px}.stat{padding:12px}.stat strong{font-size:19px}.model-card{grid-template-columns:48px minmax(0,1fr);padding:14px;position:relative}.model-visual{grid-column:1;grid-row:1}.model-cover{width:42px;height:42px;padding:5px}.model-info{grid-column:2}.model-actions{position:absolute;right:13px;top:15px}.model-info .model-title{padding-right:28px}.model-prices{text-align:left;justify-content:flex-start}.model-meta span+span{padding-left:8px}.filter-heading,.date-range-heading{align-items:flex-start;flex-direction:column;gap:4px}.filter-help{line-height:1.4}}
+@media(max-width:620px){header{padding:14px 16px;min-height:72px;flex-wrap:wrap;gap:10px}.header-actions{gap:8px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end;max-width:100%}.refresh-feedback{flex-basis:100%;max-width:100%;text-align:right}nav{padding:10px 12px}main{padding:25px 15px 60px}.fresh{flex-basis:100%;max-width:100%;font-size:11px;line-height:1.35;text-align:right;white-space:normal}.fresh:before{margin-right:6px}.stats{gap:7px}.stat{padding:12px}.stat strong{font-size:19px}.model-card{grid-template-columns:48px minmax(0,1fr);padding:14px;position:relative}.model-visual{grid-column:1;grid-row:1}.model-cover{width:42px;height:42px;padding:5px}.model-info{grid-column:2}.model-actions{position:absolute;right:13px;top:15px}.model-info .model-title{padding-right:28px}.model-prices{text-align:left;justify-content:flex-start}.model-meta span+span{padding-left:8px}.filter-heading,.date-range-heading{align-items:flex-start;flex-direction:column;gap:4px}.filter-help{line-height:1.4}}
+@media(max-width:620px){.storage-warning{margin:10px 14px 0;padding:10px 12px}}
 :root[data-theme="dark"]{color-scheme:dark;--bg:#111714;--surface:#19211d;--surface-raised:#202b25;--ink:#e7eee8;--muted:#a2b1a7;--line:#334139;--accent:#7fd2a8;--accent-ink:#0c1a12;--accent-soft:#24392e;--highlight:#f1ad6b;--cool-accent:#aebef0;--warn:#f2c56b;--bad:#f08d82;--ok:#8dd5a8}
 header{background:var(--surface)}
 .brand-mark{background:var(--accent-soft);border-color:var(--line)}
@@ -195,6 +196,12 @@ code{background:var(--surface-raised);color:var(--ink)}
 .model-card:hover{border-color:var(--accent);background:var(--surface-raised)}
 .model-meta span+span{border-color:var(--line)}
 .header-actions{display:flex;align-items:center;gap:18px}
+.public-refresh{padding:7px 10px;font-size:12px;white-space:nowrap}
+.public-refresh:disabled{cursor:not-allowed;opacity:.65}
+.refresh-feedback{max-width:180px;color:var(--muted);font-size:11px}
+.refresh-feedback:empty{display:none}
+.storage-warning{margin:12px auto 0;padding:10px 24px;max-width:1320px;border:1px solid var(--warn);border-radius:8px;color:var(--warn);background:var(--surface)}
+.storage-warning[hidden]{display:none}
 .news-controls{justify-content:space-between}
 .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:16px}
 .news-card{overflow:hidden;display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:11px;background:var(--surface);transition:transform .15s,border-color .15s}
@@ -232,9 +239,10 @@ code{background:var(--surface-raised);color:var(--ink)}
     <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 5h7v6h-7zM13.5 5h7v14h-7zM3.5 14h7v5h-7z" fill="currentColor"/><path d="M5.5 7h3v2h-3zM15.5 7h3v2h-3zM5.5 16h3v1h-3z" fill="var(--accent-ink)"/></svg></span>
     <span><h1>AI Models Tracker</h1><span class="brand-caption">Explore · Compare · Track</span></span>
   </a>
-  <div class="header-actions"><a class="admin-link" href="/admin" aria-label="Admin sign in">Admin</a><button id="theme-toggle" type="button" aria-pressed="false"></button><span class="fresh" id="fresh"></span></div>
+  <div class="header-actions"><a class="admin-link" href="/admin" aria-label="Admin sign in">Admin</a><button id="public-refresh" class="public-refresh" type="button" disabled>Checking refresh…</button><button id="theme-toggle" type="button" aria-pressed="false"></button><span class="fresh" id="fresh"></span><span class="refresh-feedback" id="refresh-feedback" role="status" aria-live="polite"></span></div>
 </header>
 <nav id="nav" aria-label="Sections"></nav>
+<div id="storage-warning" class="storage-warning" role="status" aria-live="polite" hidden></div>
 <main id="view"></main>
 <script>
 const $ = s => document.querySelector(s);
@@ -289,7 +297,12 @@ const countdown = iso => {
   const remainder = minutes % 60;
   return hours < 24 ? `in ${hours}h${remainder ? ` ${remainder}m` : ""}` : `in ${Math.floor(hours / 24)}d ${hours % 24}h`;
 };
-let refreshStatus = null, refreshStatusUnavailable = false;
+const timestampMs = value => {
+  if (typeof value === "number") return value < 1e12 ? value * 1000 : value;
+  const parsed = Date.parse(value);
+  return Number.isFinite(parsed) ? parsed : NaN;
+};
+let refreshStatus = null, refreshStatusUnavailable = false, refreshPending = false, dataStorageMode = null;
 function renderFreshness() {
   const updated = D.catalog?.updated;
   let text = updated ? `Catalog refreshed ${ago(updated)}` : "No data fetched yet";
@@ -305,6 +318,21 @@ function renderFreshness() {
   $("#fresh").title = refreshStatus?.next_run_at
     ? `Next refresh at ${new Date(refreshStatus.next_run_at).toLocaleString()}`
     : "";
+  const button = $("#public-refresh");
+  const available = refreshStatus?.public_refresh_available === true;
+  button.disabled = refreshStatusUnavailable || !available || refreshPending;
+  button.textContent = refreshPending || refreshStatus?.running
+    ? "Refreshing…"
+    : available
+      ? "Refresh now"
+      : refreshStatus?.public_refresh_after
+        ? `Refresh ${countdown(refreshStatus.public_refresh_after)}`
+        : "Refresh unavailable";
+  button.title = available
+    ? "Refresh model, news, and deprecation data now."
+    : refreshStatus?.public_refresh_after
+      ? `Refresh will be available at ${new Date(refreshStatus.public_refresh_after).toLocaleString()}.`
+      : "Refresh status is currently unavailable.";
 }
 const icon = (pid, px = 20) => { const src = D.meta?.icons?.[pid], l = esc((prov(pid).name || pid)[0] || "?").toUpperCase(); return src ? `<img class="ico" src="${esc(src)}" alt="" width="${px}" height="${px}" loading="lazy" data-l="${l}">` : `<span class="ico badge" style="width:${px}px;height:${px}px">${l}</span>`; };
 const modelImage = (m, px = 50) => {
@@ -378,12 +406,16 @@ const modelSummary = m => {
 };
 const empty = what => `<div class="panel empty">No ${what} available in the current data.</div>`;
 
-async function boot() {
+async function loadDatasets() {
   const failures = [];
+  dataStorageMode = null;
   await Promise.all(FILES.map(async f => {
     try {
       const r = await fetch(`/api/data/${f}`, {cache: "no-cache"});
       if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+      const source = r.headers.get("X-AI-Data-Source");
+      if (source === "local-fallback") dataStorageMode = "local-fallback";
+      else if (source === "local-only" && dataStorageMode !== "local-fallback") dataStorageMode = "local-only";
       D[f] = await r.json();
     } catch (error) {
       D[f] = null;
@@ -391,11 +423,68 @@ async function boot() {
       console.error(`Could not load ${f} from the AI Models Tracker API.`, error);
     }
   }));
+  renderStorageWarning();
+  return failures;
+}
+function renderStorageWarning() {
+  const warning = $("#storage-warning");
+  const messages = {
+    "local-only": "Persistent storage is not configured. On Render Free, refreshed data may be lost when the service spins down.",
+    "local-fallback": "Supabase storage could not be reached. The app is showing its local cache, and new refreshes may not be saved persistently."
+  };
+  warning.textContent = messages[dataStorageMode] || "";
+  warning.hidden = !warning.textContent;
+}
+function showDatasetFailures(failures) {
+  if (failures.length) $("#view").insertAdjacentHTML("afterbegin", `<div class="panel empty bad" role="alert">Some data could not be loaded: ${esc(failures.join(", "))}. Check the backend service and try again.</div>`);
+}
+async function boot() {
+  const failures = await loadDatasets();
   await updateRefreshStatus();
   renderFreshness();
   addEventListener("hashchange", route); route();
-  if (failures.length) $("#view").insertAdjacentHTML("afterbegin", `<div class="panel empty bad" role="alert">Some data could not be loaded: ${esc(failures.join(", "))}. Check the backend service and try again.</div>`);
+  showDatasetFailures(failures);
 }
+$("#public-refresh").addEventListener("click", async () => {
+  const feedback = $("#refresh-feedback");
+  refreshPending = true;
+  feedback.textContent = "Starting a data refresh…";
+  renderFreshness();
+  try {
+    const response = await fetch("/api/refresh", {method: "POST", cache: "no-store"});
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.detail || "Could not start the refresh.");
+    const startedAt = timestampMs(result.refresh.last_started_at);
+    feedback.textContent = "Refresh started. This may take a few minutes.";
+    await updateRefreshStatus();
+    let completed = false;
+    for (let attempt = 0; attempt < 180; attempt++) {
+      await new Promise(resolve => setTimeout(resolve, 5000));
+      await updateRefreshStatus();
+      if (refreshStatus && !refreshStatus.running
+          && timestampMs(refreshStatus.last_finished_at) >= startedAt) {
+        completed = true;
+        break;
+      }
+    }
+    if (completed) {
+      const failures = await loadDatasets();
+      route();
+      showDatasetFailures(failures);
+      feedback.textContent = refreshStatus.last_error
+        ? "Refresh finished with an error. The last available data is shown."
+        : "Refresh finished. The latest available data is now shown.";
+    } else {
+      feedback.textContent = "Refresh is taking longer than expected. Reload the page later to see the latest data.";
+    }
+  } catch (error) {
+    feedback.textContent = error.message;
+    console.error("Could not refresh the catalog.", error);
+  } finally {
+    refreshPending = false;
+    await updateRefreshStatus();
+  }
+});
 async function updateRefreshStatus() {
   try {
     const response = await fetch("/api/refresh-status", {cache: "no-store"});

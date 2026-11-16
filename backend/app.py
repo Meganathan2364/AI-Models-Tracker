@@ -17,15 +17,18 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, field_validator
 
 from backend import jobs as collector_jobs
+from backend import supabase_store
 
 PROJECT_ROOT = Path(os.environ.get("MODEL_ATLAS_ROOT", Path(__file__).resolve().parents[1])).resolve()
 DATA_DIR = PROJECT_ROOT / "data"
 FRONTEND_DIR = PROJECT_ROOT / "frontend"
 DATASETS = frozenset({"catalog", "best", "deprecations", "news", "changes", "meta"})
+PERSISTED_DATASETS = DATASETS | {"status"}
 LOGGER = logging.getLogger(__name__)
 ADMIN_COOKIE = "model_atlas_admin"
 ADMIN_SESSION_TTL = 12 * 60 * 60
 DEFAULT_REFRESH_INTERVAL_MINUTES = 6 * 60
+PUBLIC_REFRESH_COOLDOWN_MINUTES = 6 * 60
 REFRESH_INTERVALS_MINUTES = (15, 30, 45, *range(60, 24 * 60 + 1, 60))
 SETTINGS_PATH = "admin_settings.json"
 
@@ -101,16 +104,36 @@ def _settings_path() -> Path:
     return DATA_DIR / SETTINGS_PATH
 
 
-def _write_settings_unlocked(settings: dict) -> None:
+def _write_settings_unlocked(settings: dict, sync_remote: bool = True) -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     temp = DATA_DIR / ".admin_settings.tmp"
     temp.write_text(json.dumps(settings, indent=2), encoding="utf-8")
     temp.replace(_settings_path())
+    if sync_remote:
+        try:
+            if supabase_store.is_configured():
+                supabase_store.write_records({"app_settings": settings})
+        except RuntimeError as error:
+            LOGGER.warning("Could not persist refresh settings to Supabase: %s", error)
 
 
 def _read_settings_unlocked() -> dict:
     path = _settings_path()
     if not path.exists():
+        remote_settings = None
+        remote_unavailable = False
+        try:
+            if supabase_store.is_configured():
+                found, remote_settings = supabase_store.read_record("app_settings")
+                if found:
+                    if not isinstance(remote_settings, dict):
+                        raise RuntimeError("Stored refresh settings are invalid.")
+                    _write_settings_unlocked(remote_settings, sync_remote=False)
+        except RuntimeError as error:
+            remote_unavailable = True
+            LOGGER.warning("Could not restore refresh settings from Supabase: %s", error)
+        if path.exists():
+            return _read_settings_unlocked()
         settings = {
             "interval_minutes": DEFAULT_REFRESH_INTERVAL_MINUTES,
             "next_run_at": time.time() + DEFAULT_REFRESH_INTERVAL_MINUTES * 60,
@@ -119,7 +142,7 @@ def _read_settings_unlocked() -> dict:
             "last_error": None,
             "last_icons_attempt_at": 0,
         }
-        _write_settings_unlocked(settings)
+        _write_settings_unlocked(settings, sync_remote=not remote_unavailable)
         return settings
 
     try:
@@ -180,6 +203,49 @@ def _settings_response() -> dict:
     }
 
 
+def _public_refresh_state(settings: dict, now: float | None = None) -> dict:
+    current_time = time.time() if now is None else now
+    last_started_at = settings.get("last_started_at")
+    next_refresh_at = (
+        last_started_at + PUBLIC_REFRESH_COOLDOWN_MINUTES * 60
+        if isinstance(last_started_at, (int, float))
+        else None
+    )
+    with _refresh_state_lock:
+        running = _refresh_state["running"]
+    return {
+        "public_refresh_available": not running and (next_refresh_at is None or current_time >= next_refresh_at),
+        "public_refresh_after": (
+            datetime.fromtimestamp(next_refresh_at, timezone.utc).isoformat()
+            if next_refresh_at is not None
+            else None
+        ),
+        "cooldown_minutes": PUBLIC_REFRESH_COOLDOWN_MINUTES,
+        "running": running,
+    }
+
+
+def _persist_dataset_snapshots() -> None:
+    try:
+        if not supabase_store.is_configured():
+            return
+    except RuntimeError as error:
+        raise RuntimeError("Supabase storage configuration is invalid.") from error
+
+    records = {}
+    for name in PERSISTED_DATASETS:
+        path = DATA_DIR / f"{name}.json"
+        if not path.is_file() and name == "changes":
+            records[name] = []
+            continue
+        try:
+            with path.open(encoding="utf-8") as source:
+                records[name] = json.load(source)
+        except (OSError, json.JSONDecodeError) as error:
+            raise RuntimeError(f"Could not read refreshed dataset '{name}'.") from error
+    supabase_store.write_records(records)
+
+
 def _perform_refresh() -> None:
     started_at = time.time()
     error_message = None
@@ -191,6 +257,7 @@ def _perform_refresh() -> None:
         if started_at - settings.get("last_icons_attempt_at", 0) >= 24 * 3600:
             collector_jobs.main(["icons"])
             _update_settings(last_icons_attempt_at=started_at)
+        _persist_dataset_snapshots()
     except Exception as error:
         error_message = str(error)[:300]
         LOGGER.exception("Scheduled data refresh failed")
@@ -311,23 +378,63 @@ def health() -> JSONResponse:
 
 @app.get("/api/refresh-status")
 def public_refresh_status() -> JSONResponse:
-    if not _admin_enabled():
-        return JSONResponse(
-            content={"scheduled": False, "next_run_at": None, "running": False},
-            headers={"Cache-Control": "no-store"},
-        )
     try:
         settings = _get_settings()
     except RuntimeError as error:
         raise HTTPException(status_code=503, detail=str(error)) from error
-    with _refresh_state_lock:
-        running = _refresh_state["running"]
+    public_state = _public_refresh_state(settings)
+    scheduled = _admin_enabled()
     return JSONResponse(
         content={
-            "scheduled": True,
-            "next_run_at": datetime.fromtimestamp(settings["next_run_at"], timezone.utc).isoformat(),
-            "running": running,
+            **public_state,
+            "scheduled": scheduled,
+            "next_run_at": (
+                datetime.fromtimestamp(settings["next_run_at"], timezone.utc).isoformat()
+                if scheduled
+                else None
+            ),
+            "last_started_at": settings.get("last_started_at"),
+            "last_finished_at": settings.get("last_finished_at"),
+            "last_error": settings.get("last_error"),
         },
+        headers={"Cache-Control": "no-store"},
+    )
+
+
+@app.post("/api/refresh")
+def public_refresh_now() -> JSONResponse:
+    try:
+        settings = _get_settings()
+    except RuntimeError as error:
+        raise HTTPException(status_code=503, detail=str(error)) from error
+
+    state = _public_refresh_state(settings)
+    if state["running"]:
+        raise HTTPException(status_code=409, detail="A refresh is already running.")
+    if not state["public_refresh_available"]:
+        next_refresh_at = state["public_refresh_after"]
+        retry_after = max(
+            1,
+            int(
+                datetime.fromisoformat(next_refresh_at).timestamp()
+                - time.time()
+            ),
+        )
+        raise HTTPException(
+            status_code=429,
+            detail=f"Refresh is available again in about {retry_after // 60} minutes.",
+            headers={"Retry-After": str(retry_after)},
+        )
+
+    try:
+        started = _start_refresh()
+    except RuntimeError as error:
+        raise HTTPException(status_code=503, detail=str(error)) from error
+    if not started:
+        raise HTTPException(status_code=409, detail="A refresh is already running.")
+    return JSONResponse(
+        content={"refresh": _settings_response()},
+        status_code=202,
         headers={"Cache-Control": "no-store"},
     )
 
@@ -417,14 +524,25 @@ def refresh_now(request: Request) -> JSONResponse:
 @app.get("/api/admin/status")
 def admin_status(request: Request) -> JSONResponse:
     _require_admin(request)
+    sources = None
     try:
-        with (DATA_DIR / "status.json").open(encoding="utf-8") as source:
-            sources = json.load(source)
-    except FileNotFoundError:
-        sources = {}
-    except (OSError, json.JSONDecodeError) as error:
-        LOGGER.exception("Could not read source health")
-        raise HTTPException(status_code=503, detail="Source health is temporarily unavailable.") from error
+        if supabase_store.is_configured():
+            found, remote_sources = supabase_store.read_record("status")
+            if found:
+                sources = remote_sources
+    except RuntimeError as error:
+        LOGGER.warning("Could not read source health from Supabase; trying the local cache: %s", error)
+    if sources is None:
+        try:
+            with (DATA_DIR / "status.json").open(encoding="utf-8") as source:
+                sources = json.load(source)
+        except FileNotFoundError:
+            sources = {}
+        except (OSError, json.JSONDecodeError) as error:
+            LOGGER.exception("Could not read source health")
+            raise HTTPException(status_code=503, detail="Source health is temporarily unavailable.") from error
+    if not isinstance(sources, dict):
+        raise HTTPException(status_code=503, detail="Source health data is invalid.")
     try:
         settings = _settings_response()
     except RuntimeError as error:
@@ -440,17 +558,51 @@ def read_dataset(dataset: str) -> JSONResponse:
     if dataset not in DATASETS:
         raise HTTPException(status_code=404, detail="Dataset not found.")
 
+    storage_configured = False
+    storage_unavailable = False
+    try:
+        storage_configured = supabase_store.is_configured()
+    except RuntimeError as error:
+        storage_unavailable = True
+        LOGGER.warning("Supabase storage configuration is invalid: %s", error)
+
+    if storage_configured:
+        try:
+            found, remote_payload = supabase_store.read_record(dataset)
+            if found:
+                return JSONResponse(
+                    content=remote_payload,
+                    headers={"Cache-Control": "no-cache", "X-AI-Data-Source": "supabase"},
+                )
+        except RuntimeError as error:
+            storage_unavailable = True
+            LOGGER.warning("Could not read dataset %s from Supabase; trying the local cache: %s", dataset, error)
+
     path = DATA_DIR / f"{dataset}.json"
     if not path.is_file() and dataset == "changes":
-        return JSONResponse(content=[], headers={"Cache-Control": "no-cache"})
-    if not path.is_file():
+        payload = []
+    elif not path.is_file():
         raise HTTPException(status_code=503, detail=f"Dataset '{dataset}' is not available yet.")
+    else:
+        try:
+            with path.open(encoding="utf-8") as source:
+                payload = json.load(source)
+        except (OSError, json.JSONDecodeError) as error:
+            LOGGER.exception("Could not read dataset %s", dataset)
+            raise HTTPException(status_code=503, detail=f"Dataset '{dataset}' is temporarily unavailable.") from error
 
-    try:
-        with path.open(encoding="utf-8") as source:
-            payload = json.load(source)
-    except (OSError, json.JSONDecodeError):
-        LOGGER.exception("Could not read dataset %s", dataset)
-        raise HTTPException(status_code=503, detail=f"Dataset '{dataset}' is temporarily unavailable.")
+    if storage_configured and not storage_unavailable:
+        try:
+            supabase_store.write_records({dataset: payload})
+            data_source = "supabase"
+        except RuntimeError as error:
+            storage_unavailable = True
+            LOGGER.warning("Could not seed dataset %s in Supabase: %s", dataset, error)
+            data_source = "local-fallback"
+    else:
+        data_source = "local-fallback" if storage_unavailable else "local-only"
 
-    return JSONResponse(content=payload, headers={"Cache-Control": "no-cache"})
+    return JSONResponse(
+        content=payload,
+        headers={"Cache-Control": "no-cache", "X-AI-Data-Source": data_source},
+    )
