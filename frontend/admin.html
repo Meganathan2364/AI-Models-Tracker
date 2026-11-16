@@ -40,9 +40,9 @@ td:last-child{text-align:right}
 <main>
   <section>
     <h2>Data refresh</h2>
-    <p class="sub">Choose how often to fetch models, prices, deprecations, and news. Icons are checked at most once per day.</p>
+    <p class="sub">Set the automatic fetch schedule and how long users wait between manual refreshes. Icons are checked at most once per day.</p>
     <div class="controls">
-      <label for="interval">Refresh every</label>
+      <label for="interval">Automatic refresh every</label>
       <select id="interval">
         <option value="15">15 minutes</option>
         <option value="30">30 minutes</option>
@@ -72,7 +72,9 @@ td:last-child{text-align:right}
         <option value="1380">23 hours</option>
         <option value="1440">24 hours</option>
       </select>
-      <button id="save" type="button">Save interval</button>
+      <label for="public-cooldown">Public refresh available every</label>
+      <select id="public-cooldown"></select>
+      <button id="save" type="button">Save refresh settings</button>
       <button id="refresh" class="primary" type="button">Refresh now</button>
     </div>
     <div id="message" role="status" aria-live="polite"></div>
@@ -87,6 +89,9 @@ td:last-child{text-align:right}
 <script>
 const $ = selector => document.querySelector(selector);
 const message = $("#message");
+for (const option of $("#interval").options) {
+  $("#public-cooldown").add(option.cloneNode(true));
+}
 const formatTime = value => {
   if (value == null) return "Not yet";
   const timestamp = typeof value === "number" && value < 1e12 ? value * 1000 : value;
@@ -130,6 +135,7 @@ async function refreshStatus() {
   const status = await api("/api/admin/status");
   const refresh = status.refresh;
   $("#interval").value = String(refresh.interval_minutes);
+  $("#public-cooldown").value = String(refresh.public_refresh_cooldown_minutes);
   $("#summary").textContent = refresh.running
     ? `Refresh in progress. Started ${formatTime(refresh.last_started_at)}.`
     : `Next refresh: ${formatTime(refresh.next_run_at)} · Last finished: ${formatTime(refresh.last_finished_at)}${refresh.last_error ? ` · Error: ${refresh.last_error}` : ""}`;
@@ -145,10 +151,13 @@ $("#save").addEventListener("click", async () => {
     await api("/api/admin/settings", {
       method: "PUT",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({interval_minutes: Number($("#interval").value)})
+      body: JSON.stringify({
+        interval_minutes: Number($("#interval").value),
+        public_refresh_cooldown_minutes: Number($("#public-cooldown").value)
+      })
     });
     message.className = "ok";
-    message.textContent = "Refresh interval saved.";
+    message.textContent = "Refresh settings saved.";
     await refreshStatus();
   } catch (error) {
     message.className = "bad";

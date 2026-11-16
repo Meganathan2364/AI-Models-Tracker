@@ -200,6 +200,9 @@ code{background:var(--surface-raised);color:var(--ink)}
 .public-refresh:disabled{cursor:not-allowed;opacity:.65}
 .refresh-feedback{max-width:180px;color:var(--muted);font-size:11px}
 .refresh-feedback:empty{display:none}
+.refresh-notice{display:flex;align-items:center;justify-content:center;gap:12px;padding:10px 24px;border-bottom:1px solid var(--line);color:var(--accent);background:var(--accent-soft);font-size:13px;text-align:center}
+.refresh-notice[hidden]{display:none}
+.refresh-notice button{padding:5px 10px;color:var(--accent);font-weight:600}
 .storage-warning{margin:12px auto 0;padding:10px 24px;max-width:1320px;border:1px solid var(--warn);border-radius:8px;color:var(--warn);background:var(--surface)}
 .storage-warning[hidden]{display:none}
 .news-controls{justify-content:space-between}
@@ -231,6 +234,7 @@ code{background:var(--surface-raised);color:var(--ink)}
 .feature-value.no,.feature-value.unknown{color:var(--muted)}
 .compare-note{margin-top:10px;color:var(--muted);font-size:12px}
 @media(max-width:620px){.header-actions{gap:8px}.news-grid{grid-template-columns:1fr}.compare-grid{grid-template-columns:minmax(120px,1fr) repeat(var(--columns),minmax(145px,1fr));min-width:700px}.compare-grid>*{padding:10px}}
+@media(max-width:620px){.refresh-notice{flex-wrap:wrap;padding:10px 14px}}
 </style>
 </head>
 <body>
@@ -242,6 +246,10 @@ code{background:var(--surface-raised);color:var(--ink)}
   <div class="header-actions"><a class="admin-link" href="/admin" aria-label="Admin sign in">Admin</a><button id="public-refresh" class="public-refresh" type="button" disabled>Checking refresh…</button><button id="theme-toggle" type="button" aria-pressed="false"></button><span class="fresh" id="fresh"></span><span class="refresh-feedback" id="refresh-feedback" role="status" aria-live="polite"></span></div>
 </header>
 <nav id="nav" aria-label="Sections"></nav>
+<div id="refresh-notice" class="refresh-notice" role="status" aria-live="polite" hidden>
+  <span>A catalog refresh is available. Refresh now to check for the latest models and AI news.</span>
+  <button id="refresh-notice-action" type="button">Refresh now</button>
+</div>
 <div id="storage-warning" class="storage-warning" role="status" aria-live="polite" hidden></div>
 <main id="view"></main>
 <script>
@@ -321,6 +329,7 @@ function renderFreshness() {
   const button = $("#public-refresh");
   const available = refreshStatus?.public_refresh_available === true;
   button.disabled = refreshStatusUnavailable || !available || refreshPending;
+  $("#refresh-notice").hidden = refreshStatusUnavailable || !available || refreshPending;
   button.textContent = refreshPending || refreshStatus?.running
     ? "Refreshing…"
     : available
@@ -485,6 +494,7 @@ $("#public-refresh").addEventListener("click", async () => {
     await updateRefreshStatus();
   }
 });
+$("#refresh-notice-action").addEventListener("click", () => $("#public-refresh").click());
 async function updateRefreshStatus() {
   try {
     const response = await fetch("/api/refresh-status", {cache: "no-store"});

@@ -28,7 +28,7 @@ LOGGER = logging.getLogger(__name__)
 ADMIN_COOKIE = "model_atlas_admin"
 ADMIN_SESSION_TTL = 12 * 60 * 60
 DEFAULT_REFRESH_INTERVAL_MINUTES = 6 * 60
-PUBLIC_REFRESH_COOLDOWN_MINUTES = 6 * 60
+DEFAULT_PUBLIC_REFRESH_COOLDOWN_MINUTES = 6 * 60
 REFRESH_INTERVALS_MINUTES = (15, 30, 45, *range(60, 24 * 60 + 1, 60))
 SETTINGS_PATH = "admin_settings.json"
 
@@ -47,12 +47,22 @@ class LoginRequest(BaseModel):
 
 class RefreshSettingsRequest(BaseModel):
     interval_minutes: int = Field(strict=True, ge=15, le=24 * 60)
+    public_refresh_cooldown_minutes: int | None = Field(default=None, strict=True, ge=15, le=24 * 60)
 
     @field_validator("interval_minutes")
     @classmethod
     def interval_must_be_available(cls, value: int) -> int:
         if value not in REFRESH_INTERVALS_MINUTES:
             raise ValueError("Choose 15, 30, or 45 minutes, or a whole-hour interval from 1 to 24 hours.")
+        return value
+
+    @field_validator("public_refresh_cooldown_minutes")
+    @classmethod
+    def public_refresh_cooldown_must_be_available(cls, value: int | None) -> int | None:
+        if value is not None and value not in REFRESH_INTERVALS_MINUTES:
+            raise ValueError(
+                "Choose 15, 30, or 45 minutes, or a whole-hour interval from 1 to 24 hours."
+            )
         return value
 
 
@@ -136,6 +146,7 @@ def _read_settings_unlocked() -> dict:
             return _read_settings_unlocked()
         settings = {
             "interval_minutes": DEFAULT_REFRESH_INTERVAL_MINUTES,
+            "public_refresh_cooldown_minutes": DEFAULT_PUBLIC_REFRESH_COOLDOWN_MINUTES,
             "next_run_at": time.time() + DEFAULT_REFRESH_INTERVAL_MINUTES * 60,
             "last_started_at": None,
             "last_finished_at": None,
@@ -148,6 +159,7 @@ def _read_settings_unlocked() -> dict:
     try:
         settings = json.loads(path.read_text(encoding="utf-8"))
         migrated_interval = False
+        migrated_public_cooldown = False
         if "interval_minutes" not in settings:
             previous_hours = settings.pop("interval_hours", None)
             if type(previous_hours) is int:
@@ -156,11 +168,16 @@ def _read_settings_unlocked() -> dict:
         elif "interval_hours" in settings:
             settings.pop("interval_hours")
             migrated_interval = True
+        if "public_refresh_cooldown_minutes" not in settings:
+            settings["public_refresh_cooldown_minutes"] = DEFAULT_PUBLIC_REFRESH_COOLDOWN_MINUTES
+            migrated_public_cooldown = True
         next_run_at = settings.get("next_run_at")
         last_icons_attempt_at = settings.get("last_icons_attempt_at", 0)
         if (
             type(settings.get("interval_minutes")) is not int
             or settings["interval_minutes"] not in REFRESH_INTERVALS_MINUTES
+            or type(settings.get("public_refresh_cooldown_minutes")) is not int
+            or settings["public_refresh_cooldown_minutes"] not in REFRESH_INTERVALS_MINUTES
             or type(next_run_at) not in (int, float)
             or type(last_icons_attempt_at) not in (int, float)
             or not 0 <= next_run_at < 1_000_000_000_000
@@ -168,7 +185,7 @@ def _read_settings_unlocked() -> dict:
         ):
             raise ValueError("Invalid refresh settings.")
         settings.setdefault("last_icons_attempt_at", 0)
-        if migrated_interval:
+        if migrated_interval or migrated_public_cooldown:
             _write_settings_unlocked(settings)
     except (OSError, json.JSONDecodeError, AttributeError, ValueError) as error:
         LOGGER.exception("Could not read refresh settings")
@@ -195,6 +212,7 @@ def _settings_response() -> dict:
         running = _refresh_state["running"]
     return {
         "interval_minutes": settings["interval_minutes"],
+        "public_refresh_cooldown_minutes": settings["public_refresh_cooldown_minutes"],
         "next_run_at": datetime.fromtimestamp(settings["next_run_at"], timezone.utc).isoformat(),
         "last_started_at": settings.get("last_started_at"),
         "last_finished_at": settings.get("last_finished_at"),
@@ -206,8 +224,12 @@ def _settings_response() -> dict:
 def _public_refresh_state(settings: dict, now: float | None = None) -> dict:
     current_time = time.time() if now is None else now
     last_started_at = settings.get("last_started_at")
+    cooldown_minutes = settings.get(
+        "public_refresh_cooldown_minutes",
+        DEFAULT_PUBLIC_REFRESH_COOLDOWN_MINUTES,
+    )
     next_refresh_at = (
-        last_started_at + PUBLIC_REFRESH_COOLDOWN_MINUTES * 60
+        last_started_at + cooldown_minutes * 60
         if isinstance(last_started_at, (int, float))
         else None
     )
@@ -220,7 +242,7 @@ def _public_refresh_state(settings: dict, now: float | None = None) -> dict:
             if next_refresh_at is not None
             else None
         ),
-        "cooldown_minutes": PUBLIC_REFRESH_COOLDOWN_MINUTES,
+        "cooldown_minutes": cooldown_minutes,
         "running": running,
     }
 
@@ -499,10 +521,13 @@ def admin_settings(request: Request) -> JSONResponse:
 def update_admin_settings(update: RefreshSettingsRequest, request: Request) -> JSONResponse:
     _require_admin(request)
     try:
-        _update_settings(
-            interval_minutes=update.interval_minutes,
-            next_run_at=time.time() + update.interval_minutes * 60,
-        )
+        updates = {
+            "interval_minutes": update.interval_minutes,
+            "next_run_at": time.time() + update.interval_minutes * 60,
+        }
+        if update.public_refresh_cooldown_minutes is not None:
+            updates["public_refresh_cooldown_minutes"] = update.public_refresh_cooldown_minutes
+        _update_settings(**updates)
         settings = _settings_response()
     except RuntimeError as error:
         raise HTTPException(status_code=503, detail=str(error)) from error

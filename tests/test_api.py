@@ -32,6 +32,7 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("AI Models Tracker", response.text)
         self.assertIn('href="/admin" aria-label="Admin sign in">Admin</a>', response.text)
         self.assertIn('id="public-refresh"', response.text)
+        self.assertIn('id="refresh-notice"', response.text)
 
     async def test_health_reports_catalog_readiness(self):
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -86,6 +87,27 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
                 response = await self.client.get("/api/refresh-status")
 
         self.assertEqual(response.status_code, 200)
+        self.assertFalse(response.json()["public_refresh_available"])
+        self.assertIsNotNone(response.json()["public_refresh_after"])
+
+    async def test_public_refresh_status_uses_admin_configured_cooldown(self):
+        now = time.time()
+        settings = {
+            "interval_minutes": 360,
+            "public_refresh_cooldown_minutes": 120,
+            "next_run_at": now + 3600,
+            "last_started_at": now - 60 * 60,
+            "last_finished_at": now - 60 * 60 + 60,
+            "last_error": None,
+            "last_icons_attempt_at": 0,
+        }
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(os.environ, {}, clear=True):
+            Path(temp_dir, "admin_settings.json").write_text(json.dumps(settings), encoding="utf-8")
+            with patch("backend.app.DATA_DIR", Path(temp_dir)):
+                response = await self.client.get("/api/refresh-status")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["cooldown_minutes"], 120)
         self.assertFalse(response.json()["public_refresh_available"])
         self.assertIsNotNone(response.json()["public_refresh_after"])
 
@@ -241,7 +263,7 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
                 ]
                 update = await self.client.put(
                     "/api/admin/settings",
-                    json={"interval_minutes": 180},
+                    json={"interval_minutes": 180, "public_refresh_cooldown_minutes": 120},
                 )
                 maximum = await self.client.put(
                     "/api/admin/settings",
@@ -252,13 +274,17 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(login.status_code, 200)
         self.assertEqual(page.status_code, 200)
         self.assertIn("Refresh now", page.text)
+        self.assertIn('id="public-cooldown"', page.text)
         self.assertEqual(settings.json()["interval_minutes"], 360)
         self.assertTrue(all(result.status_code == 200 for result in minute_presets))
         self.assertEqual(update.status_code, 200)
         self.assertEqual(update.json()["interval_minutes"], 180)
+        self.assertEqual(update.json()["public_refresh_cooldown_minutes"], 120)
         self.assertEqual(maximum.status_code, 200)
         self.assertEqual(maximum.json()["interval_minutes"], 1440)
+        self.assertEqual(maximum.json()["public_refresh_cooldown_minutes"], 120)
         self.assertEqual(stored["interval_minutes"], 1440)
+        self.assertEqual(stored["public_refresh_cooldown_minutes"], 120)
 
     def test_legacy_hour_setting_migrates_to_minutes(self):
         legacy_settings = {
@@ -278,12 +304,15 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
             stored = json.loads(Path(temp_dir, "admin_settings.json").read_text(encoding="utf-8"))
 
         self.assertEqual(settings["interval_minutes"], 360)
+        self.assertEqual(settings["public_refresh_cooldown_minutes"], 360)
         self.assertNotIn("interval_hours", stored)
         self.assertEqual(stored["interval_minutes"], 360)
+        self.assertEqual(stored["public_refresh_cooldown_minutes"], 360)
 
     def test_refresh_settings_restore_from_supabase_after_local_files_are_lost(self):
         stored_settings = {
             "interval_minutes": 180,
+            "public_refresh_cooldown_minutes": 240,
             "next_run_at": 1_800_000_000,
             "last_started_at": 1_799_000_000,
             "last_finished_at": 1_799_000_100,
@@ -304,6 +333,7 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
                 stored = json.loads(Path(temp_dir, "admin_settings.json").read_text(encoding="utf-8"))
 
         self.assertEqual(settings["interval_minutes"], 180)
+        self.assertEqual(settings["public_refresh_cooldown_minutes"], 240)
         self.assertEqual(settings["last_started_at"], 1_799_000_000)
         self.assertEqual(stored, stored_settings)
 
@@ -340,12 +370,17 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
                     "/api/admin/settings",
                     json={"interval_minutes": 50},
                 )
+                invalid_public_cooldown = await self.client.put(
+                    "/api/admin/settings",
+                    json={"interval_minutes": 360, "public_refresh_cooldown_minutes": 50},
+                )
                 with patch("backend.app._start_refresh", return_value=True):
                     started = await self.client.post("/api/admin/refresh")
                 with patch("backend.app._start_refresh", return_value=False):
                     overlapping = await self.client.post("/api/admin/refresh")
 
         self.assertEqual(invalid.status_code, 422)
+        self.assertEqual(invalid_public_cooldown.status_code, 422)
         self.assertEqual(started.status_code, 202)
         self.assertEqual(overlapping.status_code, 409)
 
