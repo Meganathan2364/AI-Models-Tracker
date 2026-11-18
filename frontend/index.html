@@ -247,7 +247,7 @@ code{background:var(--surface-raised);color:var(--ink)}
 </header>
 <nav id="nav" aria-label="Sections"></nav>
 <div id="refresh-notice" class="refresh-notice" role="status" aria-live="polite" hidden>
-  <span>A catalog refresh is available. Refresh now to check for the latest models and AI news.</span>
+  <span>Public refresh is available again. Refresh now to check for the latest models and AI news.</span>
   <button id="refresh-notice-action" type="button">Refresh now</button>
 </div>
 <div id="storage-warning" class="storage-warning" role="status" aria-live="polite" hidden></div>
@@ -310,7 +310,7 @@ const timestampMs = value => {
   const parsed = Date.parse(value);
   return Number.isFinite(parsed) ? parsed : NaN;
 };
-let refreshStatus = null, refreshStatusUnavailable = false, refreshPending = false, dataStorageMode = null;
+let refreshStatus = null, refreshStatusUnavailable = false, refreshPending = false, refreshStatusTimer = null, dataStorageMode = null;
 function renderFreshness() {
   const updated = D.catalog?.updated;
   const updatedAt = timestampMs(updated);
@@ -492,6 +492,8 @@ $("#public-refresh").addEventListener("click", async () => {
 });
 $("#refresh-notice-action").addEventListener("click", () => $("#public-refresh").click());
 async function updateRefreshStatus() {
+  clearTimeout(refreshStatusTimer);
+  refreshStatusTimer = null;
   try {
     const response = await fetch("/api/refresh-status", {cache: "no-store"});
     if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
@@ -502,7 +504,23 @@ async function updateRefreshStatus() {
     console.error("Could not load the refresh schedule.", error);
   }
   renderFreshness();
+  scheduleRefreshStatusUpdate();
 }
+function scheduleRefreshStatusUpdate() {
+  clearTimeout(refreshStatusTimer);
+  refreshStatusTimer = null;
+  if (refreshPending || refreshStatus?.public_refresh_available === true) return;
+
+  const retryDelay = 30_000;
+  const availableAt = timestampMs(refreshStatus?.public_refresh_after);
+  const delay = Number.isFinite(availableAt) && !refreshStatusUnavailable && !refreshStatus?.running
+    ? Math.max(1_000, availableAt - Date.now() + 250)
+    : retryDelay;
+  refreshStatusTimer = setTimeout(updateRefreshStatus, delay);
+}
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden && !refreshPending) updateRefreshStatus();
+});
 function route() {
   const [id, arg] = (location.hash.slice(2) || "models").split("/"), tab = id === "model" ? "models" : id;
   document.title = "AI Models Tracker — AI model intelligence";
@@ -617,10 +635,22 @@ function modelPage(key) {
 }
 
 /* ---------- models ---------- */
-const F = {q: "", p: "", t: "", basis: "release_date", from: "", to: "", rangeMode: "all", group: true, reasoning: false, open: false, sort: "release_date", dir: -1, shown: 100, unl: false};
+const F = {q: "", p: "", t: "", basis: "release_date", from: "", to: "", rangeMode: "all", group: true, reasoning: false, open: false, free: false, image: false, text: false, sort: "release_date", dir: -1, shown: 100};
 const BASIS = {release_date: "Released", first_seen: "Added to tracker", updated_at: "Last changed"};
 const SOURCE_LABELS = {alibaba_model_studio: "Alibaba Cloud Model Studio", "models.dev": "models.dev", openrouter: "OpenRouter"};
 const sourceLabel = source => SOURCE_LABELS[source] || source;
+const matchesCapabilityFilters = m => (!F.free || m.input_price === 0 && m.output_price === 0 && (m.request_price == null || m.request_price === 0)) &&
+  (!F.image || (m.outputs || []).some(output => String(output).toLowerCase() === "image")) &&
+  (!F.text || (m.outputs || []).some(output => String(output).toLowerCase() === "text"));
+const capabilityFilters = () => `<div class="controls" aria-label="Model capability filters">
+  <label><input type="checkbox" id="free" ${F.free ? "checked" : ""}> Free models</label>
+  <label><input type="checkbox" id="image" ${F.image ? "checked" : ""}> Image generation</label>
+  <label><input type="checkbox" id="text" ${F.text ? "checked" : ""}> Text generation</label></div>`;
+const bindCapabilityFilters = update => {
+  for (const key of ["free", "image", "text"]) {
+    document.getElementById(key).onchange = event => { F[key] = event.target.checked; F.shown = 100; update(); };
+  }
+};
 const fmtDay = d => !d ? "No date" : d.length === 10 ? new Date(d + "T00:00:00Z").toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric", timeZone: "UTC"}) : d;
 const localDateKey = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 const daysBeforeToday = n => { const d = new Date(); d.setHours(12, 0, 0, 0); d.setDate(d.getDate() - n); return localDateKey(d); };
@@ -638,7 +668,8 @@ function modelsView() {
   <div class="controls"><label>Date field <select id="basis" aria-label="Date field">${Object.entries(BASIS).map(([k, v]) => `<option value="${k}" ${F.basis === k ? "selected" : ""}>${v}</option>`).join("")}</select></label>
   <select id="sort" aria-label="Sort models">${[["release_date","Release date"],["name","Name"],["provider","Provider"],["context","Context"],["input_price","Input price"],["output_price","Output price"],["first_seen","Added"],["updated_at","Last changed"]].map(([k,l]) => `<option value="${k}" ${F.sort === k ? "selected" : ""}>Sort: ${l}</option>`).join("")}</select>
   <button id="sort-dir" type="button" aria-label="Toggle sort direction">Direction ${F.dir < 0 ? "↓" : "↑"}</button>
-  <label><input type="checkbox" id="group"> Group by day</label> <label><input type="checkbox" id="reasoning" ${F.reasoning ? "checked" : ""}> Reasoning</label> <label><input type="checkbox" id="open" ${F.open ? "checked" : ""}> Open weights</label> <label><input type="checkbox" id="unl" ${F.unl ? "checked" : ""}> Include no longer listed</label></div>
+  <label><input type="checkbox" id="group"> Group by day</label> <label><input type="checkbox" id="reasoning" ${F.reasoning ? "checked" : ""}> Reasoning</label> <label><input type="checkbox" id="open" ${F.open ? "checked" : ""}> Open weights</label></div>
+  ${capabilityFilters()}
   <div class="date-range-section"><div class="date-range-heading"><strong>Date range</strong><span id="date-basis-label"></span></div>
   <p class="filter-help">Choose a quick range or set custom dates.</p>
   <div id="chips" aria-label="Quick date filters"></div>
@@ -646,7 +677,7 @@ function modelsView() {
   <label for="from">From<input type="date" id="from"></label><label for="to">To<input type="date" id="to"></label></div></details></div>
   </div>
   <p class="muted" id="count"></p><div id="rows" class="model-list"></div><button id="more" hidden>Load 100 more models</button>`);
-  const base = m => (!F.q || [m.name, m.id, m.aliases, m.description, m.official_description].join(" ").toLowerCase().includes(F.q.toLowerCase())) && (!F.p || m.provider === F.p) && (!F.t || (m.outputs || []).includes(F.t)) && (!F.reasoning || m.reasoning) && (!F.open || m.open_weights) && (F.unl || m.listed !== false);
+  const base = m => (!F.q || [m.name, m.id, m.aliases, m.description, m.official_description].join(" ").toLowerCase().includes(F.q.toLowerCase())) && (!F.p || m.provider === F.p) && (!F.t || (m.outputs || []).includes(F.t)) && (!F.reasoning || m.reasoning) && (!F.open || m.open_weights) && m.listed !== false && matchesCapabilityFilters(m);
   const dateOk = m => { if (!F.from && !F.to) return true; const d = m[F.basis]; return !!d && (!F.from || d >= F.from) && (!F.to || d <= F.to); };
   const row = m => {
     const retirement = retirementInfo(m);
@@ -683,7 +714,7 @@ function modelsView() {
   $("#from").oninput = set(t => { F.from = t.value; F.rangeMode = F.from || F.to ? "custom" : "all"; });
   $("#to").oninput = set(t => { F.to = t.value; F.rangeMode = F.from || F.to ? "custom" : "all"; });
   $("#group").onchange = set(t => F.group = t.checked); $("#reasoning").onchange = set(t => F.reasoning = t.checked);
-  $("#open").onchange = set(t => F.open = t.checked); $("#unl").onchange = set(t => F.unl = t.checked);
+  $("#open").onchange = set(t => F.open = t.checked);
   $("#chips").onclick = e => {
     const b = e.target.closest("button"); if (!b) return;
     const today = localDateKey(new Date());
@@ -695,6 +726,7 @@ function modelsView() {
   $("#sort").onchange = set(t => { F.sort = t.value; F.group = false; });
   $("#sort-dir").onclick = () => { F.dir = -F.dir; $("#sort-dir").textContent = `Direction ${F.dir < 0 ? "↓" : "↑"}`; upd(); };
   $("#rows").onchange = e => { const k = e.target.dataset.k; if (!k) return; if (e.target.checked) { if (picked.size >= 4) { e.target.checked = false; return; } picked.add(k); } else picked.delete(k); };
+  bindCapabilityFilters(upd);
   upd();
 }
 
@@ -705,14 +737,23 @@ function bestView() {
   if (!b || !models().length) return show(empty("rankings"));
   purpose = purpose && b[purpose] ? purpose : Object.keys(b)[0];
   const P = D.meta?.purposes || {}, cur = b[purpose];
+  const top = cur.top.map(byKey).filter(m => m && m.listed !== false && matchesCapabilityFilters(m));
+  const providerPicks = Object.entries(cur.by_provider).map(([p, k]) => {
+    const m = byKey(k);
+    return m && m.listed !== false && matchesCapabilityFilters(m)
+      ? `<div class="panel"><div class="muted">${icon(p)}${esc(prov(p).name)}</div><strong>${mlink(m)}</strong><div class="muted">${ctx(m.context)} context · ${money(m.input_price)} in / ${money(m.output_price)} out</div><a href="${href(prov(p).docs || prov(p).url)}">Provider docs</a></div>`
+      : "";
+  }).filter(Boolean);
   const item = (m, i) => `<tr><td class="muted">${i + 1}</td><td>${mlink(m)}</td><td>${icon(m.provider)}<a href="${href(prov(m.provider).docs || prov(m.provider).url)}">${esc(prov(m.provider).name)}</a></td><td class="n">${ctx(m.context)}</td><td class="n">${money(m.input_price)}</td><td class="n">${money(m.output_price)}</td><td>${esc(m.release_date || "–")}</td></tr>`;
   const head = `<thead><tr><th></th><th>Model</th><th>Provider</th><th class="n">Context</th><th class="n">In $/M</th><th class="n">Out $/M</th><th>Released</th></tr></thead>`;
   show(`<h2>Best for</h2><p class="sub">Each purpose shows up to ${cur.top.length} rule-based matches based on collected metadata, not an overall quality or benchmark ranking. <a href="#/models">Browse all ${models().length.toLocaleString("en-US")} model records</a>.</p>
   <div class="controls">${Object.keys(b).map(k => `<button data-p="${esc(k)}" aria-pressed="${k === purpose}">${esc(P[k]?.label || k)}</button>`).join("")}</div>
   <p class="muted">${esc(P[purpose]?.description || "")}</p>
-  <h3 class="model-group">Top ${cur.top.length} matches</h3><div class="panel tablewrap"><table>${head}<tbody>${cur.top.map(byKey).filter(Boolean).map(item).join("") || `<tr><td class="muted">No models match this rule.</td></tr>`}</tbody></table></div>
-  <h2 style="margin-top:28px">Top pick per provider</h2><div class="cards">${Object.entries(cur.by_provider).map(([p, k]) => { const m = byKey(k); return m ? `<div class="panel"><div class="muted">${icon(p)}${esc(prov(p).name)}</div><strong>${mlink(m)}</strong><div class="muted">${ctx(m.context)} context · ${money(m.input_price)} in / ${money(m.output_price)} out</div><a href="${href(prov(p).docs || prov(p).url)}">Provider docs</a></div>` : ""; }).join("")}</div>`);
+  <div class="model-filters panel" role="region" aria-label="Model capability filters">${capabilityFilters()}</div>
+  <h3 class="model-group">Top ${top.length} matches</h3><div class="panel tablewrap"><table>${head}<tbody>${top.map(item).join("") || `<tr><td class="muted">No models match this rule and these filters.</td></tr>`}</tbody></table></div>
+  <h2 style="margin-top:28px">Top pick per provider</h2>${providerPicks.length ? `<div class="cards">${providerPicks.join("")}</div>` : `<div class="panel empty">No provider picks match these filters.</div>`}`);
   document.querySelectorAll("button[data-p]").forEach(btn => btn.onclick = () => { purpose = btn.dataset.p; bestView(); });
+  bindCapabilityFilters(bestView);
 }
 
 /* ---------- compare ---------- */
