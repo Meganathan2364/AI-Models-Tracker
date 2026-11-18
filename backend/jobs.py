@@ -283,7 +283,8 @@ def rank(models):
         for m in pool:
             if m["provider"] in CFG["providers"]:
                 by_provider.setdefault(m["provider"], m["key"])
-        out[pid] = {"top": [m["key"] for m in pool[:10]], "by_provider": by_provider}
+        candidates = [m["key"] for m in pool]
+        out[pid] = {"top": candidates[:10], "by_provider": by_provider, "candidates": candidates}
     return out
 
 

@@ -6,6 +6,24 @@ from unittest.mock import patch
 from backend import jobs
 
 
+def test_rank_includes_all_ordered_candidates_for_filtered_results():
+    models = [
+        {
+            "key": f"reasoning-{day}",
+            "provider": "openai",
+            "reasoning": True,
+            "release_date": f"2026-01-{day:02d}",
+        }
+        for day in range(1, 13)
+    ]
+
+    ranking = jobs.rank(models)["reasoning"]
+
+    assert len(ranking["candidates"]) == 12
+    assert ranking["candidates"][0] == "reasoning-12"
+    assert ranking["top"] == ranking["candidates"][:10]
+
+
 def test_nested_tracked_jobs_preserve_each_source_status():
     with tempfile.TemporaryDirectory() as temp_dir:
         with patch.object(jobs, "DATA", jobs.Path(temp_dir)):

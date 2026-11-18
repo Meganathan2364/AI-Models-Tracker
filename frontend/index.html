@@ -749,13 +749,18 @@ function bestView() {
   if (!b || !models().length) return show(empty("rankings"));
   purpose = purpose && b[purpose] ? purpose : Object.keys(b)[0];
   const P = D.meta?.purposes || {}, cur = b[purpose];
-  const top = cur.top.map(byKey).filter(m => m && m.listed !== false && matchesBestModelType(m));
-  const providerPicks = Object.entries(cur.by_provider).map(([p, k]) => {
-    const m = byKey(k);
-    return m && m.listed !== false && matchesBestModelType(m)
-      ? `<div class="panel"><div class="muted">${icon(p)}${esc(prov(p).name)}</div><strong>${mlink(m)}</strong><div class="muted">${ctx(m.context)} context · ${money(m.input_price)} in / ${money(m.output_price)} out</div><a href="${href(prov(p).docs || prov(p).url)}">Provider docs</a></div>`
-      : "";
-  }).filter(Boolean);
+  const modelByKey = new Map(models().map(model => [model.key, model]));
+  const ranked = (cur.candidates || cur.top || [])
+    .map(key => modelByKey.get(key))
+    .filter(model => model && model.listed !== false && matchesBestModelType(model));
+  const top = ranked.slice(0, 10);
+  const providerIds = new Set(Object.keys(cur.by_provider || {}));
+  const selectedProviders = new Set();
+  const providerPicks = ranked.filter(model => {
+    if (!providerIds.has(model.provider) || selectedProviders.has(model.provider)) return false;
+    selectedProviders.add(model.provider);
+    return true;
+  }).map(model => `<div class="panel"><div class="muted">${icon(model.provider)}${esc(prov(model.provider).name)}</div><strong>${mlink(model)}</strong><div class="muted">${ctx(model.context)} context · ${money(model.input_price)} in / ${money(model.output_price)} out</div><a href="${href(prov(model.provider).docs || prov(model.provider).url)}">Provider docs</a></div>`);
   const item = (m, i) => `<tr><td class="muted">${i + 1}</td><td>${mlink(m)}</td><td>${icon(m.provider)}<a href="${href(prov(m.provider).docs || prov(m.provider).url)}">${esc(prov(m.provider).name)}</a></td><td class="n">${ctx(m.context)}</td><td class="n">${money(m.input_price)}</td><td class="n">${money(m.output_price)}</td><td>${esc(m.release_date || "–")}</td></tr>`;
   const head = `<thead><tr><th></th><th>Model</th><th>Provider</th><th class="n">Context</th><th class="n">In $/M</th><th class="n">Out $/M</th><th>Released</th></tr></thead>`;
   const activeType = BEST_MODEL_TYPES.find(type => type.id === bestModelType);
@@ -765,7 +770,7 @@ function bestView() {
   show(`<h2>Best for</h2><p class="sub">Each purpose shows up to ${cur.top.length} rule-based matches based on collected metadata, not an overall quality or benchmark ranking. <a href="#/models">Browse all ${models().length.toLocaleString("en-US")} model records</a>.</p>
   <div class="controls">${Object.keys(b).map(k => `<button data-p="${esc(k)}" aria-pressed="${!bestModelType && k === purpose}">${esc(P[k]?.label || k)}</button>`).join("")}${BEST_MODEL_TYPES.map(type => `<button type="button" data-best-model-type="${type.id}" aria-pressed="${bestModelType === type.id}">${type.label}</button>`).join("")}</div>
   <p class="muted">${esc(description)}</p>
-  <h3 class="model-group">Top ${top.length} matches</h3><div class="panel tablewrap"><table>${head}<tbody>${top.map(item).join("") || `<tr><td class="muted">No models match this purpose and model type.</td></tr>`}</tbody></table></div>
+  <h3 class="model-group">Top ${top.length} of ${ranked.length} matches</h3><div class="panel tablewrap"><table>${head}<tbody>${top.map(item).join("") || `<tr><td class="muted">No models match this purpose and model type.</td></tr>`}</tbody></table></div>
   <h2 style="margin-top:28px">Top pick per provider</h2>${providerPicks.length ? `<div class="cards">${providerPicks.join("")}</div>` : `<div class="panel empty">No provider picks match this purpose and model type.</div>`}`);
   document.querySelectorAll("button[data-p]").forEach(btn => btn.onclick = () => { purpose = btn.dataset.p; bestModelType = ""; bestView(); });
   document.querySelectorAll("button[data-best-model-type]").forEach(btn => btn.onclick = () => {

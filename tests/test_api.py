@@ -152,6 +152,63 @@ class ApiTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(response.json()["models"], [{"key": "sample"}])
         self.assertEqual(response.headers["x-ai-data-source"], "local-only")
 
+    async def test_best_endpoint_upgrades_legacy_snapshot_with_full_ranked_candidates(self):
+        catalog = {
+            "models": [
+                {
+                    "key": "open-image-model",
+                    "provider": "openai",
+                    "listed": True,
+                    "open_weights": True,
+                    "outputs": ["image"],
+                    "release_date": "2026-01-01",
+                }
+            ]
+        }
+        legacy_best = {"open_weights": {"top": [], "by_provider": {}}}
+        with tempfile.TemporaryDirectory() as temp_dir:
+            Path(temp_dir, "catalog.json").write_text(json.dumps(catalog), encoding="utf-8")
+            Path(temp_dir, "best.json").write_text(json.dumps(legacy_best), encoding="utf-8")
+            with patch("backend.app.DATA_DIR", Path(temp_dir)):
+                response = await self.client.get("/api/data/best")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["open_weights"]["candidates"], ["open-image-model"])
+        self.assertEqual(response.json()["open_weights"]["top"], ["open-image-model"])
+
+    async def test_best_endpoint_upgrades_legacy_remote_snapshot(self):
+        catalog = {
+            "models": [
+                {
+                    "key": "remote-open-image-model",
+                    "provider": "openai",
+                    "listed": True,
+                    "open_weights": True,
+                    "outputs": ["image"],
+                    "release_date": "2026-01-01",
+                }
+            ]
+        }
+        legacy_best = {"open_weights": {"top": [], "by_provider": {}}}
+        supabase_env = {
+            "SUPABASE_URL": "https://example.supabase.co",
+            "SUPABASE_SECRET_KEY": "sb_secret_test-key",
+        }
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(os.environ, supabase_env):
+            with patch("backend.app.DATA_DIR", Path(temp_dir)):
+                with patch(
+                    "backend.app.supabase_store.read_record",
+                    side_effect=[(True, legacy_best), (True, catalog)],
+                ):
+                    response = await self.client.get("/api/data/best")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json()["open_weights"]["candidates"],
+            ["remote-open-image-model"],
+        )
+        self.assertEqual(response.headers["x-ai-data-source"], "supabase")
+
     async def test_catalog_endpoint_reads_remote_snapshot_when_configured(self):
         payload = {"models": [{"key": "remote-sample"}]}
         supabase_env = {

@@ -595,6 +595,8 @@ def read_dataset(dataset: str) -> JSONResponse:
         try:
             found, remote_payload = supabase_store.read_record(dataset)
             if found:
+                if dataset == "best":
+                    remote_payload = _ensure_ranking_candidates(remote_payload)
                 return JSONResponse(
                     content=remote_payload,
                     headers={"Cache-Control": "no-cache", "X-AI-Data-Source": "supabase"},
@@ -616,6 +618,9 @@ def read_dataset(dataset: str) -> JSONResponse:
             LOGGER.exception("Could not read dataset %s", dataset)
             raise HTTPException(status_code=503, detail=f"Dataset '{dataset}' is temporarily unavailable.") from error
 
+    if dataset == "best":
+        payload = _ensure_ranking_candidates(payload)
+
     if storage_configured and not storage_unavailable:
         try:
             supabase_store.write_records({dataset: payload})
@@ -631,3 +636,20 @@ def read_dataset(dataset: str) -> JSONResponse:
         content=payload,
         headers={"Cache-Control": "no-cache", "X-AI-Data-Source": data_source},
     )
+
+
+def _ensure_ranking_candidates(payload: object) -> object:
+    if (
+        isinstance(payload, dict)
+        and payload
+        and all(isinstance(ranking, dict) and isinstance(ranking.get("candidates"), list)
+                for ranking in payload.values())
+    ):
+        return payload
+
+    catalog_response = read_dataset("catalog")
+    catalog = json.loads(catalog_response.body)
+    models = catalog.get("models") if isinstance(catalog, dict) else None
+    if not isinstance(models, list):
+        raise HTTPException(status_code=503, detail="Model catalog is invalid; rankings are unavailable.")
+    return collector_jobs.rank([model for model in models if model.get("listed") is not False])
